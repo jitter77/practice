@@ -1,5 +1,5 @@
 __author__ = 'dp'
-#TODO Versionscontrolle, Logdatei
+#TODO Versionscontrolle, Logdatei, check root
 import serial
 #TODO Liste oder Dictionary Baudrate implementieren, ? help
 baud = input("Set Baudrate: ")
