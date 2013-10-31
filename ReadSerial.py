@@ -1,6 +1,7 @@
 __author__ = 'dp'
-
+#TODO Versionscontrolle, Logdatei, check root
 import serial
+#TODO Liste oder Dictionary Baudrate implementieren, ? help
 baud = input("Set Baudrate: ")
 #TODO Liste oder Dictonary mit zugehörigen Baudraten implementieren
 sCom1 =serial.Serial(0)
@@ -10,6 +11,6 @@ if sCom1.isOpen()==False:
 
 while(1):
     line = sCom1.readline()
-    print line
+    print (line)
 sCom1.close()
 
