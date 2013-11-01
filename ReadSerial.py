@@ -15,7 +15,8 @@ baud = input("Baudrate waehlen: ")
 #TODO log, Funktion?
 log = raw_input("Logdatei erstellen? y or n")
 #log = str(log)
-if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes']:
+if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes']\:
+#TODO zeitstempel
     logdatei = file("Systemlog", "w")
     #logdatei = "Systemlog" and time
 else:
