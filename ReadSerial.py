@@ -13,15 +13,24 @@ for i in Baudrate:
 
 baud = input("Baudrate waehlen: ")
 #TODO log, Funktion?
-log = raw_input("Logdatei erstellen? y or n")
+log = raw_input("Logdatei erstellen? y or n: ")
 #log = str(log)
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes']:
 #TODO zeitstempel
-    logdatei = file("Systemlog", "w")
-    #logdatei = "Systemlog" and time
+    #Datei = ("Systemlog"+(time.strftime("%h:%m:%s"), "w"))
+    logdatei = file("Systemlog", "w+")
+    #logdatei = logdatei + time.strftime("%h:%m:%s")
+    print time.strftime("%H:%M:%S")
+    test = str(time.strftime("%H:%M:%S"))
+    print test
+#TODO get_time Funktion
+
 else:
     pass
-
+def write_log(data):
+    datei = open(logdatei, "w+")
+    print(data)
+    datei.close()
 
 
 sCom1 =serial.Serial(port="/dev/ttyS0")
