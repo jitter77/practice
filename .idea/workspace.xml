@@ -3,8 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1cbbd161-8742-4895-8a1e-6d0f3b35b2a7" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReadSerial.py" afterPath="$PROJECT_DIR$/ReadSerial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/practice.iml" afterPath="$PROJECT_DIR$/.idea/practice.iml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="practice.iws" />
@@ -31,7 +29,7 @@
       <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="25" column="23" selection-start="793" selection-end="793" vertical-scroll-proportion="0.8222812" vertical-offset="65" max-vertical-offset="945">
+            <state line="27" column="8" selection-start="822" selection-end="822" vertical-scroll-proportion="0.9018568" vertical-offset="65" max-vertical-offset="975">
               <folding />
             </state>
           </provider>
@@ -310,7 +308,11 @@
       <created>1383336060317</created>
       <updated>1383336060317</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="timestamp">
+      <created>1383344566627</created>
+      <updated>1383344566627</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -365,7 +367,8 @@
       <TodoPanelSettings />
     </option>
     <MESSAGE value="TODO" />
-    <option name="LAST_COMMIT_MESSAGE" value="TODO" />
+    <MESSAGE value="timestamp" />
+    <option name="LAST_COMMIT_MESSAGE" value="timestamp" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -380,7 +383,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="25" column="23" selection-start="793" selection-end="793" vertical-scroll-proportion="0.8222812" vertical-offset="65" max-vertical-offset="945">
+        <state line="27" column="8" selection-start="822" selection-end="822" vertical-scroll-proportion="0.9018568" vertical-offset="65" max-vertical-offset="975">
           <folding />
         </state>
       </provider>

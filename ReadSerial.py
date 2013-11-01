@@ -24,6 +24,8 @@ if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes']:
     test = str(time.strftime("%H:%M:%S"))
     print test
 #TODO get_time Funktion
+def get_time(time):
+    pass
 
 else:
     pass
