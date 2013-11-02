@@ -6,11 +6,17 @@ version = '0.1'
 #!/usr/bin/python
 #_*_ coding: utf-8 _*_
 
-#TODO Versionscontrolle, Logdatei, check root, http impelmentieren
+#TODOLogdatei, check root, http impelmentieren
 
 import serial, os, time
 
 #TODO Liste oder Dictionary Baudrate implementieren
+
+#Check ob Programm mit root - Rechten aufgerufen wurde
+user = os.geteuid()
+if user != 0:
+    print "You have to be root! Start program as root or using sudo!"
+    quit()
 
 Baudrate = ["9600", "115200"]
 print ("Moegliche Baudraten: ")
