@@ -34,8 +34,7 @@ if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes']:
 def get_time(time):
     """Zeit im Format Stunde/Minute/Sekunde auslesen und zurückgeben"""
     pass
-else:
-    pass
+
 
 def write_log(data):
     """Logdatei öffnen, Zeilennummer und Zeitstempel einfügen, Zeilen schreiben, Datei schließen"""
