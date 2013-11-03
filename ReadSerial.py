@@ -6,7 +6,7 @@ version = '0.1'
 #!/usr/bin/python
 #_*_ coding: utf-8 _*_
 
-#TODOLogdatei, check root, http impelmentieren
+#TODO Logdatei,http implementieren
 
 import serial, os, time
 
