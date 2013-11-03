@@ -7,10 +7,11 @@ version = '0.1'
 #_*_ coding: utf-8 _*_
 
 #TODO Logdatei,http implementieren
+#TODO Lokal arbeiten oder Images herunterladen
+#TODO Erstinstallation, defaults (Sprache, Pfade) speichern
+#TODO OS testen
 
 import serial, os, time
-
-#TODO Liste oder Dictionary Baudrate implementieren
 
 #Check ob Programm mit root - Rechten aufgerufen wurde
 user = os.geteuid()
@@ -19,6 +20,8 @@ if user != 0:
     quit()
 
 Baudrate = ["9600", "115200"]
+Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
+OS = ["WinCE6", "WinEC7", "Android"]
 print ("Moegliche Baudraten: ")
 for i in Baudrate:
     print (i)
