@@ -15,7 +15,7 @@ import serial, os, time
 #Check ob Programm mit root - Rechten aufgerufen wurde
 user = os.geteuid()
 if user != 0:
-    print "You have to be root! Start program as root or using sudo!"
+    print "You have to be root! Start program as root or using sudo!\nExiting now."
     quit()
 
 Baudrate = ["9600", "115200"]
