@@ -58,7 +58,7 @@ log = raw_input("Logdatei erstellen? y or n: ")
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
 #TODO zeitstempel
     #Datei = ("Systemlog"+(time.strftime("%h:%m:%s"), "w"))
-    logdatei = file("Systemlog", "w+")
+    logdatei = file("Systemlog" + time.strftime("%H:%M:%S"), "w+")
     #logdatei = logdatei + time.strftime("%h:%m:%s")
     print time.strftime("%H:%M:%S")
     test = str(time.strftime("%H:%M:%S"))
@@ -117,7 +117,7 @@ def write_com():
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
     while():
-        line = sCom1.write(data=)
+        line = sCom1.write(data=test)
         sCom1.close()
 
 
