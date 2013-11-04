@@ -28,13 +28,13 @@ if user != 0:
     print "You have to be root! Start program as root or using sudo!\nExiting now."
     quit()
 #check for update
-update = raw_input("Check for updates?")
+update = raw_input("Check for updates? y/n ")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-    urllib2.urlopen("http://nasenpappe.de/version.txt").read()
+    urllib2.urlopen("http://www.google.de").read()
     if version < version_web:
-        print "Update available!"
+        print "Update available!\n"
     else:
-        print "Version is up to date"
+        print "Version is up to date\n"
 
 #Versionskontrolle
 def updatecheck():
@@ -47,12 +47,17 @@ def updatecheck():
 def first_run():
     """first run, conf erstellen, werte eintragen"""
     try:
-        datei = open("settings.conf")
+        if os.path.exists("settings.conf"):
+            pass
+        else:
+            datei = file("settings.conf", "w+")
+            print ("Baudrate", datei)
+            datei.close()
     except IOError:
         #file="settings.conf","w"
-        datei = file("settings.conf", "w+")
-        print ("Baudrate", datei)
-        datei.close()
+        #datei = file("settings.conf", "w+")
+        print ("IOError!")
+        #datei.close()
 
 Baudrate = ["9600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
