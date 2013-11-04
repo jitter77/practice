@@ -55,6 +55,7 @@ def first_run(baud):
             #datei = file("settings.conf", "w+")
             with open("settings.conf", 'wb') as datei:
                 pickle.PROTOCOL = "1"
+                #TODO ver global
                 ver = pickle.HIGHEST_PROTOCOL
                 print ver
                 pickle.dump("1", datei, protocol=ver)
