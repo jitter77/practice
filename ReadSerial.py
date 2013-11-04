@@ -17,6 +17,7 @@ import time
 import platform
 import urllib2
 import serial
+import pickle
 
 #Wurde unter Linux gestartet?
 if platform.system() != "Linux":
@@ -39,23 +40,29 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
 
 #Versionskontrolle
 def updatecheck():
-    urllib2.urlopen("http://nasenpappe.de/version.txt").read()
+    urllib2.urlopen("http://nasenpappe.de/version.txt").readline()
     if version < version_web:
         print "Update available!"
     else:
         print "Version is up to date"
 
-def first_run():
+def first_run(baud):
     """first run, conf erstellen, werte eintragen"""
     try:
         if os.path.exists("settings.conf"):
             pass
         else:
-            datei = file("settings.conf", "w+")
-            print ("Baudrate", datei)
-            datei.close()
+            #datei = file("settings.conf", "w+")
+            with open("settings.conf", 'wb') as datei:
+                pickle.PROTOCOL = "1"
+                ver = pickle.HIGHEST_PROTOCOL
+                print ver
+                pickle.dump("1", datei, protocol=2)
+            #datei.close()
     except IOError:
-        print ("IOError!")
+            print ("IOError!")
+
+
 
 
 Baudrate = ["9600", "115200"]
@@ -64,7 +71,7 @@ OS = ["WinCE6", "WinEC7", "Android"]
 print ("Moegliche Baudraten: ")
 for i in Baudrate:
     print (i)
-
+first_run(baud=Baudrate)
 baud = input("Baudrate waehlen: ")
 
 #TODO log, Funktion?
