@@ -81,7 +81,7 @@ else:
 
 
 
-#TODO get_time Funktion
+
 def get_time(time):
     """Zeit im Format Stunde/Minute/Sekunde auslesen und zurückgeben"""
     print time.strftime("%H:%M:%S")
@@ -109,7 +109,7 @@ def open_com(sCom1=Port):
 #if sCom1.isOpen()==False:
  #   sCom1.open()
 
-#TODO lesen zur Funktion umbauen?!
+
 def read_com(sCom1=Port):
     """Com oeffnen, lesen bis keien Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
     open_com()
@@ -125,7 +125,7 @@ def read_com(sCom1=Port):
 #Schnittstelle schliessen
 #sCom1.close()
 
-#TODO schreiben zur Funktion umbauen?!
+
 
 #while(): #bis Datei komplett gelesen
  #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
