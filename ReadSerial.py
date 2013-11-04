@@ -2,7 +2,7 @@
 """Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
 version = '0.1'
-
+version_web = '0'
 #!/usr/bin/python
 #_*_ coding: utf-8 _*_
 
@@ -11,13 +11,30 @@ version = '0.1'
 #TODO Erstinstallation, defaults (Sprache, Pfade) speichern
 #TODO OS testen
 
-import serial, os, time
+import os
+import time
+import platform
+import urllib2
+
+
+import serial
+
+#Wurde unter Linux gestartet?
+if platform.system() != "Linux":
+    print ("Only for Linux (so far)!")
 
 #Check ob Programm mit root - Rechten aufgerufen wurde
 user = os.geteuid()
 if user != 0:
     print "You have to be root! Start program as root or using sudo!\nExiting now."
     quit()
+
+#Versionskontrolle
+urllib2.urlopen("http://nasenpappe.de/vesion.txt").read()
+if version < version_web:
+    print "Update available!"
+else:
+    print "Version is up to date"
 
 Baudrate = ["9600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
@@ -51,7 +68,13 @@ def write_log(data):
     print(data)
     datei.close()
 
-#TODO open Com als Funktion?
+
+def open_com():
+    """ComPort oeffnen"""
+    sCom1 = serial(port="/dev/ttyS0")
+    sCom1.setBaudrate(baud)
+    if sCom1.isOpen()==False:
+        sCom1.open()
 
 sCom1 =serial.Serial(port="/dev/ttyS0")
 sCom1.setBaudrate(baud)
@@ -60,21 +83,34 @@ if sCom1.isOpen()==False:
     sCom1.open()
 
 #TODO lesen zur Funktion umbauen?!
+def read_com():
+    """Com oeffnen, lesen bis keien Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
+    open_com()
+    while():
+        line = sCom1.read()
+        print (line)
+        sCom1.close()
 
-while(1): #bis kein Inhalt mehr kommt
+#while(1): #bis kein Inhalt mehr kommt
     #von Schnittstelle lesen
-    line = sCom1.readline()
-    print (line)
+ #   line = sCom1.readline()
+  #  print (line)
 #Schnittstelle schliessen
-sCom1.close()
+#sCom1.close()
 
 #TODO schreiben zur Funktion umbauen?!
 
-while(): #bis Datei komplett gelesen
-    line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
-    print(line)
-sCom1.close()
+#while(): #bis Datei komplett gelesen
+ #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
+  #  print(line)
+#sCom1.close()
 
+def write_com():
+    """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
+    open_com()
+    while():
+        line = sCom1.write(data=)
+        sCom1.close()
 
 
 
