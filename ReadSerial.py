@@ -27,6 +27,7 @@ user = os.geteuid()
 if user != 0:
     print "You have to be root! Start program as root or using sudo!\nExiting now."
     quit()
+
 #check for update
 update = raw_input("Check for updates? y/n ")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
@@ -54,10 +55,8 @@ def first_run():
             print ("Baudrate", datei)
             datei.close()
     except IOError:
-        #file="settings.conf","w"
-        #datei = file("settings.conf", "w+")
         print ("IOError!")
-        #datei.close()
+
 
 Baudrate = ["9600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
@@ -67,9 +66,10 @@ for i in Baudrate:
     print (i)
 
 baud = input("Baudrate waehlen: ")
+
 #TODO log, Funktion?
 log = raw_input("Logdatei erstellen? y or n: ")
-#log = str(log)
+
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     logdatei = file("Systemlog " + time.strftime("%d_%m_%Y"), "w+")
 elif log in ['n', 'no', 'N', 'No', 'NO']:
