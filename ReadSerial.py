@@ -27,13 +27,22 @@ user = os.geteuid()
 if user != 0:
     print "You have to be root! Start program as root or using sudo!\nExiting now."
     quit()
+#check for update
+update = raw_input("Check for updates?")
+if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
+    urllib2.urlopen("http://nasenpappe.de/version.txt").read()
+    if version < version_web:
+        print "Update available!"
+    else:
+        print "Version is up to date"
 
 #Versionskontrolle
-#urllib2.urlopen("http://nasenpappe.de/version.txt").read()
-#if version < version_web:
- #   print "Update available!"
-#else:
- #   print "Version is up to date"
+def updatecheck():
+    urllib2.urlopen("http://nasenpappe.de/version.txt").read()
+    if version < version_web:
+        print "Update available!"
+    else:
+        print "Version is up to date"
 
 def first_run():
     """first run, conf erstellen, werte eintragen"""
