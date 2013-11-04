@@ -30,11 +30,15 @@ if user != 0:
     quit()
 
 #Versionskontrolle
-urllib2.urlopen("http://nasenpappe.de/vesion.txt").read()
+urllib2.urlopen("http://nasenpappe.de/version.txt").read()
 if version < version_web:
     print "Update available!"
 else:
     print "Version is up to date"
+
+def first_run():
+    """first run, conf erstellen, werte eintragen"""
+    pass
 
 Baudrate = ["9600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
@@ -47,7 +51,7 @@ baud = input("Baudrate waehlen: ")
 #TODO log, Funktion?
 log = raw_input("Logdatei erstellen? y or n: ")
 #log = str(log)
-if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes']:
+if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
 #TODO zeitstempel
     #Datei = ("Systemlog"+(time.strftime("%h:%m:%s"), "w"))
     logdatei = file("Systemlog", "w+")
