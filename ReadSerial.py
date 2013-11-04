@@ -9,14 +9,12 @@ version_web = '0'
 #TODO Logdatei,http implementieren
 #TODO Lokal arbeiten oder Images herunterladen
 #TODO Erstinstallation, defaults (Sprache, Pfade) speichern
-#TODO OS testen
+
 
 import os
 import time
 import platform
 import urllib2
-
-
 import serial
 
 #Wurde unter Linux gestartet?
@@ -80,11 +78,11 @@ def open_com():
     if sCom1.isOpen()==False:
         sCom1.open()
 
-sCom1 =serial.Serial(port="/dev/ttyS0")
-sCom1.setBaudrate(baud)
+#sCom1 =serial.Serial(port="/dev/ttyS0")
+#sCom1.setBaudrate(baud)
 #Schnittstelle oeffnen
-if sCom1.isOpen()==False:
-    sCom1.open()
+#if sCom1.isOpen()==False:
+ #   sCom1.open()
 
 #TODO lesen zur Funktion umbauen?!
 def read_com():
