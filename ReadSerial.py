@@ -57,7 +57,7 @@ def first_run(baud):
                 pickle.PROTOCOL = "1"
                 ver = pickle.HIGHEST_PROTOCOL
                 print ver
-                pickle.dump("1", datei, protocol=2)
+                pickle.dump("1", datei, protocol=ver)
             #datei.close()
     except IOError:
             print ("IOError!")
