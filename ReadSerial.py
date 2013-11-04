@@ -36,7 +36,13 @@ else:
 
 def first_run():
     """first run, conf erstellen, werte eintragen"""
-    pass
+    try:
+        datei = open("settings.conf")
+    except IOError:
+        #file="settings.conf","w"
+        datei = file("settings.conf", "w+")
+        print ("Baudrate", datei)
+        datei.close()
 
 Baudrate = ["9600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
