@@ -29,11 +29,11 @@ if user != 0:
     quit()
 
 #Versionskontrolle
-urllib2.urlopen("http://nasenpappe.de/version.txt").read()
-if version < version_web:
-    print "Update available!"
-else:
-    print "Version is up to date"
+#urllib2.urlopen("http://nasenpappe.de/version.txt").read()
+#if version < version_web:
+ #   print "Update available!"
+#else:
+ #   print "Version is up to date"
 
 def first_run():
     """first run, conf erstellen, werte eintragen"""
@@ -57,18 +57,22 @@ baud = input("Baudrate waehlen: ")
 log = raw_input("Logdatei erstellen? y or n: ")
 #log = str(log)
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-#TODO zeitstempel
-    #Datei = ("Systemlog"+(time.strftime("%h:%m:%s"), "w"))
-    logdatei = file("Systemlog" + time.strftime("%H:%M:%S"), "w+")
-    #logdatei = logdatei + time.strftime("%h:%m:%s")
-    print time.strftime("%H:%M:%S")
-    test = str(time.strftime("%H:%M:%S"))
-    print test
+    logdatei = file("Systemlog " + time.strftime("%d_%m_%Y"), "w+")
+elif log in ['n', 'no', 'N', 'No', 'NO']:
+    print ("no log will be generated")
+else:
+    print ("please answer y or no!")
+
+
+
+
 
 #TODO get_time Funktion
 def get_time(time):
     """Zeit im Format Stunde/Minute/Sekunde auslesen und zurückgeben"""
-    pass
+    print time.strftime("%H:%M:%S")
+    test = str(time.strftime("%H:%M:%S"))
+    print test
 
 
 def write_log(data):
