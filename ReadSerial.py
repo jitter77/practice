@@ -48,6 +48,7 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
 def first_run(baud, Version):
     """first run, conf erstellen, werte eintragen"""
     heim = os.getenv("HOME")
+    #TODO Version in settings.conf einfügen! Für aktuellere Downloads!
     try:
         if os.path.exists(heim+"/files_flasher/settings.conf"):
             pass
