@@ -55,17 +55,18 @@ def first_run(baud, Version, path):
             aktueller_pfad = os.getcwd()
             if aktueller_pfad != os.getenv("HOME"):
                 print "Please open in "+ heim
-                os.mkdir(heim+"/logs/", 0777)
+                os.mkdir(heim+"/logs/")
             with open("settings.conf", 'wb') as datei:
                 pickle.dump("test", datei, protocol=version_pickle)
                 #datei.close()
     except IOError:
         print ("IOError!")
     try:
-        if os.path.exists("/modules/"):
+        if os.path.exists(heim+"/modules/"):
             pass
         else:
-            os.makedirs(tree[0-2], mode=0555)
+            for zeile in tree.split(":"):
+                os.makedirs(heim+zeile, 555)
     except IOError:
         print ("IOerror!")
 
