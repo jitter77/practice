@@ -20,7 +20,8 @@ import urllib2
 import serial
 import pickle
 
-ver = pickle.HIGHEST_PROTOCOL
+version_pickle = pickle.HIGHEST_PROTOCOL
+tree = ['/modules/tx25/os/linux/', '/modules/tx28/os/linux/', '/modules/tx28/os/wince/']
 
 #Wurde unter Linux gestartet?
 if platform.system() != "Linux":
@@ -41,28 +42,32 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     else:
         print "Version is up to date\n"
 
-#Versionskontrolle
-def updatecheck():
-    urllib2.urlopen("http://nasenpappe.de/version.txt").readline()
-    if version < version_web:
-        print "Update available!"
-    else:
-        print "Version is up to date"
-
-def first_run(baud, Version):
+#TODO first run auslagern
+def first_run(baud, Version, path):
     """first run, conf erstellen, werte eintragen"""
+    heim = os.getenv("HOME")
+    print heim
     try:
-        if os.path.exists("settings.conf"):
+        if os.path.exists(heim+"/logs/"+"settings.conf"):
             pass
         else:
-            #datei = file("settings.conf", "w+")
+            #home = os.getenv("Home")
+            aktueller_pfad = os.getcwd()
+            if aktueller_pfad != os.getenv("HOME"):
+                print "Please open in "+ heim
+                os.mkdir(heim+"/logs/", 0777)
             with open("settings.conf", 'wb') as datei:
-                pickle.dump("test", datei, protocol=ver)
-            #datei.close()
+                pickle.dump("test", datei, protocol=version_pickle)
+                #datei.close()
     except IOError:
-            print ("IOError!")
-
-
+        print ("IOError!")
+    try:
+        if os.path.exists("/modules/"):
+            pass
+        else:
+            os.makedirs(tree[0-2], mode=0555)
+    except IOError:
+        print ("IOerror!")
 
 
 Baudrate = ["9600", "115200"]
@@ -71,22 +76,19 @@ OS = ["WinCE6", "WinEC7", "Android"]
 print ("Moegliche Baudraten: ")
 for i in Baudrate:
     print (i)
-first_run(baud=Baudrate, Version=ver)
+first_run(baud=Baudrate, Version=version_pickle, path=tree)
 baud = input("Baudrate waehlen: ")
 
 #TODO log, Funktion?
 log = raw_input("Logdatei erstellen? y or n: ")
 
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-    logdatei = file("Systemlog " + time.strftime("%d_%m_%Y"), "w+")
+
+    logdatei = file("/logs/Systemlog " + time.strftime("%d_%m_%Y"), "w+")
 elif log in ['n', 'no', 'N', 'No', 'NO']:
     print ("no log will be generated")
 else:
     print ("please answer y or no!")
-
-
-
-
 
 
 def get_time(time):
@@ -107,41 +109,42 @@ def open_com(sCom1=Port):
     """ComPort oeffnen"""
     #sCom1 = serial(port="/dev/ttyS0")
     sCom1.setBaudrate(baud)
-    if sCom1.isOpen()==False:
+    if sCom1.isOpen() == False:
         sCom1.open()
 
-#sCom1 =serial.Serial(port="/dev/ttyS0")
-#sCom1.setBaudrate(baud)
-#Schnittstelle oeffnen
-#if sCom1.isOpen()==False:
- #   sCom1.open()
+    #sCom1 =serial.Serial(port="/dev/ttyS0")
+    #sCom1.setBaudrate(baud)
+    #Schnittstelle oeffnen
+    #if sCom1.isOpen()==False:
+    #   sCom1.open()
 
 
 def read_com(sCom1=Port):
     """Com oeffnen, lesen bis keien Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
     open_com()
-    while():
+    while ():
         line = sCom1.read()
         print (line)
         sCom1.close()
 
-#while(1): #bis kein Inhalt mehr kommt
+    #while(1): #bis kein Inhalt mehr kommt
     #von Schnittstelle lesen
- #   line = sCom1.readline()
-  #  print (line)
-#Schnittstelle schliessen
-#sCom1.close()
+    #   line = sCom1.readline()
+    #  print (line)
+    #Schnittstelle schliessen
+    #sCom1.close()
 
 
 
-#while(): #bis Datei komplett gelesen
- #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
-  #  print(line)
+    #while(): #bis Datei komplett gelesen
+    #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
+    #  print(line)
+
 #sCom1.close()
 
 def write_com(sCom1=Port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
-    while():
+    while ():
         line = sCom1.write(data=test)
         sCom1.close()
