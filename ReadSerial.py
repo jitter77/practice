@@ -65,8 +65,8 @@ def first_run(baud, Version, path):
         if os.path.exists(heim+"/modules/"):
             pass
         else:
-            for zeile in tree.split(":"):
-                os.makedirs(heim+zeile, 555)
+            for zeile in tree:
+                os.makedirs(heim+zeile)
     except IOError:
         print ("IOerror!")
 
