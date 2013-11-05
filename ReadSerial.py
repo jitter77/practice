@@ -8,7 +8,7 @@ Port = "/dev/ttyS0"
 #!/usr/bin/python
 #_*_ coding: utf-8 _*_
 
-#TODO Logdatei,http implementieren
+#TODO Logdatei
 #TODO Lokal arbeiten oder Images herunterladen
 #TODO Erstinstallation, defaults (Sprache, Pfade) speichern
 
@@ -38,7 +38,9 @@ update = raw_input("Check for updates? y/n ")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     version_web=urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
     if version < version_web:
-        print "Update available!\n"
+        print "**********************************************"
+        print "* Update available! Please load new version! *"
+        print "**********************************************"
     else:
         print "Version is up to date\n"
 
@@ -81,7 +83,7 @@ if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
 elif log in ['n', 'no', 'N', 'No', 'NO']:
     print ("no log will be generated")
 else:
-    print ("please answer y or no!")
+    print ("please answer y or n!")
 
 
 def get_time(time):
