@@ -2,7 +2,7 @@
 """Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
 version = '0.1'
-version_web = '0'
+
 
 Port = "/dev/ttyS0"
 #!/usr/bin/python
@@ -21,7 +21,7 @@ import serial
 import pickle
 
 version_pickle = pickle.HIGHEST_PROTOCOL
-tree = ['/modules/tx25/os/linux/', '/modules/tx28/os/linux/', '/modules/tx28/os/wince/']
+#tree = ['/files_flasher/modules/tx25/os/linux/', '/files_flasher/modules/tx28/os/linux/']
 
 #Wurde unter Linux gestartet?
 if platform.system() != "Linux":
@@ -36,39 +36,31 @@ if user != 0:
 #check for update
 update = raw_input("Check for updates? y/n ")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-    urllib2.urlopen("http://www.google.de").read()
+    version_web=urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
     if version < version_web:
         print "Update available!\n"
     else:
         print "Version is up to date\n"
 
 #TODO first run auslagern
-def first_run(baud, Version, path):
+def first_run(baud, Version):
     """first run, conf erstellen, werte eintragen"""
     heim = os.getenv("HOME")
-    print heim
     try:
-        if os.path.exists(heim+"/logs/"+"settings.conf"):
+        if os.path.exists(heim+"/files_flasher/settings.conf"):
             pass
         else:
-            #home = os.getenv("Home")
-            aktueller_pfad = os.getcwd()
-            if aktueller_pfad != os.getenv("HOME"):
-                print "Please open in "+ heim
-                os.mkdir(heim+"/logs/")
-            with open("settings.conf", 'wb') as datei:
+            tree = urllib2.urlopen("http://www.die-resterampe.de/pfade").readlines()
+
+            for zeile in tree:
+                os.makedirs(heim+zeile)
+            #file(heim+"/files_flasher/settings.conf")
+        with open(heim+"/files_flasher/settings.conf", 'wb') as datei:
                 pickle.dump("test", datei, protocol=version_pickle)
                 #datei.close()
     except IOError:
         print ("IOError!")
-    try:
-        if os.path.exists(heim+"/modules/"):
-            pass
-        else:
-            for zeile in tree:
-                os.makedirs(heim+zeile)
-    except IOError:
-        print ("IOerror!")
+
 
 
 Baudrate = ["9600", "115200"]
@@ -77,15 +69,15 @@ OS = ["WinCE6", "WinEC7", "Android"]
 print ("Moegliche Baudraten: ")
 for i in Baudrate:
     print (i)
-first_run(baud=Baudrate, Version=version_pickle, path=tree)
+first_run(baud=Baudrate, Version=version_pickle)
 baud = input("Baudrate waehlen: ")
 
 #TODO log, Funktion?
 log = raw_input("Logdatei erstellen? y or n: ")
 
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-
-    logdatei = file("/logs/Systemlog " + time.strftime("%d_%m_%Y"), "w+")
+    heim = os.getenv("HOME")
+    logdatei = file(heim+"/files_flasher/logs/systemlog " + time.strftime("%d_%m_%Y"), "w+")
 elif log in ['n', 'no', 'N', 'No', 'NO']:
     print ("no log will be generated")
 else:
