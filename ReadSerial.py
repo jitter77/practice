@@ -11,6 +11,10 @@ Port = "/dev/ttyS0"
 #TODO Logdatei
 #TODO Lokal arbeiten oder Images herunterladen
 #TODO Erstinstallation, defaults (Sprache, Pfade) speichern
+#TODO Proxy?
+#TODO GIT PULL!!!
+#TODO tftp starten
+
 
 
 import os
@@ -34,23 +38,31 @@ if user != 0:
     quit()
 
 #check for update
-update = raw_input("Check for updates? y/n ")
+update = raw_input("\nCheck for updates? y/n ")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     version_web=urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
     if version < version_web:
         print "**********************************************"
         print "* Update available! Please load new version! *"
+        print "* Please visit: www.LINK.de                  *"
         print "**********************************************"
+        # 3 Sekunden warten, Link einblenden
+        time.sleep(3)
+        upgrade = input("Update now?")
+        if upgrade in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
+            pass
     else:
         print "Version is up to date\n"
+        # 3 Sekunden warten
+        time.sleep(3)
 
 #TODO first run auslagern
-def first_run(baud, Version):
+def first_run(baud, Version, version_flash):
     """first run, conf erstellen, werte eintragen"""
     heim = os.getenv("HOME")
-    #TODO Version in settings.conf einfügen! Für aktuellere Downloads!
+    #TODO Version in settings.conf einfügen! Für aktuellere Downloads! Oder doch nicht: git pull!
     try:
-        if os.path.exists(heim+"/files_flasher/settings.conf"):
+        if os.path.exists(heim+"/files_flasher/settings.conf "+version_flash):
             pass
         else:
             tree = urllib2.urlopen("http://www.die-resterampe.de/pfade").readlines()
@@ -58,7 +70,7 @@ def first_run(baud, Version):
             for zeile in tree:
                 os.makedirs(heim+zeile)
             #file(heim+"/files_flasher/settings.conf")
-        with open(heim+"/files_flasher/settings.conf", 'wb') as datei:
+        with open(heim+"/files_flasher/settings"+version_flash+".conf", 'wb') as datei:
                 pickle.dump("test", datei, protocol=version_pickle)
                 #datei.close()
     except IOError:
@@ -66,13 +78,13 @@ def first_run(baud, Version):
 
 
 
-Baudrate = ["9600", "115200"]
+Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
-OS = ["WinCE6", "WinEC7", "Android"]
+OS = ["WinCE6", "WinEC7", "Android", "Linux"]
 print ("Moegliche Baudraten: ")
 for i in Baudrate:
     print (i)
-first_run(baud=Baudrate, Version=version_pickle)
+first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
 baud = input("Baudrate waehlen: ")
 
 #TODO log, Funktion?
@@ -144,3 +156,7 @@ def write_com(sCom1=Port):
     while ():
         line = sCom1.write(data=test)
         sCom1.close()
+
+def run_tftp():
+    """tftp starten"""
+    os.popen("/etc/init.d/tftpd-hpa restart")
