@@ -3,7 +3,6 @@
 __author__ = 'dp'
 version = '0.1'
 
-
 Port = "/dev/ttyS0"
 #!/usr/bin/python
 #_*_ coding: utf-8 _*_
@@ -40,7 +39,7 @@ if user != 0:
 #check for update
 update = raw_input("\nCheck for updates? y/n ")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-    version_web=urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
+    version_web = urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
     if version < version_web:
         print "**********************************************"
         print "* Update available! Please load new version! *"
@@ -62,20 +61,19 @@ def first_run(baud, Version, version_flash):
     heim = os.getenv("HOME")
     #TODO Version in settings.conf einfügen! Für aktuellere Downloads! Oder doch nicht: git pull!
     try:
-        if os.path.exists(heim+"/files_flasher/settings.conf "+version_flash):
+        if os.path.exists(heim + "/files_flasher/settings.conf " + version_flash):
             pass
         else:
             tree = urllib2.urlopen("http://www.die-resterampe.de/pfade").readlines()
 
             for zeile in tree:
-                os.makedirs(heim+zeile)
-            #file(heim+"/files_flasher/settings.conf")
-        with open(heim+"/files_flasher/settings"+version_flash+".conf", 'wb') as datei:
-                pickle.dump("test", datei, protocol=version_pickle)
-                #datei.close()
+                os.makedirs(heim + zeile)
+                #file(heim+"/files_flasher/settings.conf")
+        with open(heim + "/files_flasher/settings" + version_flash + ".conf", 'wb') as datei:
+            pickle.dump("test", datei, protocol=version_pickle)
+            #datei.close()
     except IOError:
         print ("IOError!")
-
 
 
 Baudrate = ["9600", "19200", "38400", "57600", "115200"]
@@ -92,7 +90,7 @@ log = raw_input("Logdatei erstellen? y or n: ")
 
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     heim = os.getenv("HOME")
-    logdatei = file(heim+"/files_flasher/logs/systemlog " + time.strftime("%d_%m_%Y"), "w+")
+    logdatei = file(heim + "/files_flasher/logs/systemlog " + time.strftime("%d_%m_%Y"), "w+")
 elif log in ['n', 'no', 'N', 'No', 'NO']:
     print ("no log will be generated")
 else:
@@ -120,11 +118,11 @@ def open_com(sCom1=Port):
     if sCom1.isOpen() == False:
         sCom1.open()
 
-    #sCom1 =serial.Serial(port="/dev/ttyS0")
-    #sCom1.setBaudrate(baud)
-    #Schnittstelle oeffnen
-    #if sCom1.isOpen()==False:
-    #   sCom1.open()
+        #sCom1 =serial.Serial(port="/dev/ttyS0")
+        #sCom1.setBaudrate(baud)
+        #Schnittstelle oeffnen
+        #if sCom1.isOpen()==False:
+        #   sCom1.open()
 
 
 def read_com(sCom1=Port):
@@ -135,12 +133,12 @@ def read_com(sCom1=Port):
         print (line)
         sCom1.close()
 
-    #while(1): #bis kein Inhalt mehr kommt
-    #von Schnittstelle lesen
-    #   line = sCom1.readline()
-    #  print (line)
-    #Schnittstelle schliessen
-    #sCom1.close()
+        #while(1): #bis kein Inhalt mehr kommt
+        #von Schnittstelle lesen
+        #   line = sCom1.readline()
+        #  print (line)
+        #Schnittstelle schliessen
+        #sCom1.close()
 
 
 
@@ -156,6 +154,7 @@ def write_com(sCom1=Port):
     while ():
         line = sCom1.write(data=test)
         sCom1.close()
+
 
 def run_tftp():
     """tftp starten"""
