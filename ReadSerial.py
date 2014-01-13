@@ -151,6 +151,8 @@ def read_com(sCom1=Port):
 def write_com(sCom1=Port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
+    #for zeile in datei:
+
     while ():
         line = sCom1.write(data=test)
         sCom1.close()
