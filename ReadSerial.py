@@ -157,5 +157,5 @@ def write_com(sCom1=Port):
 
 
 def run_tftp():
-    """tftp starten"""
+    """tftp Server starten"""
     os.popen("/etc/init.d/tftpd-hpa restart")
