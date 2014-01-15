@@ -148,6 +148,9 @@ def read_com(sCom1=Port):
 
 #sCom1.close()
 
+def read_env(datei):
+    '''Environment Zeile für Zeile einlesen'''
+
 def write_com(sCom1=Port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
