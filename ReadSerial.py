@@ -5,7 +5,6 @@ version = '0.1'
 
 Port = "/dev/ttyS0"
 #!/usr/bin/python
-_
 
 #TODO Logdatei
 #TODO Lokal arbeiten oder Images herunterladen
@@ -149,11 +148,12 @@ def read_com(sCom1=Port):
 
 #sCom1.close()
 
-def read_env(datei):
+def read_env(env_datei):
     """Environment Zeile für Zeile einlesen"""
-    befehle = open (datei)
+    befehle = open(env_datei)
     for zeile in befehle:
         print zeile
+    env_datei.close()
 
 
 def write_com(sCom1=Port):

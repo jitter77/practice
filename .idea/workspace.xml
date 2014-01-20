@@ -29,9 +29,9 @@
       <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="19" selection-start="4646" selection-end="4646" vertical-scroll-proportion="0.7096774" vertical-offset="1995" max-vertical-offset="2655">
+            <state line="155" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.8064516" vertical-offset="1950" max-vertical-offset="2655">
               <folding>
-                <element signature="e#340#349#0" expanded="true" />
+                <element signature="e#338#347#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -435,7 +435,11 @@
       <created>1390223110523</created>
       <updated>1390223110523</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="changes in def read_env">
+      <created>1390226141939</created>
+      <updated>1390226141939</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -499,7 +503,8 @@
     <MESSAGE value="write com, minor changes" />
     <MESSAGE value="small cleanup" />
     <MESSAGE value="added sh" />
-    <option name="LAST_COMMIT_MESSAGE" value="added sh" />
+    <MESSAGE value="changes in def read_env" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes in def read_env" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -530,7 +535,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2115">
           <folding>
-            <element signature="e#340#349#0" expanded="true" />
+            <element signature="e#338#347#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -563,7 +568,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="45" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="315">
           <folding>
-            <element signature="e#340#349#0" expanded="true" />
+            <element signature="e#338#347#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -606,9 +611,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="19" selection-start="4646" selection-end="4646" vertical-scroll-proportion="0.7096774" vertical-offset="1995" max-vertical-offset="2655">
+        <state line="155" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.8064516" vertical-offset="1950" max-vertical-offset="2655">
           <folding>
-            <element signature="e#340#349#0" expanded="true" />
+            <element signature="e#338#347#0" expanded="true" />
           </folding>
         </state>
       </provider>
