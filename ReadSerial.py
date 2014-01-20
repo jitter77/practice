@@ -1,11 +1,11 @@
-# coding=utf-8
+#_*_ coding: utf-8 _*
 """Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
 version = '0.1'
 
 Port = "/dev/ttyS0"
 #!/usr/bin/python
-#_*_ coding: utf-8 _*_
+_
 
 #TODO Logdatei
 #TODO Lokal arbeiten oder Images herunterladen
@@ -149,7 +149,7 @@ def read_com(sCom1=Port):
 #sCom1.close()
 
 def read_env(datei):
-    '''Environment Zeile für Zeile einlesen'''
+    """Environment Zeile für Zeile einlesen"""
 
 def write_com(sCom1=Port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
