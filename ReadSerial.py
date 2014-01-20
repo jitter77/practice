@@ -151,6 +151,10 @@ def read_com(sCom1=Port):
 
 def read_env(datei):
     """Environment Zeile für Zeile einlesen"""
+    befehle = open (datei)
+    for zeile in befehle:
+        print zeile
+
 
 def write_com(sCom1=Port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
