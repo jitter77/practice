@@ -149,7 +149,7 @@ def read_com(sCom1=Port):
 #sCom1.close()
 
 def read_env(env_datei):
-    """Environment Zeile für Zeile einlesen"""
+    """Environment Zeile für Zeile einlesen / an Port senden"""
     befehle = open(env_datei)
     for zeile in befehle:
         print zeile

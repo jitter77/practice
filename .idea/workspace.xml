@@ -29,7 +29,7 @@
       <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="155" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.8064516" vertical-offset="1950" max-vertical-offset="2655">
+            <state line="151" column="60" selection-start="4589" selection-end="4589" vertical-scroll-proportion="0.67741936" vertical-offset="1950" max-vertical-offset="2655">
               <folding>
                 <element signature="e#338#347#0" expanded="true" />
               </folding>
@@ -439,7 +439,11 @@
       <created>1390226141939</created>
       <updated>1390226141939</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="changes in def read_env">
+      <created>1390230092865</created>
+      <updated>1390230092865</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -611,7 +615,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="155" column="13" selection-start="4665" selection-end="4665" vertical-scroll-proportion="0.8064516" vertical-offset="1950" max-vertical-offset="2655">
+        <state line="151" column="60" selection-start="4589" selection-end="4589" vertical-scroll-proportion="0.67741936" vertical-offset="1950" max-vertical-offset="2655">
           <folding>
             <element signature="e#338#347#0" expanded="true" />
           </folding>
