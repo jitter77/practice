@@ -12,6 +12,8 @@ Port = "/dev/ttyS0"
 #TODO Proxy?
 #TODO GIT PULL!!!
 #TODO tftp starten
+#TODO frei IPs abfragen
+#TODO ENV files anlegen
 
 
 
