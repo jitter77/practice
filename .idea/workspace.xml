@@ -29,9 +29,9 @@
       <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="15" column="23" selection-start="382" selection-end="382" vertical-scroll-proportion="0.48387095" vertical-offset="0" max-vertical-offset="2685">
+            <state line="54" column="40" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.8064516" vertical-offset="435" max-vertical-offset="2745">
               <folding>
-                <element signature="e#386#395#0" expanded="true" />
+                <element signature="e#489#498#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,7 +137,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -158,6 +157,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -447,7 +447,11 @@
       <created>1390230141110</created>
       <updated>1390230141110</updated>
     </task>
-    <option name="localTasksCounter" value="22" />
+    <task id="LOCAL-00022" summary="new TODOs">
+      <created>1390305597629</created>
+      <updated>1390305597629</updated>
+    </task>
+    <option name="localTasksCounter" value="23" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -477,8 +481,8 @@
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831737" sideWeight="0.4990476" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.3269494" sideWeight="0.50095236" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32421342" sideWeight="0.4990476" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.2495238" sideWeight="0.67305064" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.21587302" sideWeight="0.67305064" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.2495238" sideWeight="0.67305064" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21587302" sideWeight="0.67305064" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831737" sideWeight="0.50095236" order="7" side_tool="true" content_ui="tabs" />
@@ -512,7 +516,8 @@
     <MESSAGE value="small cleanup" />
     <MESSAGE value="added sh" />
     <MESSAGE value="changes in def read_env" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes in def read_env" />
+    <MESSAGE value="new TODOs" />
+    <option name="LAST_COMMIT_MESSAGE" value="new TODOs" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -543,7 +548,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2115">
           <folding>
-            <element signature="e#386#395#0" expanded="true" />
+            <element signature="e#489#498#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -576,7 +581,7 @@
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="45" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="315">
           <folding>
-            <element signature="e#386#395#0" expanded="true" />
+            <element signature="e#489#498#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -619,9 +624,9 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="15" column="23" selection-start="382" selection-end="382" vertical-scroll-proportion="0.48387095" vertical-offset="0" max-vertical-offset="2685">
+        <state line="54" column="40" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.8064516" vertical-offset="435" max-vertical-offset="2745">
           <folding>
-            <element signature="e#386#395#0" expanded="true" />
+            <element signature="e#489#498#0" expanded="true" />
           </folding>
         </state>
       </provider>

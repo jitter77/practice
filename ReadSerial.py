@@ -12,8 +12,11 @@ Port = "/dev/ttyS0"
 #TODO Proxy?
 #TODO GIT PULL!!!
 #TODO tftp starten
-#TODO frei IPs abfragen
+#TODO freie IPs abfragen
 #TODO ENV files anlegen
+#TODO Übergabewerte (data, ausgelesenes Environment)
+#TODO Dictonary Modul, Env_File, Kernel, RootFS
+
 
 
 
@@ -49,7 +52,7 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
         print "**********************************************"
         # 3 Sekunden warten, Link einblenden
         time.sleep(3)
-        upgrade = input("Update now?")
+        upgrade = input("Update now? y/n")
         if upgrade in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
             pass
     else:
@@ -127,7 +130,7 @@ def open_com(sCom1=Port):
         #   sCom1.open()
 
 
-def read_com(sCom1=Port):
+def read_com(sCom1=Port, data):
     """Com oeffnen, lesen bis keien Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
     open_com()
     while ():
@@ -150,15 +153,16 @@ def read_com(sCom1=Port):
 
 #sCom1.close()
 
-def read_env(env_datei):
+def read_env(env_datei, data):
     """Environment Zeile für Zeile einlesen / an Port senden"""
     befehle = open(env_datei)
     for zeile in befehle:
         print zeile
+        write_com(data)
     env_datei.close()
 
 
-def write_com(sCom1=Port):
+def write_com(sCom1=Port, data):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
     #for zeile in datei:
