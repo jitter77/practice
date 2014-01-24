@@ -29,7 +29,7 @@
       <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="54" column="40" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.8064516" vertical-offset="435" max-vertical-offset="2745">
+            <state line="37" column="0" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.5591398" vertical-offset="295" max-vertical-offset="2895">
               <folding>
                 <element signature="e#489#498#0" expanded="true" />
               </folding>
@@ -125,7 +125,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
+    <navigator proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -136,29 +136,7 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes>
-      <pane id="ProjectPane">
-        <subPane>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="practice" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-        </subPane>
-      </pane>
-      <pane id="Scope" />
-    </panes>
+    <panes />
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
@@ -451,7 +429,11 @@
       <created>1390305597629</created>
       <updated>1390305597629</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="new TODOs, some cleanup">
+      <created>1390403716420</created>
+      <updated>1390403716420</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -517,7 +499,8 @@
     <MESSAGE value="added sh" />
     <MESSAGE value="changes in def read_env" />
     <MESSAGE value="new TODOs" />
-    <option name="LAST_COMMIT_MESSAGE" value="new TODOs" />
+    <MESSAGE value="new TODOs, some cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="new TODOs, some cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -624,7 +607,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="54" column="40" selection-start="1610" selection-end="1610" vertical-scroll-proportion="0.8064516" vertical-offset="435" max-vertical-offset="2745">
+        <state line="37" column="0" selection-start="1510" selection-end="1510" vertical-scroll-proportion="0.5591398" vertical-offset="295" max-vertical-offset="2895">
           <folding>
             <element signature="e#489#498#0" expanded="true" />
           </folding>

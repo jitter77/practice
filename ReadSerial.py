@@ -28,6 +28,16 @@ import urllib2
 import serial
 import pickle
 
+#Dictionaries; auslagern?
+tx28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='mucross-1.5-qt-embedded-demo-tx28.jffs2', nand_env_linux='')
+tx28s = dict(linux_uboot='uImage_tx28s', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='')
+tx48 = dict(linux_uboot='uImage_tx48' rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+tx53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+tx6dl = dict(linux_uboot='uImage_txdl', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+tx6q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+
+
+
 version_pickle = pickle.HIGHEST_PROTOCOL
 #tree = ['/files_flasher/modules/tx25/os/linux/', '/files_flasher/modules/tx28/os/linux/']
 
