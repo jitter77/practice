@@ -29,13 +29,16 @@ import serial
 import pickle
 
 #Dictionaries; auslagern?
-tx28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='mucross-1.5-qt-embedded-demo-tx28.jffs2', nand_env_linux='')
-tx28s = dict(linux_uboot='uImage_tx28s', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='')
-tx48 = dict(linux_uboot='uImage_tx48' rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-tx53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-tx6dl = dict(linux_uboot='uImage_txdl', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-tx6q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='mucross-1.5-qt-embedded-demo-tx28.jffs2', nand_env_linux='')
+TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='')
+TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+TX53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+TX6DL = dict(linux_uboot='uImage_txdl', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
 
+Baudrate = ["9600", "19200", "38400", "57600", "115200"]
+Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
+OS = ["WinCE6", "WinEC7", "Android", "Linux"]
 
 
 version_pickle = pickle.HIGHEST_PROTOCOL
@@ -91,9 +94,7 @@ def first_run(baud, Version, version_flash):
         print ("IOError!")
 
 
-Baudrate = ["9600", "19200", "38400", "57600", "115200"]
-Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
-OS = ["WinCE6", "WinEC7", "Android", "Linux"]
+
 print ("Moegliche Baudraten: ")
 for i in Baudrate:
     print (i)
