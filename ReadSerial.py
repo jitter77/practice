@@ -12,7 +12,7 @@ Port = "/dev/ttyS0"
 #TODO Proxy?
 #TODO GIT PULL!!!
 #TODO tftp starten
-#TODO freie IPs abfragen
+#TODO freie IPs abfragen eigene: ifconfig | grep inet
 #TODO ENV files anlegen
 #TODO Übergabewerte (data, ausgelesenes Environment)
 #TODO Dictonary Modul, Env_File, Kernel, RootFS
@@ -72,6 +72,13 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
         print "Version is up to date\n"
         # 3 Sekunden warten
         time.sleep(3)
+
+
+def ip_adresses():
+    '''IP Host und Device auslesen bzw setzen'''
+    check = sh.ifconfig
+    check = sh.grep("inet")
+    print check
 
 #TODO first run auslagern
 def first_run(baud, Version, version_flash):
