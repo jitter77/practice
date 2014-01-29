@@ -16,6 +16,7 @@ Port = "/dev/ttyS0"
 #TODO ENV files anlegen
 #TODO Übergabewerte (data, ausgelesenes Environment)
 #TODO Dictonary Modul, Env_File, Kernel, RootFS
+#TODO CompactTFT
 
 
 
@@ -148,10 +149,10 @@ def open_com(sCom1=Port):
         #   sCom1.open()
 
 
-def read_com(sCom1=Port, data):
-    """Com oeffnen, lesen bis keien Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
+def read_com(data, sCom1=Port):
+    """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
     open_com()
-    while ():
+    while (): #zu implementieren: kommen noch Zeichen?
         line = sCom1.read()
         print (line)
         sCom1.close()
@@ -180,7 +181,7 @@ def read_env(env_datei, data):
     env_datei.close()
 
 
-def write_com(sCom1=Port, data):
+def write_com(data, sCom1=Port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
     #for zeile in datei:
