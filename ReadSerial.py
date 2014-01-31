@@ -16,7 +16,7 @@ Port = "/dev/ttyS0"
 #TODO ENV files anlegen
 #TODO Übergabewerte (data, ausgelesenes Environment)
 #TODO Dictonary Modul, Env_File, Kernel, RootFS
-#TODO CompactTFT
+
 
 
 
@@ -36,9 +36,11 @@ TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='', rootfs_polytouch='', rootf
 TX53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
 TX6DL = dict(linux_uboot='uImage_txdl', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
 TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+CompactTFT = dict(linux_uboot='', rootfs_gpe='', rootfs_polytouch='', roootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
+
 
 Baudrate = ["9600", "19200", "38400", "57600", "115200"]
-Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q"]
+Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q", "CompactTFT"]
 OS = ["WinCE6", "WinEC7", "Android", "Linux"]
 
 
