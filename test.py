@@ -1,5 +1,8 @@
 import sh
 
-check = sh.ifconfig
-check = sh.grep("inet")
-print check
+test=sh.ifconfig
+check=(sh.ifconfig(sh.grep('inet'))
+print (check)
+#for zeile in check
+#       #sh.grep ('inet') 
+#       print (zeile)
