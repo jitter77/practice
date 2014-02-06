@@ -1,17 +1,21 @@
 #_*_ coding: utf-8 _*
 """Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
+if __name__ == 'main':
+    main()
+
 version = '0.1'
 
 Port = "/dev/ttyS0"
 #!/usr/bin/python
 
+
+#TODO wiederkehrende Teile als Klasse anlegen. siehe: http://stackoverflow.com/questions/8810765/main-method-in-python
 #TODO Logdatei
 #TODO Lokal arbeiten oder Images herunterladen
 #TODO Erstinstallation, defaults (Sprache, Pfade) speichern
 #TODO Proxy?
 #TODO GIT PULL!!!
-#TODO tftp starten
 #TODO freie IPs abfragen eigene: ifconfig | grep inet
 #TODO ENV files anlegen
 #TODO Übergabewerte (data, ausgelesenes Environment)
@@ -30,19 +34,23 @@ import serial
 import pickle
 
 #Dictionaries; auslagern?
-TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='mucross-1.5-qt-embedded-demo-tx28.jffs2', nand_env_linux='')
+TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='', rootfs_polytouch='',
+            rootfs_qt_embedded='mucross-1.5-qt-embedded-demo-tx28.jffs2', nand_env_linux='')
 TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='')
-TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-TX53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-TX6DL = dict(linux_uboot='uImage_txdl', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-CompactTFT = dict(linux_uboot='', rootfs_gpe='', rootfs_polytouch='', roootfs_qt_embedded='', nand_env_linux='', nand_env_android='', nand_env_wince='')
-
+TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
+            nand_env_android='', nand_env_wince='')
+TX53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
+            nand_env_android='', nand_env_wince='')
+TX6DL = dict(linux_uboot='uImage_txdl', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
+             nand_env_android='', nand_env_wince='')
+TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
+            nand_env_android='', nand_env_wince='')
+CompactTFT = dict(linux_uboot='', rootfs_gpe='', rootfs_polytouch='', roootfs_qt_embedded='', nand_env_linux='',
+                  nand_env_android='', nand_env_wince='')
 
 Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q", "CompactTFT"]
 OS = ["WinCE6", "WinEC7", "Android", "Linux"]
-
 
 version_pickle = pickle.HIGHEST_PROTOCOL
 #tree = ['/files_flasher/modules/tx25/os/linux/', '/files_flasher/modules/tx28/os/linux/']
@@ -83,6 +91,7 @@ def ip_adresses():
     check = sh.grep("inet")
     print check
 
+
 #TODO first run auslagern
 def first_run(baud, Version, version_flash):
     """first run, conf erstellen, werte eintragen"""
@@ -102,7 +111,6 @@ def first_run(baud, Version, version_flash):
             #datei.close()
     except IOError:
         print ("IOError!")
-
 
 
 print ("Moegliche Baudraten: ")
@@ -154,7 +162,7 @@ def open_com(sCom1=Port):
 def read_com(data, sCom1=Port):
     """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
     open_com()
-    while (): #zu implementieren: kommen noch Zeichen?
+    while ():  #zu implementieren: kommen noch Zeichen?
         line = sCom1.read()
         print (line)
         sCom1.close()
@@ -168,9 +176,10 @@ def read_com(data, sCom1=Port):
 
 
 
-    #while(): #bis Datei komplett gelesen
-    #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
-    #  print(line)
+        #while(): #bis Datei komplett gelesen
+        #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
+        #  print(line)
+
 
 #sCom1.close()
 
