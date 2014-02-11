@@ -33,7 +33,7 @@ import urllib2
 import serial
 import pickle
 
-#Dictionaries; auslagern?
+#TODO Dictionaries; auslagern?
 TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='', rootfs_polytouch='',
             rootfs_qt_embedded='mucross-1.5-qt-embedded-demo-tx28.jffs2', nand_env_linux='')
 TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='')
@@ -86,7 +86,7 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
 
 
 def ip_adresses():
-    '''IP Host und Device auslesen bzw setzen'''
+    """IP Host und Device auslesen bzw setzen"""
     check = sh.ifconfig
     check = sh.grep("inet")
     print check
