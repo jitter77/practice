@@ -118,6 +118,10 @@ for i in Baudrate:
     print (i)
 first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
 baud = input("Baudrate waehlen: ")
+"""hier folgt mal eine Klasse"""
+class flash:
+    def __init__(self):
+
 
 #TODO log, Funktion?
 log = raw_input("Logdatei erstellen? y or n: ")
