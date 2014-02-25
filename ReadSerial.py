@@ -6,8 +6,8 @@ if __name__ == 'main':
 
 version = '0.1'
 
-Port = "/dev/ttyS0"
-#!/usr/bin/python
+port = "/dev/ttyS0"
+#!/usr/bin/env python2.7
 
 
 #TODO wiederkehrende Teile als Klasse anlegen. siehe: http://stackoverflow.com/questions/8810765/main-method-in-python
@@ -20,7 +20,7 @@ Port = "/dev/ttyS0"
 #TODO ENV files anlegen
 #TODO Übergabewerte (data, ausgelesenes Environment)
 #TODO Dictonary Modul, Env_File, Kernel, RootFS
-
+#TODO weiteres Modul flashen?
 
 
 
@@ -34,8 +34,8 @@ import serial
 import pickle
 
 #TODO Dictionaries; auslagern?
-TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='', rootfs_polytouch='',
-            rootfs_qt_embedded='mucross-1.5-qt-embedded-demo-tx28.jffs2', nand_env_linux='')
+TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='tx28_gpe.jffs2', rootfs_polytouch='tx28_poly.jffs2',
+            rootfs_qt_embedded='tx28_qt.jffs2', nand_env_linux='')
 TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='')
 TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
             nand_env_android='', nand_env_wince='')
@@ -120,8 +120,29 @@ first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
 baud = input("Baudrate waehlen: ")
 """hier folgt mal eine Klasse"""
 class flash:
-    def __init__(self):
+    def __init__(self, port, datei, ):
+        self.port = port
+        self.datei = datei
 
+    def read_com(self, data, sCom1 = port):
+        """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
+        open_com()
+        while ():  #zu implementieren: kommen noch Zeichen?
+            line = sCom1.read()
+            print (line)
+        sCom1.close()
+
+        #while(1): #bis kein Inhalt mehr kommt
+        #von Schnittstelle lesen
+        #   line = sCom1.readline()
+        #  print (line)
+        #Schnittstelle schliessen
+        #sCom1.close()
+    def write_log(self, data):
+        """Logdatei öffnen, Zeilennummer und Zeitstempel einfügen, Zeilen schreiben, Datei schließen"""
+        datei = open(logdatei, "w+")
+        print(data)
+        datei.close()
 
 #TODO log, Funktion?
 log = raw_input("Logdatei erstellen? y or n: ")
@@ -142,14 +163,9 @@ def get_time(time):
     print test
 
 
-def write_log(data):
-    """Logdatei öffnen, Zeilennummer und Zeitstempel einfügen, Zeilen schreiben, Datei schließen"""
-    datei = open(logdatei, "w+")
-    print(data)
-    datei.close()
 
 
-def open_com(sCom1=Port):
+def open_com(sCom1=port):
     """ComPort oeffnen"""
     #sCom1 = serial(port="/dev/ttyS0")
     sCom1.setBaudrate(baud)
@@ -163,20 +179,7 @@ def open_com(sCom1=Port):
         #   sCom1.open()
 
 
-def read_com(data, sCom1=Port):
-    """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
-    open_com()
-    while ():  #zu implementieren: kommen noch Zeichen?
-        line = sCom1.read()
-        print (line)
-        sCom1.close()
 
-        #while(1): #bis kein Inhalt mehr kommt
-        #von Schnittstelle lesen
-        #   line = sCom1.readline()
-        #  print (line)
-        #Schnittstelle schliessen
-        #sCom1.close()
 
 
 
@@ -196,7 +199,7 @@ def read_env(env_datei, data):
     env_datei.close()
 
 
-def write_com(data, sCom1=Port):
+def write_com(data, sCom1=port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
     #for zeile in datei:
