@@ -7,8 +7,7 @@ if __name__ == 'main':
 
 version = '0.1'
 
-port = "/dev/ttyS0"
-version_pickle = pickle.HIGHEST_PROTOCOL
+
 
 
 
@@ -35,6 +34,12 @@ import platform
 import urllib2
 import serial
 import pickle
+
+
+
+port = "/dev/ttyS0"
+version_pickle = pickle.HIGHEST_PROTOCOL
+
 
 #TODO Dictionaries; auslagern?
 TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='tx28_gpe.jffs2', rootfs_polytouch='tx28_poly.jffs2',
@@ -91,6 +96,8 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
         print "Version is up to date\n"
         # 3 Sekunden warten
         time.sleep(3)
+else:
+    pass
 
 
 def ip_adresses():
@@ -128,11 +135,12 @@ first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
 baud = input("Baudrate waehlen: ")
 
 class flash:
-    def __init__(self, port, datei,env_datei ):
+    def __init__(self, port, datei,env_datei,logdatei ):
         self.port = port
         self.datei = datei
         self.env_datei
         self.data
+        self.logdatei
 
 
     def read_env(self, env_datei, data):
@@ -157,7 +165,7 @@ class flash:
         #  print (line)
         #Schnittstelle schliessen
         #sCom1.close()
-    def write_log(self, data):
+    def write_log(self, logdatei, data):
         """Logdatei öffnen, Zeilennummer und Zeitstempel einfügen, Zeilen schreiben, Datei schließen"""
         datei = open(logdatei, "w+")
         print(data)
