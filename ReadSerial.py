@@ -127,8 +127,6 @@ for i in Baudrate:
 first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
 baud = input("Baudrate waehlen: ")
 
-
-
 class flash:
     def __init__(self, port, datei,env_datei ):
         self.port = port
@@ -183,12 +181,12 @@ def get_time(time):
     test = str(time.strftime("%H:%M:%S"))
     print test
 
-def open_com(sCom1=port):
+def open_com(port):
     """ComPort oeffnen"""
     #sCom1 = serial(port="/dev/ttyS0")
-    sCom1.setBaudrate(baud)
-    if sCom1.isOpen() == False:
-        sCom1.open()
+    port.setBaudrate(baud)
+    if port.isOpen() == False:
+        port.open()
 
         #sCom1 =serial.Serial(port="/dev/ttyS0")
         #sCom1.setBaudrate(baud)
@@ -211,14 +209,14 @@ def open_com(sCom1=port):
 
 
 
-def write_com(data, sCom1=port):
+def write_com(data, port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
     open_com()
     #for zeile in datei:
 
     while ():
-        line = sCom1.write(data=test)
-        sCom1.close()
+        line = port.write(data=test)
+        port.close()
 
 
 def run_tftp():
