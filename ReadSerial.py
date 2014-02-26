@@ -1,3 +1,4 @@
+#!/usr/bin/env python2.7
 #_*_ coding: utf-8 _*
 """Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
@@ -7,7 +8,9 @@ if __name__ == 'main':
 version = '0.1'
 
 port = "/dev/ttyS0"
-#!/usr/bin/env python2.7
+version_pickle = pickle.HIGHEST_PROTOCOL
+
+
 
 
 #TODO wiederkehrende Teile als Klasse anlegen. siehe: http://stackoverflow.com/questions/8810765/main-method-in-python
@@ -35,16 +38,21 @@ import pickle
 
 #TODO Dictionaries; auslagern?
 TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='tx28_gpe.jffs2', rootfs_polytouch='tx28_poly.jffs2',
-            rootfs_qt_embedded='tx28_qt.jffs2', nand_env_linux='')
-TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='')
-TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
-            nand_env_android='', nand_env_wince='')
-TX53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
-            nand_env_android='', nand_env_wince='')
-TX6DL = dict(linux_uboot='uImage_txdl', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
-             nand_env_android='', nand_env_wince='')
-TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='', rootfs_polytouch='', rootfs_qt_embedded='', nand_env_linux='',
-            nand_env_android='', nand_env_wince='')
+            rootfs_qt_embedded='tx28_qt.jffs2', nand_env_linux='tx28_env_linux')
+TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='tx28s_gpe.jffs2', rootfs_polytouch='tx28s_poly.jffs2',
+             rootfs_qt_embedded='tx28s_qt.jffs2', nand_env_linux='tx28s_env_linux')
+TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='tx48_gpe.jffs2', rootfs_polytouch='tx48_poly.jffs2',
+            rootfs_qt_embedded='tx48_qt.jffs2', nand_env_linux='tx48_env_linux',
+            nand_env_android='tx48_env_android', nand_env_wince='tx48_env_wince')
+TX53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='tx53_gpe.jffs2', rootfs_polytouch='tx53_poly.jffs2',
+            rootfs_qt_embedded='tx53_qt.jffs2', nand_env_linux='tx53_env_linux',
+            nand_env_android='tx53_env_android', nand_env_wince='tx53_env_wince')
+TX6DL = dict(linux_uboot='uImage_txdl', rootfs_gpe='tx6dl_gpe.jffs2', rootfs_polytouch='tx6dl_poly.jffs2',
+             rootfs_qt_embedded='tx6dl_qt.jffs2', nand_env_linux='tx6dl_env_linux',
+             nand_env_android='tx6dl_env_android', nand_env_wince='tx6dl_env_wince')
+TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='tx6q_gpe.jffs2', rootfs_polytouch='tx6q_poly.jffs2',
+            rootfs_qt_embedded='tx6q_qt.jffs2', nand_env_linux='tx6q_env_linux',
+            nand_env_android='tx6dl_env_android', nand_env_wince='tx6dl_env_wince')
 CompactTFT = dict(linux_uboot='', rootfs_gpe='', rootfs_polytouch='', roootfs_qt_embedded='', nand_env_linux='',
                   nand_env_android='', nand_env_wince='')
 
@@ -52,7 +60,7 @@ Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q", "CompactTFT"]
 OS = ["WinCE6", "WinEC7", "Android", "Linux"]
 
-version_pickle = pickle.HIGHEST_PROTOCOL
+
 #tree = ['/files_flasher/modules/tx25/os/linux/', '/files_flasher/modules/tx28/os/linux/']
 
 #Wurde unter Linux gestartet?
@@ -118,19 +126,32 @@ for i in Baudrate:
     print (i)
 first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
 baud = input("Baudrate waehlen: ")
-"""hier folgt mal eine Klasse"""
+
+
+
 class flash:
-    def __init__(self, port, datei, ):
+    def __init__(self, port, datei,env_datei ):
         self.port = port
         self.datei = datei
+        self.env_datei
+        self.data
 
-    def read_com(self, data, sCom1 = port):
+
+    def read_env(self, env_datei, data):
+        """Environment Zeile für Zeile einlesen / an Port senden"""
+        befehle = open(env_datei)
+        for zeile in befehle:
+            print zeile
+            write_com(data)
+        env_datei.close()
+
+    def read_com(self, data, port):
         """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
         open_com()
         while ():  #zu implementieren: kommen noch Zeichen?
-            line = sCom1.read()
+            line = port.read()
             print (line)
-        sCom1.close()
+        port.close()
 
         #while(1): #bis kein Inhalt mehr kommt
         #von Schnittstelle lesen
@@ -162,9 +183,6 @@ def get_time(time):
     test = str(time.strftime("%H:%M:%S"))
     print test
 
-
-
-
 def open_com(sCom1=port):
     """ComPort oeffnen"""
     #sCom1 = serial(port="/dev/ttyS0")
@@ -190,13 +208,7 @@ def open_com(sCom1=port):
 
 #sCom1.close()
 
-def read_env(env_datei, data):
-    """Environment Zeile für Zeile einlesen / an Port senden"""
-    befehle = open(env_datei)
-    for zeile in befehle:
-        print zeile
-        write_com(data)
-    env_datei.close()
+
 
 
 def write_com(data, sCom1=port):
