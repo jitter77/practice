@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cbbd161-8742-4895-8a1e-6d0f3b35b2a7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/porttest.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReadSerial.py" afterPath="$PROJECT_DIR$/ReadSerial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/dp.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/dp.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/help" afterPath="$PROJECT_DIR$/help" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ScanSerial.py" afterPath="$PROJECT_DIR$/ScanSerial.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="practice.iws" />
@@ -32,8 +31,10 @@
       <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="184" column="28" selection-start="6189" selection-end="6189" vertical-scroll-proportion="1.1125541" vertical-offset="2156" max-vertical-offset="3885">
-              <folding />
+            <state line="188" column="21" selection-start="6330" selection-end="6330" vertical-scroll-proportion="2.1464968" vertical-offset="1809" max-vertical-offset="3945">
+              <folding>
+                <element signature="e#598#607#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -62,34 +63,36 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="150">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LICENSE" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/LICENSE">
+      <file leaf-file-name="ScanSerial.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/ScanSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="4450" max-vertical-offset="5175">
+            <state line="22" column="35" selection-start="221" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="600">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="easy_install.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="jar:///usr/local/lib/python2.7/dist-packages/setuptools-1.1.5-py2.7.egg!/easy_install.py">
+      <file leaf-file-name="porttest.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/porttest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-              <folding />
+            <state line="26" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+              <folding>
+                <element signature="e#18#27#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="test.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test.py">
+      <file leaf-file-name="list_ports.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file:///usr/lib/python2.7/dist-packages/serial/tools/list_ports.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="3" column="20" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="210">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="474" max-vertical-offset="1575">
               <folding />
             </state>
           </provider>
@@ -108,15 +111,6 @@
         <entry file="file://$PROJECT_DIR$/__init__.py">
           <provider selected="true" editor-type-id="text-editor">
             <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name=".gitignore" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/.gitignore">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630">
               <folding />
             </state>
           </provider>
@@ -148,6 +142,8 @@
       <list>
         <option value="$PROJECT_DIR$/test.py" />
         <option value="$PROJECT_DIR$/help" />
+        <option value="$PROJECT_DIR$/ScanSerial.py" />
+        <option value="$PROJECT_DIR$/porttest.py" />
         <option value="$PROJECT_DIR$/ReadSerial.py" />
       </list>
     </option>
@@ -192,7 +188,7 @@
     <option name="STATE" value="0" />
   </component>
   <component name="ProjectView">
-    <navigator proportions="" version="1" splitterProportion="0.5">
+    <navigator currentView="ProjectPane" proportions="" version="1" splitterProportion="0.5">
       <flattenPackages />
       <showMembers />
       <showModules />
@@ -203,7 +199,55 @@
       <autoscrollFromSource />
       <sortByType />
     </navigator>
-    <panes />
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Python 2.7.5+ (/usr/bin/python2.7) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="External Libraries" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ExternalLibrariesNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="&lt; Python 2.7.5+ (/usr/bin/python2.7) &gt;" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.NamedLibraryElementNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="dist-packages" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="practice" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+        </subPane>
+      </pane>
+    </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder0" value="0" />
@@ -235,7 +279,7 @@
       <console-settings />
     </option>
   </component>
-  <component name="RunManager" selected="Python.ReadSerial">
+  <component name="RunManager" selected="Python.porttest">
     <configuration default="false" name="ReadSerial" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -249,6 +293,24 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <module name="practice" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ReadSerial.py" />
+      <option name="PARAMETERS" value="" />
+      <RunnerSettings RunnerId="PythonRunner" />
+      <ConfigurationWrapper RunnerId="PythonRunner" />
+      <method />
+    </configuration>
+    <configuration default="false" name="porttest" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <module name="practice" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/porttest.py" />
       <option name="PARAMETERS" value="" />
       <RunnerSettings RunnerId="PythonRunner" />
       <ConfigurationWrapper RunnerId="PythonRunner" />
@@ -375,12 +437,14 @@
       <option name="USE_PATTERN" value="false" />
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="Python.ReadSerial" />
+      <item index="1" class="java.lang.String" itemvalue="Python.porttest" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="Python.ReadSerial" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="Python.porttest" />
+        <item index="1" class="java.lang.String" itemvalue="Python.ReadSerial" />
       </list>
     </recent_temporary>
   </component>
@@ -544,7 +608,11 @@
       <created>1393431681881</created>
       <updated>1393431681881</updated>
     </task>
-    <option name="localTasksCounter" value="35" />
+    <task id="LOCAL-00035" summary="Layout&#10;&#10;improved layout in terminal&#10;changed baudrate&#10;new lines in &quot;help&quot;">
+      <created>1393501960607</created>
+      <updated>1393501960607</updated>
+    </task>
+    <option name="localTasksCounter" value="36" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -571,21 +639,21 @@
     <frame x="0" y="0" width="1600" height="875" extended-state="0" />
     <editor active="true" />
     <layout>
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831737" sideWeight="0.4990476" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31687242" sideWeight="0.50169206" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3231788" sideWeight="0.49837926" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24856961" sideWeight="0.57421875" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21551175" sideWeight="0.67305064" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.24920736" sideWeight="0.42578125" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32647464" sideWeight="0.50095236" order="7" side_tool="true" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.31824416" sideWeight="0.49872988" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.31687242" sideWeight="0.49830794" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258278" sideWeight="0.49837926" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38731217" sideWeight="0.4996277" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
@@ -626,7 +694,8 @@
     <MESSAGE value="work on class and dictionaries" />
     <MESSAGE value="cleanup" />
     <MESSAGE value="help&#10;&#10;help file added" />
-    <option name="LAST_COMMIT_MESSAGE" value="help&#10;&#10;help file added" />
+    <MESSAGE value="Layout&#10;&#10;improved layout in terminal&#10;changed baudrate&#10;new lines in &quot;help&quot;" />
+    <option name="LAST_COMMIT_MESSAGE" value="Layout&#10;&#10;improved layout in terminal&#10;changed baudrate&#10;new lines in &quot;help&quot;" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -634,34 +703,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/ReadSerial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="88" column="48" selection-start="3387" selection-end="3387" vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="3105">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/LICENSE">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="5175">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/local/lib/python2.7/dist-packages/setuptools-1.1.5-py2.7.egg!/easy_install.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="165">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="3" column="20" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="210">
@@ -693,7 +734,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="18" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="3105">
-          <folding />
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -752,7 +795,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="117" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3045">
-          <folding />
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -794,7 +839,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2955">
-          <folding />
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -829,7 +876,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2955">
-          <folding />
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -878,7 +927,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2115">
-          <folding />
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -909,20 +960,15 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="45" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="315">
-          <folding />
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1247972723/exceptions.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="85" column="8" selection-start="2589" selection-end="2589" vertical-scroll-proportion="0.33189654" vertical-offset="1121" max-vertical-offset="11625" />
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/pickle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="2700" max-vertical-offset="20865">
-          <folding />
-        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test.py">
@@ -932,24 +978,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="377">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///usr/local/lib/python2.7/dist-packages/setuptools-1.1.5-py2.7.egg!/easy_install.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="482">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/README.md">
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
-      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="482">
           <folding />
@@ -970,9 +999,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1247972723/__builtin__.py">
+    <entry file="file://$PROJECT_DIR$/ScanSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="5022" column="4" selection-start="172047" selection-end="172047" vertical-scroll-proportion="0.0" vertical-offset="75173" max-vertical-offset="76485">
+        <state line="22" column="35" selection-start="221" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="138" max-vertical-offset="600">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/serial/tools/list_ports.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/dist-packages/serial/serialposix.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9840">
           <folding />
         </state>
       </provider>
@@ -984,10 +1027,52 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$USER_HOME$/.PyCharm30/system/python_stubs/-1247972723/__builtin__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5022" column="4" selection-start="172047" selection-end="172047" vertical-scroll-proportion="0.0" vertical-offset="75173" max-vertical-offset="76485">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="482">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file:///usr/lib/python2.7/pickle.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="2700" max-vertical-offset="20865">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="377">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/porttest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <folding>
+            <element signature="e#18#27#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="184" column="28" selection-start="6189" selection-end="6189" vertical-scroll-proportion="1.1125541" vertical-offset="2156" max-vertical-offset="3885">
-          <folding />
+        <state line="188" column="21" selection-start="6330" selection-end="6330" vertical-scroll-proportion="2.1464968" vertical-offset="1809" max-vertical-offset="3945">
+          <folding>
+            <element signature="e#598#607#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

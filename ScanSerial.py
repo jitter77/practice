@@ -1,4 +1,6 @@
 __author__ = 'dp'
+#!/usr/bin/env python2.7
+#_*_ coding: utf-8 _*
 
 import serial
 

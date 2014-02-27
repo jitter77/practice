@@ -24,9 +24,6 @@ version = '0.1'
 #TODO Dictonary Modul, Env_File, Kernel, RootFS
 #TODO weiteres Modul flashen?
 
-
-
-
 import os
 import sh
 import time
@@ -34,7 +31,6 @@ import platform
 import urllib2
 import serial
 import pickle
-
 
 
 port = "/dev/ttyS0"
@@ -78,7 +74,7 @@ if user != 0:
     print "-" * 40
     print "|You have to be root!", " " * 16, "|"
     print "|Start program as root or using sudo!  |"
-    print "|Exiting now.", " " * 24,  "|"
+    print "|Exiting now.", " " * 24, "|"
     print "-" * 40
     #3 Sekunden warten
     time.sleep(3)
@@ -99,7 +95,7 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
         time.sleep(3)
         upgrade = input("Update now? y/n")
         if upgrade in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-            pass
+            pass  #TODO noch implementieren
     else:
         print "Version is up to date\n"
         # 3 Sekunden warten
@@ -107,7 +103,16 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
 else:
     pass
 
+#Erstinstallation durchführen, erneuern
+print("Programm einrichten?")
+install = input("y/n")
+if install == "y":
+    pass  #TODO first run aufrufen
+else:
+    pass
 
+
+#auslagern in first run!
 def ip_adresses():
     """IP Host und Device auslesen bzw setzen"""
     check = sh.ifconfig
@@ -116,7 +121,7 @@ def ip_adresses():
 
 
 #TODO first run auslagern
-def first_run(baud, Version, version_flash):
+def first_run(baud, version, version_flash):
     """first run, conf erstellen, werte eintragen"""
     heim = os.getenv("HOME")
     #TODO Version in settings.conf einfügen! Für aktuellere Downloads! Oder doch nicht: git pull!
@@ -141,7 +146,7 @@ print("-") * 22
 n = 1
 for i in Baudrate:
     print n, ":", (i)
-    n = n + 1
+    n += 1
     #print (i)
 #first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
 select = input("\nBaudrate wählen: ")
@@ -161,14 +166,14 @@ else:
     time.sleep(3)
     quit()
 
-class flash:
-    def __init__(self, port, datei,env_datei,logdatei ):
+
+class Flash:
+    def __init__(self, port, datei, env_datei, logdatei):
         self.port = port
         self.datei = datei
         self.env_datei
         self.data
         self.logdatei
-
 
     def read_env(self, env_datei, data):
         """Environment Zeile für Zeile einlesen / an Port senden"""
@@ -181,7 +186,7 @@ class flash:
     def read_com(self, data, port):
         """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
         open_com()
-        while ():  #zu implementieren: kommen noch Zeichen?
+        while ():  # zu implementieren: kommen noch Zeichen?
             line = port.read()
             print (line)
         port.close()
@@ -192,6 +197,7 @@ class flash:
         #  print (line)
         #Schnittstelle schliessen
         #sCom1.close()
+
     def write_log(self, logdatei, data):
         """Logdatei öffnen, Zeilennummer und Zeitstempel einfügen, Zeilen schreiben, Datei schließen"""
         datei = open(logdatei, "w+")
@@ -216,6 +222,7 @@ def get_time(time):
     test = str(time.strftime("%H:%M:%S"))
     print test
 
+
 def open_com(port):
     """ComPort oeffnen"""
     #sCom1 = serial(port="/dev/ttyS0")
@@ -229,20 +236,11 @@ def open_com(port):
         #if sCom1.isOpen()==False:
         #   sCom1.open()
 
-
-
-
-
-
         #while(): #bis Datei komplett gelesen
         #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
         #  print(line)
 
-
 #sCom1.close()
-
-
-
 
 def write_com(data, port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
