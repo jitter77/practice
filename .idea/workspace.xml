@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cbbd161-8742-4895-8a1e-6d0f3b35b2a7" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/help" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReadSerial.py" afterPath="$PROJECT_DIR$/ReadSerial.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/dictionaries/dp.xml" afterPath="$PROJECT_DIR$/.idea/dictionaries/dp.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/encodings.xml" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/help" afterPath="$PROJECT_DIR$/help" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="practice.iws" />
@@ -27,21 +29,19 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ReadSerial.py" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="100" column="0" selection-start="3873" selection-end="3873" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570">
-              <folding>
-                <element signature="e#674#683#0" expanded="true" />
-              </folding>
+            <state line="184" column="28" selection-start="6189" selection-end="6189" vertical-scroll-proportion="1.1125541" vertical-offset="2156" max-vertical-offset="3885">
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="help" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="help" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/help">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="0" selection-start="589" selection-end="589" vertical-scroll-proportion="0.71428573" vertical-offset="0" max-vertical-offset="462">
+            <state line="29" column="0" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
               <folding />
             </state>
           </provider>
@@ -147,8 +147,8 @@
     <option name="changedFiles">
       <list>
         <option value="$PROJECT_DIR$/test.py" />
-        <option value="$PROJECT_DIR$/ReadSerial.py" />
         <option value="$PROJECT_DIR$/help" />
+        <option value="$PROJECT_DIR$/ReadSerial.py" />
       </list>
     </option>
   </component>
@@ -166,10 +166,13 @@
           <State>
             <id>Python</id>
           </State>
+          <State>
+            <id>Spelling</id>
+          </State>
         </expanded-state>
         <selected-state>
           <State>
-            <id>PyStatementEffectInspection</id>
+            <id>SpellCheckingInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -212,7 +215,7 @@
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeOrder2" value="2" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_treeWidth0" value="40" />
     <property name="recentsLimit" value="5" />
-    <property name="options.lastSelected" value="com.jetbrains.python.configuration.PythonSdkConfigurable" />
+    <property name="options.lastSelected" value="Errors" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder1" value="1" />
     <property name="FileHistory.git4idea.history.GitHistoryProvider_flatOrder0" value="0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -537,7 +540,11 @@
       <created>1393428046217</created>
       <updated>1393428046217</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="help&#10;&#10;help file added">
+      <created>1393431681881</created>
+      <updated>1393431681881</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -564,7 +571,6 @@
     <frame x="0" y="0" width="1600" height="875" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32831737" sideWeight="0.4990476" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3231788" sideWeight="0.49837926" order="6" side_tool="false" content_ui="tabs" />
@@ -577,11 +583,12 @@
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3258278" sideWeight="0.49837926" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32921812" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.38731217" sideWeight="0.4996277" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
     </layout>
   </component>
   <component name="Vcs.Log.UiProperties">
@@ -618,7 +625,8 @@
     <MESSAGE value="class added &#10;&#10;just added the class flash. no input yet" />
     <MESSAGE value="work on class and dictionaries" />
     <MESSAGE value="cleanup" />
-    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
+    <MESSAGE value="help&#10;&#10;help file added" />
+    <option name="LAST_COMMIT_MESSAGE" value="help&#10;&#10;help file added" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -629,9 +637,7 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="88" column="48" selection-start="3387" selection-end="3387" vertical-scroll-proportion="0.0" vertical-offset="1320" max-vertical-offset="3105">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -687,9 +693,7 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="18" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="3105">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -748,9 +752,7 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="117" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3045">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -792,9 +794,7 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2955">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -829,9 +829,7 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2955">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -880,9 +878,7 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2115">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -913,9 +909,7 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="45" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="315">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+          <folding />
         </state>
       </provider>
     </entry>
@@ -983,18 +977,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ReadSerial.py">
+    <entry file="file://$PROJECT_DIR$/help">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="100" column="0" selection-start="3873" selection-end="3873" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3570">
-          <folding>
-            <element signature="e#674#683#0" expanded="true" />
-          </folding>
+        <state line="29" column="0" selection-start="764" selection-end="764" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="555">
+          <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/help">
+    <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="0" selection-start="589" selection-end="589" vertical-scroll-proportion="0.71428573" vertical-offset="0" max-vertical-offset="462">
+        <state line="184" column="28" selection-start="6189" selection-end="6189" vertical-scroll-proportion="1.1125541" vertical-offset="2156" max-vertical-offset="3885">
           <folding />
         </state>
       </provider>

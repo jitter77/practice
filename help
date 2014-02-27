@@ -3,6 +3,9 @@ Hilfe zu ReadSerial
 Zweck und Ablauf
 
 "First run": Auswählen von Pfaden, Schnittstellen,...
+
+
+
 1. Nach Update prüfen?
 2. Update verfügbar? ja? Laden? Neustart? Nein? Weiter!
 3. Auswählen des zu flashenden Moduls
@@ -14,10 +17,15 @@ Zweck und Ablauf
 9. Horchen auf seriellem Port, warten bis Prompt
 10. Übertragen Kernel, Log mitschreiben
 11. Übertragen rootfs, Log mitschreiben
+12. Nochmal?
 
 
 
 
 Links:
 http://pyserial.sourceforge.net/shortintro.html
+http://pyserial.sourceforge.net/pyserial_api.html
+http://stackoverflow.com/questions/8810765/main-method-in-python
+http://www.mikrocontroller.net/topic/264954
+
 

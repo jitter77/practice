@@ -12,7 +12,7 @@ version = '0.1'
 
 
 
-#TODO wiederkehrende Teile als Klasse anlegen. siehe: http://stackoverflow.com/questions/8810765/main-method-in-python
+#TODO wiederkehrende Teile als Klasse anlegen
 #TODO Logdatei
 #TODO Lokal arbeiten oder Images herunterladen
 #TODO Erstinstallation, defaults (Sprache, Pfade) speichern
@@ -75,18 +75,26 @@ if platform.system() != "Linux":
 #Check ob Programm mit root - Rechten aufgerufen wurde
 user = os.geteuid()
 if user != 0:
-    print "You have to be root! Start program as root or using sudo!\nExiting now."
+    print "-" * 40
+    print "|You have to be root!", " " * 16, "|"
+    print "|Start program as root or using sudo!  |"
+    print "|Exiting now.", " " * 24,  "|"
+    print "-" * 40
+    #3 Sekunden warten
+    time.sleep(3)
     quit()
 
 #check for update
-update = raw_input("\nCheck for updates? y/n ")
+print("-") * 26
+update = raw_input("| Check for updates? y/n |")
+print("-") * 26
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     version_web = urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
     if version < version_web:
-        print "**********************************************"
-        print "* Update available! Please load new version! *"
-        print "* Please visit: www.LINK.de                  *"
-        print "**********************************************"
+        print "-" * 40
+        print "| Update available! Please load new version! |"
+        print "| Please visit: www.LINK.de ", " " * 15, "|"
+        print "|" * 40
         # 3 Sekunden warten, Link einblenden
         time.sleep(3)
         upgrade = input("Update now? y/n")
@@ -127,12 +135,31 @@ def first_run(baud, Version, version_flash):
     except IOError:
         print ("IOError!")
 
-
-print ("Moegliche Baudraten: ")
+#Vielleicht mal den folgenden Rattenschwanz als Funktion mit Dictionary vereinfachen?
+print ("\nMoegliche Baudraten:\n(Bitte Zahl zw. 1 und 5 wählen) ")
+print("-") * 22
+n = 1
 for i in Baudrate:
-    print (i)
-first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
-baud = input("Baudrate waehlen: ")
+    print n, ":", (i)
+    n = n + 1
+    #print (i)
+#first_run(baud=Baudrate, Version=version_pickle, version_flash=version)
+select = input("\nBaudrate wählen: ")
+if select == 1:
+    baud = 9600
+elif select == 2:
+    baud = 19200
+elif select == 3:
+    baud = 38400
+elif select == 4:
+    baud = 57600
+elif select == 5:
+    baud = 115200
+else:
+    print "Bitte Zahl zwischen 1 und 5 eingeben!\nExit!"
+    print "-" * 35
+    time.sleep(3)
+    quit()
 
 class flash:
     def __init__(self, port, datei,env_datei,logdatei ):
