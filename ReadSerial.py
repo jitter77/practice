@@ -176,29 +176,100 @@ for i in Module:
 print("-" * 26)
 print("\n")
 module_chosen = input("Modulenumber:\n")
-print(module_chosen)
+#print(module_chosen)
 module_chosen_dict = TX53
 if module_chosen == 1:
+    module_chosen = "TX25"
     module_chosen_dict = TX25
-    print("Chosen Module TX25, please choose OS:")
+    print"Chosen Module:  %s\nplease choose OS:" % module_chosen
     m = 1
     for i in OS:
         print m, ":", (i)
         m += 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s"  % chosen_os
 elif module_chosen == 2:
-    module_chosen = TX28S
+    module_chosen = "TX28"
+    module_chosen_dict = TX28
+    print"Chosen Module:  %s\nplease choose OS:" % module_chosen
+    m = 1
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
 elif module_chosen == 3:
-    module_chosen = TX48
+    module_chosen = "TX28S"
+    module_chosen_dict = TX28S
+    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
+    m = 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
 elif module_chosen == 4:
-    module_chosen = TX53
+    module_chosen = "TX48"
+    module_chosen_dict = TX48
+    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
+    m = 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s"  % chosen_os
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
 elif module_chosen == 5:
-    module_chosen = TX6DL
+    module_chosen = "TX53"
+    module_chosen_dict = TX53
+    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
+    m = 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s"  % chosen_os
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
 elif module_chosen == 6:
-    module_chosen = TX6Q
+    module_chosen = "TX6L"
+    module_chosen_dict = TX6DL
+    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
+    m = 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
 elif module_chosen == 7:
-    module_chosen = CompactTFT
-#elif print("Please choose between 1 to 7!")
-print module_chosen_dict
+    module_chosen = "TX6Q"
+    module_chosen_dict = TX6Q
+    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
+    m = 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+    chosen_os = input("Number of OS: ")
+    print "Chosen OS: %s" % chosen_os
+elif module_chosen == 8:
+    module_chosen = "CompactTFT"
+    module_chosen_dict = CompactTFT
+    print"Chosen Module:  %s\nplease choose OS:" % module_chosen
+    m = 1
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+    chosen_os = input("Number of OS: ")
+    print"Chosen OS: %s" % chosen_os
+#elif print("Please choose between 1 to 8!")
+#print module_chosen_dict
 
 
 
