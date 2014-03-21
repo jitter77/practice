@@ -7,11 +7,6 @@ if __name__ == 'main':
 
 version = '0.1'
 
-
-
-
-
-
 #TODO wiederkehrende Teile als Klasse anlegen
 #TODO Logdatei
 #TODO Lokal arbeiten oder Images herunterladen
@@ -81,9 +76,10 @@ if user != 0:
     quit()
 
 #check for update
-print("-") * 26
-update = raw_input("| Check for updates? y/n |")
-print("-") * 26
+print"-" * 22
+print("| Check for updates? |" )
+print"-" * 22
+update = raw_input("y/n\n")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     version_web = urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
     if version < version_web:
@@ -104,11 +100,12 @@ else:
     pass
 
 #Erstinstallation durchführen, erneuern
-print("Programm einrichten?")
-install = input("y/n")
+print("Programm einrichten?\n")
+install = raw_input("y/n\n")
 if install == "y":
     pass  #TODO first run aufrufen
 else:
+    print("no first run")
     pass
 
 
@@ -142,7 +139,7 @@ def first_run(baud, version, version_flash):
 
 #Vielleicht mal den folgenden Rattenschwanz als Funktion mit Dictionary vereinfachen?
 print ("\nMoegliche Baudraten:\n(Bitte Zahl zw. 1 und 5 wählen) ")
-print("-") * 22
+print("-") * 32
 n = 1
 for i in Baudrate:
     print n, ":", (i)
@@ -166,14 +163,27 @@ else:
     time.sleep(3)
     quit()
 
+#Modulauswahl
+print("-") * 26
+print("| Please choose Module   |\n| Available Modules are: |")
+print("-") * 26
+n = 1
+for i in Module:
+    print n, ":", (i)
+    n += 1
+print("-" * 26)
+print("\n")
+module_chosen = raw_input("Modulenumber:\n")
+
+
 
 class Flash:
-    def __init__(self, port, datei, env_datei, logdatei):
+    def __init__(self, port, datei, env_datei, logdatei, data):
         self.port = port
         self.datei = datei
-        self.env_datei
-        self.data
-        self.logdatei
+        self.env_datei = env_datei
+        self.data = data
+        self.logdatei = logdatei
 
     def read_env(self, env_datei, data):
         """Environment Zeile für Zeile einlesen / an Port senden"""
@@ -242,9 +252,10 @@ def open_com(port):
 
 #sCom1.close()
 
+
 def write_com(data, port):
     """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
-    open_com()
+    open_com(port)
     #for zeile in datei:
 
     while ():
