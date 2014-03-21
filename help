@@ -8,16 +8,17 @@ Zweck und Ablauf
 
 1. Nach Update prüfen?
 2. Update verfügbar? ja? Laden? Neustart? Nein? Weiter!
-3. Auswählen des zu flashenden Moduls
-4. Auswählen des zu flashenden OS / Applikation
-5. "Horchen" auf seriellem Port, warten bis Prompt
-6. Environment laden / einlesen
-7. Environment übertragen, Log mitschreiben
-8. Reset Board?
-9. Horchen auf seriellem Port, warten bis Prompt
-10. Übertragen Kernel, Log mitschreiben
-11. Übertragen rootfs, Log mitschreiben
-12. Nochmal?
+3. tftp Server starten (?)
+4. Auswählen des zu flashenden Moduls
+5. Auswählen des zu flashenden OS / Applikation
+6. "Horchen" auf seriellem Port, warten bis Prompt
+7. Environment laden / einlesen
+8. Environment übertragen, Log mitschreiben
+9. Reset Board?
+10. Horchen auf seriellem Port, warten bis Prompt
+11. Übertragen Kernel, Log mitschreiben
+12. Übertragen rootfs, Log mitschreiben
+13. Nochmal?
 
 
 

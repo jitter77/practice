@@ -16,7 +16,6 @@ version = '0.1'
 #TODO freie IPs abfragen eigene: ifconfig | grep inet
 #TODO ENV files anlegen
 #TODO Übergabewerte (data, ausgelesenes Environment)
-#TODO Dictonary Modul, Env_File, Kernel, RootFS
 #TODO weiteres Modul flashen?
 
 import os
@@ -33,6 +32,8 @@ version_pickle = pickle.HIGHEST_PROTOCOL
 
 
 #TODO Dictionaries; auslagern?
+TX25 = dict(linux_uboot='uImage_tx25', rootfs_gpe='tx25_gpe.jffs2', rootfs_polytouch='tx25_poly.jffs2',
+            rootfs_qt_embedded='tx25_qt.jffs', nand_env_linux='tx25_env_linux')
 TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='tx28_gpe.jffs2', rootfs_polytouch='tx28_poly.jffs2',
             rootfs_qt_embedded='tx28_qt.jffs2', nand_env_linux='tx28_env_linux')
 TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='tx28s_gpe.jffs2', rootfs_polytouch='tx28s_poly.jffs2',
@@ -163,6 +164,7 @@ else:
     time.sleep(3)
     quit()
 
+
 #Modulauswahl
 print("-") * 26
 print("| Please choose Module   |\n| Available Modules are: |")
@@ -173,7 +175,30 @@ for i in Module:
     n += 1
 print("-" * 26)
 print("\n")
-module_chosen = raw_input("Modulenumber:\n")
+module_chosen = input("Modulenumber:\n")
+print(module_chosen)
+module_chosen_dict = TX53
+if module_chosen == 1:
+    module_chosen_dict = TX25
+    print("Chosen Module TX25, please choose OS:")
+    m = 1
+    for i in OS:
+        print m, ":", (i)
+        m += 1
+elif module_chosen == 2:
+    module_chosen = TX28S
+elif module_chosen == 3:
+    module_chosen = TX48
+elif module_chosen == 4:
+    module_chosen = TX53
+elif module_chosen == 5:
+    module_chosen = TX6DL
+elif module_chosen == 6:
+    module_chosen = TX6Q
+elif module_chosen == 7:
+    module_chosen = CompactTFT
+#elif print("Please choose between 1 to 7!")
+print module_chosen_dict
 
 
 
