@@ -1,6 +1,6 @@
 #!/usr/bin/env python2.7
 #_*_ coding: utf-8 _*
-"""Tool to read and write from/to /dev/tty, write log if wanted"""
+"""\Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
 if __name__ == 'main':
     main()
@@ -25,37 +25,19 @@ import platform
 import urllib2
 import serial
 import pickle
+import list_ports
+import choose_CoM
+
 
 
 port = "/dev/ttyS0"
 version_pickle = pickle.HIGHEST_PROTOCOL
 
 
-#TODO Dictionaries; auslagern?
-TX25 = dict(linux_uboot='uImage_tx25', rootfs_gpe='tx25_gpe.jffs2', rootfs_polytouch='tx25_poly.jffs2',
-            rootfs_qt_embedded='tx25_qt.jffs', nand_env_linux='tx25_env_linux')
-TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='tx28_gpe.jffs2', rootfs_polytouch='tx28_poly.jffs2',
-            rootfs_qt_embedded='tx28_qt.jffs2', nand_env_linux='tx28_env_linux')
-TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='tx28s_gpe.jffs2', rootfs_polytouch='tx28s_poly.jffs2',
-             rootfs_qt_embedded='tx28s_qt.jffs2', nand_env_linux='tx28s_env_linux')
-TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='tx48_gpe.jffs2', rootfs_polytouch='tx48_poly.jffs2',
-            rootfs_qt_embedded='tx48_qt.jffs2', nand_env_linux='tx48_env_linux',
-            nand_env_android='tx48_env_android', nand_env_wince='tx48_env_wince')
-TX53 = dict(linux_uboot='uImage_tx53', rootfs_gpe='tx53_gpe.jffs2', rootfs_polytouch='tx53_poly.jffs2',
-            rootfs_qt_embedded='tx53_qt.jffs2', nand_env_linux='tx53_env_linux',
-            nand_env_android='tx53_env_android', nand_env_wince='tx53_env_wince')
-TX6DL = dict(linux_uboot='uImage_txdl', rootfs_gpe='tx6dl_gpe.jffs2', rootfs_polytouch='tx6dl_poly.jffs2',
-             rootfs_qt_embedded='tx6dl_qt.jffs2', nand_env_linux='tx6dl_env_linux',
-             nand_env_android='tx6dl_env_android', nand_env_wince='tx6dl_env_wince')
-TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='tx6q_gpe.jffs2', rootfs_polytouch='tx6q_poly.jffs2',
-            rootfs_qt_embedded='tx6q_qt.jffs2', nand_env_linux='tx6q_env_linux',
-            nand_env_android='tx6dl_env_android', nand_env_wince='tx6dl_env_wince')
-CompactTFT = dict(linux_uboot='', rootfs_gpe='', rootfs_polytouch='', roootfs_qt_embedded='', nand_env_linux='',
-                  nand_env_android='', nand_env_wince='')
+
 
 Baudrate = ["9600", "19200", "38400", "57600", "115200"]
-Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q", "CompactTFT"]
-OS = ["WinCE6", "WinEC7", "Android", "Linux"]
+
 
 
 #tree = ['/files_flasher/modules/tx25/os/linux/', '/files_flasher/modules/tx28/os/linux/']
@@ -99,6 +81,16 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
         time.sleep(3)
 else:
     pass
+
+#Verfügbare Ports anzeigen, Auswahl treffen, speichern
+print("-") * 26
+print("| List of available ports|\n| Please choose port     |")
+print("-") * 26
+#Aufruf extern list_ports
+list_ports.main()
+port = raw_input("Please enter your port like this: /dev/ttyS0\n")
+print("Chosen port: "), port
+
 
 #Erstinstallation durchführen, erneuern
 print("Programm einrichten?\n")
@@ -164,112 +156,9 @@ else:
     time.sleep(3)
     quit()
 
+#Modul auswählen
+choose_CoM.main()
 
-#Modulauswahl
-print("-") * 26
-print("| Please choose Module   |\n| Available Modules are: |")
-print("-") * 26
-n = 1
-for i in Module:
-    print n, ":", (i)
-    n += 1
-print("-" * 26)
-print("\n")
-module_chosen = input("Modulenumber:\n")
-#print(module_chosen)
-module_chosen_dict = TX53
-if module_chosen == 1:
-    module_chosen = "TX25"
-    module_chosen_dict = TX25
-    print"Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s"  % chosen_os
-elif module_chosen == 2:
-    module_chosen = "TX28"
-    module_chosen_dict = TX28
-    print"Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-elif module_chosen == 3:
-    module_chosen = "TX28S"
-    module_chosen_dict = TX28S
-    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-elif module_chosen == 4:
-    module_chosen = "TX48"
-    module_chosen_dict = TX48
-    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s"  % chosen_os
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-elif module_chosen == 5:
-    module_chosen = "TX53"
-    module_chosen_dict = TX53
-    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s"  % chosen_os
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-elif module_chosen == 6:
-    module_chosen = "TX6L"
-    module_chosen_dict = TX6DL
-    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-elif module_chosen == 7:
-    module_chosen = "TX6Q"
-    module_chosen_dict = TX6Q
-    print "Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print "Chosen OS: %s" % chosen_os
-elif module_chosen == 8:
-    module_chosen = "CompactTFT"
-    module_chosen_dict = CompactTFT
-    print"Chosen Module:  %s\nplease choose OS:" % module_chosen
-    m = 1
-    for i in OS:
-        print m, ":", (i)
-        m += 1
-    chosen_os = input("Number of OS: ")
-    print"Chosen OS: %s" % chosen_os
-#elif print("Please choose between 1 to 8!")
-#print module_chosen_dict
 
 
 
@@ -358,7 +247,7 @@ def write_com(data, port):
         line = port.write(data=test)
         port.close()
 
-
+#weglassen? option?
 def run_tftp():
     """tftp Server starten"""
     os.popen("/etc/init.d/tftpd-hpa restart")

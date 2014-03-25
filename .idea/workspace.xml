@@ -2,8 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1cbbd161-8742-4895-8a1e-6d0f3b35b2a7" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/choose_CoM.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/choose_OS.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/choose_rootfs.py" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/ReadSerial.py" afterPath="$PROJECT_DIR$/ReadSerial.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/help" afterPath="$PROJECT_DIR$/help" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="practice.iws" />
@@ -27,10 +31,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="ReadSerial.py" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="ReadSerial.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ReadSerial.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="35" column="12" selection-start="848" selection-end="848" vertical-scroll-proportion="0.44585988" vertical-offset="225" max-vertical-offset="4395">
+            <state line="30" column="0" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3885">
+              <folding>
+                <element signature="e#546#555#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="choose_CoM.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/choose_CoM.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="54" column="20" selection-start="2745" selection-end="2745" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
+              <folding>
+                <element signature="e#224#240#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="choose_rootfs.py" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/choose_rootfs.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="23" column="0" selection-start="600" selection-end="600" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="choose_OS.py" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/choose_OS.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="16" selection-start="192" selection-end="192" vertical-scroll-proportion="0.26751593" vertical-offset="69" max-vertical-offset="540">
               <folding />
             </state>
           </provider>
@@ -39,7 +74,7 @@
       <file leaf-file-name="help" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/help">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="2" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+            <state line="20" column="2" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0" vertical-offset="300" max-vertical-offset="570">
               <folding />
             </state>
           </provider>
@@ -60,16 +95,7 @@
             <state />
           </provider>
           <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="150">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ScanSerial.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/ScanSerial.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="22" column="35" selection-start="221" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="129" max-vertical-offset="600">
+            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="-0.0" vertical-offset="0" max-vertical-offset="150">
               <folding />
             </state>
           </provider>
@@ -78,34 +104,7 @@
       <file leaf-file-name="porttest.py" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/porttest.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="26" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="390" max-vertical-offset="480">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="list_ports.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/dist-packages/serial/tools/list_ports.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="72" column="0" selection-start="2271" selection-end="2271" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="1575">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="pickle.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file:///usr/lib/python2.7/pickle.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20955">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="__init__.py" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/__init__.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
+            <state line="26" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="450">
               <folding />
             </state>
           </provider>
@@ -140,6 +139,9 @@
         <option value="$PROJECT_DIR$/porttest.py" />
         <option value="$PROJECT_DIR$/help" />
         <option value="$PROJECT_DIR$/ReadSerial.py" />
+        <option value="$PROJECT_DIR$/choose_rootfs.py" />
+        <option value="$PROJECT_DIR$/choose_CoM.py" />
+        <option value="$PROJECT_DIR$/choose_OS.py" />
       </list>
     </option>
   </component>
@@ -155,6 +157,18 @@
             <id />
           </State>
           <State>
+            <id>Buildout</id>
+          </State>
+          <State>
+            <id>General</id>
+          </State>
+          <State>
+            <id>Internationalization issues</id>
+          </State>
+          <State>
+            <id>Portability issues</id>
+          </State>
+          <State>
             <id>Python</id>
           </State>
           <State>
@@ -163,7 +177,7 @@
         </expanded-state>
         <selected-state>
           <State>
-            <id>SpellCheckingInspection</id>
+            <id>PyCallingNonCallableInspection</id>
           </State>
         </selected-state>
       </profile-state>
@@ -590,7 +604,15 @@
       <created>1395394100461</created>
       <updated>1395394100461</updated>
     </task>
-    <option name="localTasksCounter" value="38" />
+    <task id="LOCAL-00038" summary="tx25&#10;&#10;tx25 Dictionary added">
+      <created>1395416965480</created>
+      <updated>1395416965480</updated>
+    </task>
+    <task id="LOCAL-00039" summary="cleanup">
+      <created>1395419214701</created>
+      <updated>1395419214701</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TodoView" selected-index="0">
@@ -670,7 +692,6 @@
     <option name="myTodoPanelSettings">
       <TodoPanelSettings />
     </option>
-    <MESSAGE value="TODO" />
     <MESSAGE value="timestamp" />
     <MESSAGE value="open files with pickle" />
     <MESSAGE value="versioncontrol implemented&#10;reading paths from web&#10;" />
@@ -690,50 +711,20 @@
     <MESSAGE value="cleanup, TODO" />
     <MESSAGE value="class added &#10;&#10;just added the class flash. no input yet" />
     <MESSAGE value="work on class and dictionaries" />
-    <MESSAGE value="cleanup" />
     <MESSAGE value="help&#10;&#10;help file added" />
     <MESSAGE value="Layout&#10;&#10;improved layout in terminal&#10;changed baudrate&#10;new lines in &quot;help&quot;" />
     <MESSAGE value="first run&#10;&#10;some changes to first run&#10;code clean up&#10;new: porttest" />
     <MESSAGE value="choose Module&#10;&#10;ne implemented: choose Module&#10;some cleanup and layout improvements" />
-    <option name="LAST_COMMIT_MESSAGE" value="choose Module&#10;&#10;ne implemented: choose Module&#10;some cleanup and layout improvements" />
+    <MESSAGE value="tx25&#10;&#10;tx25 Dictionary added" />
+    <MESSAGE value="cleanup" />
+    <option name="LAST_COMMIT_MESSAGE" value="cleanup" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ReadSerial.py</url>
-          <line>182</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="python-line">
-          <url>file://$PROJECT_DIR$/ReadSerial.py</url>
-          <line>181</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-      </breakpoints>
-      <option name="time" value="7" />
+      <option name="time" value="11" />
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="3" column="20" selection-start="48" selection-end="48" vertical-scroll-proportion="0.0" vertical-offset="45" max-vertical-offset="210" />
-      </provider>
-    </entry>
-    <entry file="file:///usr/lib/python2.7/pickle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="20955">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/__init__.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="105">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630" />
@@ -742,7 +733,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="48" column="18" selection-start="1869" selection-end="1869" vertical-scroll-proportion="0.0" vertical-offset="720" max-vertical-offset="3105">
-          <folding />
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -793,7 +786,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="36" column="117" selection-start="1482" selection-end="1482" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="3045">
-          <folding />
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -831,7 +826,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2955">
-          <folding />
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -862,7 +859,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="316" selection-end="316" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2955">
-          <folding />
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -905,7 +904,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="13" column="0" selection-start="339" selection-end="339" vertical-scroll-proportion="0.0" vertical-offset="195" max-vertical-offset="2115">
-          <folding />
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -934,7 +935,9 @@
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="1" column="45" selection-start="63" selection-end="63" vertical-scroll-proportion="0.0" vertical-offset="15" max-vertical-offset="315">
-          <folding />
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -963,13 +966,6 @@
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="630" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/ScanSerial.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="22" column="35" selection-start="221" selection-end="345" vertical-scroll-proportion="0.0" vertical-offset="138" max-vertical-offset="600">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file:///usr/lib/python2.7/dist-packages/serial/serialposix.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="9840" />
@@ -982,13 +978,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/pickle.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="2700" max-vertical-offset="20865">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="377">
@@ -996,9 +985,16 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/porttest.py">
+    <entry file="file://$PROJECT_DIR$/help">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+        <state line="20" column="2" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ScanSerial.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="22" column="35" selection-start="221" selection-end="345" vertical-scroll-proportion="0.44766146" vertical-offset="129" max-vertical-offset="600">
           <folding />
         </state>
       </provider>
@@ -1013,23 +1009,55 @@
         </state>
       </provider>
     </entry>
-    <entry file="file:///usr/lib/python2.7/dist-packages/serial/tools/list_ports.py">
+    <entry file="file:///usr/lib/python2.7/pickle.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="72" column="0" selection-start="2271" selection-end="2271" vertical-scroll-proportion="0.0" vertical-offset="945" max-vertical-offset="1575">
+        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" vertical-offset="2700" max-vertical-offset="20865">
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/help">
+    <entry file="file:///usr/lib/python2.7/dist-packages/serial/tools/list_ports.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="2" selection-start="563" selection-end="563" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="570">
+        <state line="0" column="0" selection-start="0" selection-end="21" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1575">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/porttest.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="26" column="38" selection-start="588" selection-end="588" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ReadSerial.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="35" column="12" selection-start="848" selection-end="848" vertical-scroll-proportion="0.44585988" vertical-offset="225" max-vertical-offset="4395">
+        <state line="30" column="0" selection-start="674" selection-end="674" vertical-scroll-proportion="0.0" vertical-offset="180" max-vertical-offset="3885">
+          <folding>
+            <element signature="e#546#555#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/choose_rootfs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="0" selection-start="600" selection-end="600" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="480">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/choose_CoM.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="54" column="20" selection-start="2745" selection-end="2745" vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="1635">
+          <folding>
+            <element signature="e#224#240#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/choose_OS.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="16" selection-start="192" selection-end="192" vertical-scroll-proportion="0.26751593" vertical-offset="69" max-vertical-offset="540">
           <folding />
         </state>
       </provider>
