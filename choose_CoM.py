@@ -1,5 +1,6 @@
 #!/usr/bin/env python2.7
 #_*_ coding: utf-8 _*_
+__version__ = '0.1'
 
 """ This file contains all available modules and the depending bootloader. Also the available filesystems (rootfs),
  especially for linux to be flashed """

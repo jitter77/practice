@@ -5,7 +5,7 @@ __author__ = 'dp'
 if __name__ == 'main':
     main()
 
-version = '0.1'
+__version__ = '0.1'
 
 #TODO wiederkehrende Teile als Klasse anlegen
 #TODO Logdatei
