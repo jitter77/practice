@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-#_*_ coding: utf-8 _*
+#_*_ coding: utf-8 _*_
 
 
 __author__ = 'dp'
@@ -7,6 +7,7 @@ __author__ = 'dp'
 rootfs = ["Console-demo", "GPE-demo", "Polytouch-demo", "Qt-demo"]
 
 def main():
+    """docstring"""
     n = 1
     for i in rootfs:
         print n, ":", (i)

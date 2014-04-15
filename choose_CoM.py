@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-#_*_ coding: utf-8 _*
+#_*_ coding: utf-8 _*_
 
 """ This file contains all available modules and the depending bootloader. Also the available filesystems (rootfs),
  especially for linux to be flashed """
@@ -12,10 +12,10 @@ from choose_OS import chosen_os
 
 
 Module = ["TX25", "TX28", "TX28S", "TX48", "TX53", "TX6DL", "TX6Q", "CompactTFT"]
-TX25 = dict(linux_uboot='uImage_tx25', rootfs_gpe='tx25_gpe.jffs2', rootfs_polytouch='tx25_poly.jffs2',
-            rootfs_qt_embedded='tx25_qt.jffs', nand_env_linux='tx25_env_linux')
-TX28 = dict(linux_uboot='uImage_tx28', rootfs_gpe='tx28_gpe.jffs2', rootfs_polytouch='tx28_poly.jffs2',
-            rootfs_qt_embedded='tx28_qt.jffs2', nand_env_linux='tx28_env_linux')
+TX25 = dict(linux_uboot="uImage_tx25", rootfs_gpe="tx25_gpe.jffs2", rootfs_polytouch="tx25_poly.jffs2",
+            rootfs_qt_embedded="tx25_qt.jffs", nand_env_linux="tx25_env_linux")
+TX28 = dict(linux_uboot="uImage_tx28", rootfs_gpe="tx28_gpe.jffs2", rootfs_polytouch="tx28_poly.jffs2",
+            rootfs_qt_embedded ='tx28_qt.jffs2', nand_env_linux='tx28_env_linux')
 TX28S = dict(linux_uboot='uImage_tx28s', rootfs_gpe='tx28s_gpe.jffs2', rootfs_polytouch='tx28s_poly.jffs2',
              rootfs_qt_embedded='tx28s_qt.jffs2', nand_env_linux='tx28s_env_linux')
 TX48 = dict(linux_uboot='uImage_tx48', rootfs_gpe='tx48_gpe.jffs2', rootfs_polytouch='tx48_poly.jffs2',

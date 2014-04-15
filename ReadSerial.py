@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-#_*_ coding: utf-8 _*
+#_*_ coding: utf-8 _*_
 """\Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
 if __name__ == 'main':
@@ -200,7 +200,7 @@ class Flash:
         datei.close()
 
 #TODO log, Funktion?
-log = raw_input("Logdatei erstellen? y or n: ")
+log = input("Logdatei erstellen? y or n: ")
 
 if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     heim = os.getenv("HOME")

@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-#_*_ coding: utf-8 _*
+#_*_ coding: utf-8 _*_
 
 __author__ = 'dp'
 

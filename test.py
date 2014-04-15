@@ -1,8 +1,7 @@
+#_*_ coding: utf-8 _*_
+
 import sh
 
-test=sh.ifconfig
-check=(sh.ifconfig(sh.grep('inet'))
-print (check)
-#for zeile in check
-#       #sh.grep ('inet') 
-#       print (zeile)
+check = sh.ifconfig
+check = sh.grep("inet")
+print check
