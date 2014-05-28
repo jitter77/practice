@@ -8,7 +8,7 @@ if __name__ == 'main':
 __version__ = '0.1'
 
 #TODO wiederkehrende Teile als Klasse anlegen
-#TODO Logdatei
+#TODO Logdatei - Send - Receive -Timestamp
 #TODO Lokal arbeiten oder Images herunterladen
 #TODO Erstinstallation, defaults (Sprache, Pfade) speichern
 #TODO Proxy?
@@ -17,6 +17,7 @@ __version__ = '0.1'
 #TODO ENV files anlegen
 #TODO Übergabewerte (data, ausgelesenes Environment)
 #TODO weiteres Modul flashen?
+#TODO Konfiguration vorhanden, neu?
 
 import os
 import sh
@@ -44,9 +45,15 @@ Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 
 #Wurde unter Linux gestartet?
 if platform.system() != "Linux":
-    print ("Only for Linux (so far)!")
+    print("-") * 40
+    print ("| Only for Linux (so far)! |")
+    print ("| Exiting now!             |")
+    print "-" * 40
+    #3 Sekunden warten
+    time.sleep(3)
+    #und tschüss
 
-#Check ob Programm mit root - Rechten aufgerufen wurde
+#Check, ob Programm mit root - Rechten aufgerufen wurde
 user = os.geteuid()
 if user != 0:
     print "-" * 40
@@ -56,6 +63,7 @@ if user != 0:
     print "-" * 40
     #3 Sekunden warten
     time.sleep(3)
+    # und tschüss
     quit()
 
 #check for update
@@ -83,6 +91,7 @@ else:
     pass
 
 #Verfügbare Ports anzeigen, Auswahl treffen, speichern
+#TODO  in first run eingliedern, ansonsten gespeicherten Port behalten. Vorher gespeicherte Konfiguration anzeigen
 print("-") * 26
 print("| List of available ports|\n| Please choose port     |")
 print("-") * 26
@@ -199,13 +208,13 @@ class Flash:
         print(data)
         datei.close()
 
-#TODO log, Funktion?
-log = input("Logdatei erstellen? y or n: ")
+#TODO log, Funktion? Ja! Wegen Rückprung bei Falscheingabe!
+log = raw_input(("Logdatei erstellen? y or n: "))
 
-if log in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
+if log == "y":
     heim = os.getenv("HOME")
     logdatei = file(heim + "/files_flasher/logs/systemlog " + time.strftime("%d_%m_%Y"), "w+")
-elif log in ['n', 'no', 'N', 'No', 'NO']:
+elif log == "n":
     print ("no log will be generated")
 else:
     print ("please answer y or n!")

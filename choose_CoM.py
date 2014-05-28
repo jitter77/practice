@@ -3,7 +3,9 @@
 __version__ = '0.1'
 
 """ This file contains all available modules and the depending bootloader. Also the available filesystems (rootfs),
- especially for linux to be flashed """
+ especially for linux to be flashed.
+ Currently implemented Modules: TX25, TX28, TX28S, TX48, TX53, TX6U,
+  TX6Q, CompactTFT (all KaRo)"""
 
 __author__ = 'dp'
 
@@ -33,6 +35,14 @@ TX6Q = dict(linux_uboot='uImage_tx6q', rootfs_gpe='tx6q_gpe.jffs2', rootfs_polyt
             nand_env_android='tx6dl_env_android', nand_env_wince='tx6dl_env_wince')
 CompactTFT = dict(linux_uboot='', rootfs_gpe='', rootfs_polytouch='', roootfs_qt_embedded='', nand_env_linux='',
                   nand_env_android='', nand_env_wince='')
+
+# U-Boot: Latest Bootloader (U-Boot). Normally called "uImage..."
+# rootfs_gpe: A Linux Desktop with different applications and folders
+# rootfs_polytouch: A demo with pictures and slideshow, mainly to test the EDT Polytouch
+# rootfs_qt_embedded: Qt example(s)
+# nand_env_linux: Bootloader-Environment for Linux
+# nand_env_android: Bootloader-Environment for Android
+# nand_env_wince: Bootloader-Environment for Windows
 
 def main():
     """Modulauswahl"""
