@@ -55,7 +55,7 @@ def main():
         n += 1
     print("-" * 26)
     print("\n")
-    module_chosen = input("Modulenumber:\n")
+    module_chosen = input("Modulenumber: (1 - 8)\n")
     module_chosen_dict = []
     if module_chosen == 1:
         module_chosen = "TX25"

@@ -1,5 +1,5 @@
 #!/usr/bin/env python2.7
-#_*_ coding: utf-8 _*_
+# _*_ coding: utf-8 _*_
 """\Tool to read and write from/to /dev/tty, write log if wanted"""
 __author__ = 'dp'
 if __name__ == 'main':
@@ -29,20 +29,13 @@ import pickle
 import list_ports
 import choose_CoM
 
-
-
 port = "/dev/ttyS0"
 version_pickle = pickle.HIGHEST_PROTOCOL
-
-
-
 
 Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 
 
-
 #tree = ['/files_flasher/modules/tx25/os/linux/', '/files_flasher/modules/tx28/os/linux/']
-
 #Wurde unter Linux gestartet?
 if platform.system() != "Linux":
     print("-") * 40
@@ -92,9 +85,9 @@ else:
 
 #Verfügbare Ports anzeigen, Auswahl treffen, speichern
 #TODO  in first run eingliedern, ansonsten gespeicherten Port behalten. Vorher gespeicherte Konfiguration anzeigen
-print("-") * 26
+print"-" * 26
 print("| List of available ports|\n| Please choose port     |")
-print("-") * 26
+print "-" * 26
 #Aufruf extern list_ports
 list_ports.main()
 port = raw_input("Please enter your port like this: /dev/ttyS0\n")
@@ -141,7 +134,7 @@ def first_run(baud, version, version_flash):
 
 #Vielleicht mal den folgenden Rattenschwanz als Funktion mit Dictionary vereinfachen?
 print ("\nMoegliche Baudraten:\n(Bitte Zahl zw. 1 und 5 wählen) ")
-print("-") * 32
+print "-" * 32
 n = 1
 for i in Baudrate:
     print n, ":", (i)
@@ -169,9 +162,9 @@ else:
 choose_CoM.main()
 
 
-
-
 class Flash:
+    """Docstring"""
+
     def __init__(self, port, datei, env_datei, logdatei, data):
         self.port = port
         self.datei = datei
@@ -188,7 +181,8 @@ class Flash:
         env_datei.close()
 
     def read_com(self, data, port):
-        """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen"""
+        """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen.
+        data port"""
         open_com()
         while ():  # zu implementieren: kommen noch Zeichen?
             line = port.read()
@@ -228,7 +222,9 @@ def get_time(time):
 
 
 def open_com(port):
-    """ComPort oeffnen"""
+    """
+    ComPort oeffnen port
+    """
     #sCom1 = serial(port="/dev/ttyS0")
     port.setBaudrate(baud)
     if port.isOpen() == False:
@@ -244,6 +240,7 @@ def open_com(port):
         #   line = sCom1.writelines(lines) #lines: Auszulesende Zeilen
         #  print(line)
 
+
 #sCom1.close()
 
 
@@ -255,6 +252,7 @@ def write_com(data, port):
     while ():
         line = port.write(data=test)
         port.close()
+
 
 #weglassen? option?
 def run_tftp():
