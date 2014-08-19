@@ -30,12 +30,8 @@ import list_ports
 import choose_CoM
 
 
-
 port = "/dev/ttyS0"
 version_pickle = pickle.HIGHEST_PROTOCOL
-
-
-
 
 Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 
@@ -45,7 +41,7 @@ Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 
 #Wurde unter Linux gestartet?
 if platform.system() != "Linux":
-    print("-") * 40
+    print "-" * 40
     print ("| Only for Linux (so far)! |")
     print ("| Exiting now!             |")
     print "-" * 40
@@ -68,7 +64,7 @@ if user != 0:
 
 #check for update
 print"-" * 22
-print("| Check for updates? |" )
+print("| Check for updates? |")
 print"-" * 22
 update = raw_input("y/n\n")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
@@ -82,7 +78,8 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
         time.sleep(3)
         upgrade = input("Update now? y/n")
         if upgrade in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-            pass  #TODO noch implementieren
+            pass
+            #TODO noch implementieren
     else:
         print "Version is up to date\n"
         # 3 Sekunden warten
@@ -92,9 +89,9 @@ else:
 
 #Verfügbare Ports anzeigen, Auswahl treffen, speichern
 #TODO  in first run eingliedern, ansonsten gespeicherten Port behalten. Vorher gespeicherte Konfiguration anzeigen
-print("-") * 26
+print "-" * 26
 print("| List of available ports|\n| Please choose port     |")
-print("-") * 26
+print "-" * 26
 #Aufruf extern list_ports
 list_ports.main()
 port = raw_input("Please enter your port like this: /dev/ttyS0\n")
@@ -105,7 +102,8 @@ print("Chosen port: "), port
 print("Programm einrichten?\n")
 install = raw_input("y/n\n")
 if install == "y":
-    pass  #TODO first run aufrufen
+    pass
+    #TODO first run aufrufen
 else:
     print("no first run")
     pass
@@ -141,7 +139,7 @@ def first_run(baud, version, version_flash):
 
 #Vielleicht mal den folgenden Rattenschwanz als Funktion mit Dictionary vereinfachen?
 print ("\nMoegliche Baudraten:\n(Bitte Zahl zw. 1 und 5 wählen) ")
-print("-") * 32
+print "-" * 32
 n = 1
 for i in Baudrate:
     print n, ":", (i)
@@ -167,8 +165,6 @@ else:
 
 #Modul auswählen
 choose_CoM.main()
-
-
 
 
 class Flash:
@@ -209,7 +205,7 @@ class Flash:
         datei.close()
 
 #TODO log, Funktion? Ja! Wegen Rückprung bei Falscheingabe!
-log = raw_input(("Logdatei erstellen? y or n: "))
+log = raw_input("Logdatei erstellen? y or n: ")
 
 if log == "y":
     heim = os.getenv("HOME")
