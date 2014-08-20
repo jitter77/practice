@@ -29,10 +29,6 @@ import pickle
 import list_ports
 import choose_CoM
 
-<<<<<<< HEAD
-=======
-
->>>>>>> bbf924b17e704d634ada2e497419893b5cd99918
 port = "/dev/ttyS0"
 version_pickle = pickle.HIGHEST_PROTOCOL
 
@@ -91,11 +87,8 @@ else:
 
 #Verfügbare Ports anzeigen, Auswahl treffen, speichern
 #TODO  in first run eingliedern, ansonsten gespeicherten Port behalten. Vorher gespeicherte Konfiguration anzeigen
-<<<<<<< HEAD
 print"-" * 26
-=======
 print "-" * 26
->>>>>>> bbf924b17e704d634ada2e497419893b5cd99918
 print("| List of available ports|\n| Please choose port     |")
 print "-" * 26
 #Aufruf extern list_ports
