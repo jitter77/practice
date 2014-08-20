@@ -45,6 +45,7 @@ if platform.system() != "Linux":
     #3 Sekunden warten
     time.sleep(3)
     #und tschüss
+    quit()
 
 #Check, ob Programm mit root - Rechten aufgerufen wurde
 user = os.geteuid()
@@ -61,7 +62,7 @@ if user != 0:
 
 #check for update
 print"-" * 22
-print("| Check for updates? |" )
+print("| Check for updates? |")
 print"-" * 22
 update = raw_input("y/n\n")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
@@ -173,7 +174,7 @@ class Flash:
         self.logdatei = logdatei
 
     def read_env(self, env_datei, data):
-        """Environment Zeile für Zeile einlesen / an Port senden"""
+        """ENV_DATEI Zeile für Zeile einlesen / DATA an Port senden"""
         befehle = open(env_datei)
         for zeile in befehle:
             print zeile
@@ -215,7 +216,7 @@ else:
 
 
 def get_time(time):
-    """Zeit im Format Stunde/Minute/Sekunde auslesen und zurückgeben"""
+    """TIME time im Format Stunde/Minute/Sekunde auslesen und zurückgeben"""
     print time.strftime("%H:%M:%S")
     test = str(time.strftime("%H:%M:%S"))
     print test
