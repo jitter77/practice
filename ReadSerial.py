@@ -29,6 +29,10 @@ import pickle
 import list_ports
 import choose_CoM
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> bbf924b17e704d634ada2e497419893b5cd99918
 port = "/dev/ttyS0"
 version_pickle = pickle.HIGHEST_PROTOCOL
 
@@ -38,7 +42,7 @@ Baudrate = ["9600", "19200", "38400", "57600", "115200"]
 #tree = ['/files_flasher/modules/tx25/os/linux/', '/files_flasher/modules/tx28/os/linux/']
 #Wurde unter Linux gestartet?
 if platform.system() != "Linux":
-    print("-") * 40
+    print "-" * 40
     print ("| Only for Linux (so far)! |")
     print ("| Exiting now!             |")
     print "-" * 40
@@ -76,7 +80,8 @@ if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
         time.sleep(3)
         upgrade = input("Update now? y/n")
         if upgrade in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
-            pass  #TODO noch implementieren
+            pass
+            #TODO noch implementieren
     else:
         print "Version is up to date\n"
         # 3 Sekunden warten
@@ -86,7 +91,11 @@ else:
 
 #Verfügbare Ports anzeigen, Auswahl treffen, speichern
 #TODO  in first run eingliedern, ansonsten gespeicherten Port behalten. Vorher gespeicherte Konfiguration anzeigen
+<<<<<<< HEAD
 print"-" * 26
+=======
+print "-" * 26
+>>>>>>> bbf924b17e704d634ada2e497419893b5cd99918
 print("| List of available ports|\n| Please choose port     |")
 print "-" * 26
 #Aufruf extern list_ports
@@ -99,7 +108,8 @@ print("Chosen port: "), port
 print("Programm einrichten?\n")
 install = raw_input("y/n\n")
 if install == "y":
-    pass  #TODO first run aufrufen
+    pass
+    #TODO first run aufrufen
 else:
     print("no first run")
     pass
@@ -204,7 +214,7 @@ class Flash:
         datei.close()
 
 #TODO log, Funktion? Ja! Wegen Rückprung bei Falscheingabe!
-log = raw_input(("Logdatei erstellen? y or n: "))
+log = raw_input("Logdatei erstellen? y or n: ")
 
 if log == "y":
     heim = os.getenv("HOME")
