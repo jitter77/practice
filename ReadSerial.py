@@ -67,7 +67,7 @@ print"-" * 22
 update = raw_input("y/n\n")
 if update in ['y', 'Y', 'ye', 'yes', 'Ye', 'Yes', 'YES', 'YE']:
     version_web = urllib2.urlopen("http://www.die-resterampe.de/flasher_version").read()
-    if version < version_web:
+    if __version__ < version_web:
         print "-" * 40
         print "| Update available! Please load new version! |"
         print "| Please visit: www.LINK.de ", " " * 15, "|"
