@@ -1,6 +1,8 @@
 #!/usr/bin/env python2.7
 # _*_ coding: utf-8 _*_
-"""\Tool to read and write from/to /dev/tty, write log if wanted"""
+"""
+\Tool to read and write from/to /dev/tty, write log if wanted
+"""
 __author__ = 'dp'
 if __name__ == 'main':
     main()
@@ -110,7 +112,9 @@ else:
 
 #auslagern in first run!
 def ip_adresses():
-    """IP Host und Device auslesen bzw setzen"""
+    """
+    IP Host und Device auslesen bzw setzen
+    """
     check = sh.ifconfig
     check = sh.grep("inet")
     print check
@@ -118,7 +122,9 @@ def ip_adresses():
 
 #TODO first run auslagern
 def first_run(baud, version, version_flash):
-    """first run, conf erstellen, werte eintragen"""
+    """
+    first run, conf erstellen, werte eintragen
+    """
     heim = os.getenv("HOME")
     #TODO Version in settings.conf einfügen! Für aktuellere Downloads! Oder doch nicht: git pull!
     try:
@@ -167,7 +173,9 @@ choose_CoM.main()
 
 
 class Flash:
-    """Docstring"""
+    """
+    Docstring
+    """
 
     def __init__(self, port, datei, env_datei, logdatei, data):
         self.port = port
@@ -177,7 +185,9 @@ class Flash:
         self.logdatei = logdatei
 
     def read_env(self, env_datei, data):
-        """ENV_DATEI Zeile für Zeile einlesen / DATA an Port senden"""
+        """
+        ENV_DATEI Zeile für Zeile einlesen / DATA an Port senden
+        """
         befehle = open(env_datei)
         for zeile in befehle:
             print zeile
@@ -185,8 +195,10 @@ class Flash:
         env_datei.close()
 
     def read_com(self, data, port):
-        """Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen.
-        data port"""
+        """
+        Com oeffnen, lesen bis keine Zeichen mehr kommen, in logdatei schreiben, Schnittstelle schliessen.
+        data port
+        """
         open_com()
         while ():  # zu implementieren: kommen noch Zeichen?
             line = port.read()
@@ -201,7 +213,9 @@ class Flash:
         #sCom1.close()
 
     def write_log(self, logdatei, data):
-        """Logdatei öffnen, Zeilennummer und Zeitstempel einfügen, Zeilen schreiben, Datei schließen"""
+        """
+        Logdatei öffnen, Zeilennummer und Zeitstempel einfügen, Zeilen schreiben, Datei schließen
+        """
         datei = open(logdatei, "w+")
         print(data)
         datei.close()
@@ -219,7 +233,9 @@ else:
 
 
 def get_time(time):
-    """TIME time im Format Stunde/Minute/Sekunde auslesen und zurückgeben"""
+    """
+    TIME time im Format Stunde/Minute/Sekunde auslesen und zurückgeben
+    """
     print time.strftime("%H:%M:%S")
     test = str(time.strftime("%H:%M:%S"))
     print test
@@ -249,7 +265,9 @@ def open_com(port):
 
 
 def write_com(data, port):
-    """Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen"""
+    """
+    Com oeffnen, Daten einlesen bis kein Input, Daten schreiben, Com schliessen
+    """
     open_com(port)
     #for zeile in datei:
 
@@ -260,5 +278,7 @@ def write_com(data, port):
 
 #weglassen? option?
 def run_tftp():
-    """tftp Server starten"""
+    """
+    tftp Server starten
+    """
     os.popen("/etc/init.d/tftpd-hpa restart")
