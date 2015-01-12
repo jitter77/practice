@@ -90,6 +90,10 @@ echo 'tftp ${loadaddr} setenv.img' > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5
+#override IP - Settings in predefined Environment
+echo 'setenv serverip '${IPH} > ${port}
+echo 'setenv ipaddr '${IPT} > ${port}
+echo 'saveenv' > ${port}
 echo "11/20 - Transfering device tree"
 echo 'tftp ${loadaddr} imx28-tx28.dtb' > ${port}
 sleep 8
