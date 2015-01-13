@@ -12,6 +12,7 @@
 #0.1 - 16.12.2014 - Initial Version            #
 #1.0 - 13.01.2015 - Override IP - settings in  #
 #                   predefined environment     #
+#1.1 - 13.01.2015 - Change displaysettings     #
 ################################################
 
 clear
@@ -19,10 +20,27 @@ echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.168
+IPH=192.168.15.173
 IPT=192.168.15.205
 port=/dev/ttyUSB0
 echo
+#preparation
+echo "Please check:"
+echo "tftp - server running?"
+echo "serial cable connected?"
+echo "ethernet connected?"
+echo "module TX28 inserted?"
+echo "power supply connected?"
+echo "continue (y/n)"
+echo
+read continue
+if [ "$continue" != y ]
+ then
+    echo "exiting now!"
+    exit
+ else
+    clear
+fi
 #Keep or set IP adresses / serial port?
 echo "IP adresses currently set to:"
 echo "Host: "${IPH}
@@ -30,6 +48,7 @@ echo "Target: "${IPT}
 echo "Serial port is currently set to "${port}
 echo 
 echo "Keep these settings (y) or enter new adresses (n)?"
+echo
 read settings
 if [ "$settings" != y ] 
 	then
@@ -151,3 +170,60 @@ echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
 sleep 3
 echo "20/20 - Done!"
 #ready for start
+#change displaysettings
+echo "Display currently set to EDT 5,7 (ETV570)"
+echo "possible other video modes are:"
+echo "1: ET0350		ET0350G0DH6"
+echo "2: ET0430		ET0430G0DH6"
+echo "3: ET0500		ET0500G0DH6"
+echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
+echo "5: ET0700		ET0700G0DH6"
+echo "6: VGA		standard VGA"
+echo "change video mode? (y/n)"
+echo
+read video_decision
+if [ "$video_decision" != y ]
+    then
+        echo "Video resolution set to ETV570, exiting now!"
+        exit
+    else
+         echo "Please enter number of desired video mode (1-6)"
+         read video_mode
+         if [ "$video_mode" = 1 ]
+            then
+                echo 'setenv video_mode ET0350' > ${port}
+                echo 'saveenv' > ${port}
+         elif [ "$video_mode" = 2 ]
+            then
+                echo 'setenv video_mode ET0430' > ${port}
+                echo 'saveenv' > ${port}
+         elif [ "$video_mode" = 3 ]
+            then
+                echo 'setenv video_mode ET0500' > ${port}
+                echo 'saveenv' > ${port}
+         elif [ "$video_mode" = 4 ]
+            then
+                echo 'setenv video_mode ETQ570' > ${port}
+                echo 'saveenv' > ${port}
+         elif [ "$video_mode" = 5 ]
+            then
+                echo 'setenv video_mode ET0700' > ${port}
+                echo 'saveenv' > ${port}
+                echo > ${port}
+                sleep 3
+                #we need to invert the pixelclock for the 7". Otherwise the output won't be correct and some pixels are strange
+                echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                sleep 3
+                echo > ${port}
+                sleep 3
+                echo 'nand erase.part dtb' > ${port}
+                echo > ${port}
+                sleep 3
+                echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
+                echo > ${port}
+                sleep 3
+         else [ "$video_mode" = 6 ]
+            echo 'setenv video_mode VGA' > ${port}
+            echo 'saveenv'
+         fi
+fi
