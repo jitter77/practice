@@ -20,8 +20,8 @@ echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.173
-IPT=192.168.15.205
+IPH=192.168.15.173 #Host
+IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
 echo
 #preparation

@@ -20,8 +20,8 @@ echo "Program Polytouchdemo to TX6Q"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.168
-IPT=192.168.15.205
+IPH=192.168.15.173 #Host
+IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
 echo
 #Keep or set IP adresses / serial port?
@@ -93,7 +93,7 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo "10/20 - Transfer Environment"
 #copy and source predefinded environment
-echo 'tftp ${loadaddr} setenv_tx6q.img' > ${port}
+echo 'tftp ${loadaddr} setenv_poly_tx6.img' > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5
