@@ -6,6 +6,12 @@
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker November 2014                 # 
 # Glyn Gmbh & Co. KG                           #
+#                                              #
+#History                                       #
+#----------------------------------------------#
+#0.1 - 16.12.2014 - Initial Version            #
+#1.0 - 13.01.2015 - Override IP - settings in  #
+#                   predefined environment     #
 ################################################
 
 clear
