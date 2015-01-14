@@ -92,8 +92,11 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo "10/20 - Transfer Environment"
+echo > ${port}
+sleep 3
 #copy and source predefinded environment
 echo 'tftp ${loadaddr} setenv_poly_tx6.img' > ${port}
+sleep 3
 echo > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
@@ -103,7 +106,11 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
 echo "11/20 - Transfering device tree"
+sleep 3
+echo > ${port}
+sleep 3
 echo 'tftp ${loadaddr} imx6dl-tx6u-801x.dtb' > ${port}
+echo > ${port}
 sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
@@ -174,22 +181,27 @@ if [ "$video_decision" != y ]
          read video_mode
          if [ "$video_mode" = 1 ]
             then
+                #3,5" EDT
                 echo 'setenv video_mode ET0350' > ${port}
                 echo 'saveenv' > ${port}
          elif [ "$video_mode" = 2 ]
             then
+                #4,3" EDT
                 echo 'setenv video_mode ET0430' > ${port}
                 echo 'saveenv' > ${port}
          elif [ "$video_mode" = 3 ]
             then
+                #5" EDT
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
          elif [ "$video_mode" = 4 ]
             then
+                #5,7" EDT QVGA (320x240px)
                 echo 'setenv video_mode ETQ570' > ${port}
                 echo 'saveenv' > ${port}
          elif [ "$video_mode" = 5 ]
             then
+                #7" EDT WVGA (800x480px)
                 echo 'setenv video_mode ET0700' > ${port}
                 echo 'saveenv' > ${port}
                 echo > ${port}
