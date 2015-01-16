@@ -111,7 +111,7 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo "10/20 - Transfer Environment"
 #copy and source predefinded environment
-echo 'tftp ${loadaddr} setenv.img' > ${port}
+echo 'tftp ${loadaddr} setenv_poly_tx28.img' > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5

@@ -92,6 +92,8 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo "10/20 - Transfer Environment"
+echo > ${port}
+sleep 3
 #copy and source predefinded environment
 echo 'tftp ${loadaddr} setenv_poly_tx6.img' > ${port}
 sleep 8
@@ -101,8 +103,12 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
+echo > ${port}
+sleep 3
 echo "11/20 - Transfering device tree"
 echo 'tftp ${loadaddr} imx6q-tx6q-1010.dtb' > ${port}
+sleep 3
+echo > ${port}
 sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
@@ -125,6 +131,7 @@ sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
 echo 'tftp ${loadaddr} mucross-2.0-polytouchdemo-tx6.ubi' > ${port}
+echo > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
