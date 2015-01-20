@@ -1,38 +1,37 @@
-autoload=no
-autostart=no
-baseboard=stk5-v5
-baudrate=115200
-bootargs=console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=VGA root=/dev/mtdblock3 rootfstype=jffs2
-bootargs_mmc=run default_bootargs;set bootargs ${bootargs} root=/dev/mmcblk0p3 rootwait
-bootargs_nand='run default_bootargs;set bootargs ${bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/home/root/touchdemo'
-bootargs_nfs=run default_bootargs;set bootargs ${bootargs} root=/dev/nfs ip=dhcp nfsroot=${nfs_server}:${nfsroot},nolock
-bootcmd=run bootcmd_nand
-bootcmd_mmc=set autostart no;run bootargs_mmc;fatload mmc 0 ${loadaddr} uImage;run bootm_cmd
-bootcmd_nand=set autostart no;run bootargs_nand;nboot linux;run bootm_cmd
-bootcmd_net=set autostart no;run bootargs_nfs;dhcp;run bootm_cmd
-bootdelay=3
-bootfile=uImage
-bootm_cmd=bootm ${loadaddr} - ${fdtaddr}
-default_bootargs=set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=${video_mode} ${append_bootargs}
-ethact=FEC0
-ethaddr=00:0c:c6:77:54:27
-fdtaddr=41000000
-fdtsize=000063cd
-fileaddr=43000000
-filesize=1E20000
-ipaddr=192.168.15.205
-loadaddr=43000000
-mtddevname=u-boot
-mtddevnum=0
-mtdids=nand0=gpmi-nand
-mtdparts=mtdparts=gpmi-nand:1m@0x20000(u-boot),0x60000(env),4m(linux),124672k(rootfs),256k(dtb),512k@0x7f80000(bbt)ro
-nfsroot=/tftpboot/rootfs
-otg_mode=device
-partition=nand0,0
-serverip=192.168.15.168
-stderr=lcd
-stdin=serial
-stdout=lcd
-touchpanel=edt-ft5x06
-ver=U-Boot 2013.01-00406-g41f923c (Aug 02 2013 - 15:17:05)
-video_mode=ETV570
+setenv autoload no
+setenv autostart no
+setenv baseboard stk5-v5
+setenv 'baudrate 115200'
+setenv 'bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=VGA root=/dev/mtdblock3 rootfstype=jffs2'
+setenv 'bootargs_mmc run default_bootargs;set bootargs ${bootargs} root=/dev/mmcblk0p3 rootwait'
+setenv bootargs_nand 'run default_bootargs;set bootargs ${bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/home/root/touchdemo'
+setenv bootargs_nfs 'run default_bootargs;set bootargs ${bootargs} root=/dev/nfs ip=dhcp nfsroot=${nfs_server}:${nfsroot},nolock'
+setenv bootcmd run bootcmd_nand
+setenv bootcmd_mmc 'set autostart no;run bootargs_mmc;fatload mmc 0 ${loadaddr} uImage;run bootm_cmd'
+setenv bootcmd_nand 'set autostart no;run bootargs_nand;nboot linux;run bootm_cmd'
+setenv bootcmd_net 'set autostart no;run bootargs_nfs;dhcp;run bootm_cmd'
+setenv bootdelay 3
+setenv bootfile uImage
+setenv bootm_cmd 'bootm ${loadaddr} - ${fdtaddr}'
+setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=${video_mode} ${append_bootargs}'
+setenv 'ethact FEC0'
+setenv 'ethaddr 00:0c:c6:77:54:27'
+setenv 'fdtaddr 41000000'
+setenv 'fdtsize 000063cd'
+setenv 'fileaddr 43000000'
+setenv ipaddr 192.168.15.205
+setenv loadaddr 43000000
+setenv mtddevname u-boot
+setenv mtddevnum 0
+setenv mtdids 'nand0=gpmi-nand'
+setenv mtdparts 'mtdparts=gpmi-nand:1m@0x20000(u-boot),0x60000(env),4m(linux),124672k(rootfs),256k(dtb),512k@0x7f80000(bbt)ro'
+setenv nfsroot /tftpboot/rootfs'
+setenv otg_mode device
+setenv partition 'nand0,0'
+setenv serverip 192.168.15.173
+setenv stderr lcd
+setenv stdin serial
+setenv stdout lcd
+setenv 'touchpanel edt-ft5x06'
+setenv ver 'U-Boot 2013.01-00406-g41f923c (Aug 02 2013 - 15:17:05)'
+setenv video_mode ETV570
