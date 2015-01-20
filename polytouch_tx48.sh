@@ -23,13 +23,33 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
+#uboot=u-boot-tx28-40x1.sb
+#image=setenv_tx48_poly.img
+#dtb=
+#kernel=
+#rootfs=
 echo
+#preparation
+echo "Please check:"
+echo "tftp - server running?"
+echo "serial cable connected?"
+echo "ethernet connected?"
+echo "module TX28 inserted?"
+echo "power supply connected?"
+echo "continue (y/n)"
+read continue
+if [ "$continue" != y ]
+ then
+    echo "exiting now!"
+    exit
+ else
+    clear
+fi
 #Keep or set IP adresses / serial port?
 echo "IP adresses currently set to:"
 echo "Host: "${IPH}
 echo "Target: "${IPT}
 echo "Serial port is currently set to "${port}
-echo 
 echo "Keep these settings (y) or enter new adresses (n)?"
 read settings
 if [ "$settings" != y ] 
@@ -93,7 +113,7 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo "10/20 - Transfer Environment"
 #copy and source predefinded environment
-echo 'tftp ${loadaddr} setenv.img' > ${port}
+echo 'tftp ${loadaddr} setenv_tx48_poly.img' > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5
@@ -175,18 +195,26 @@ if [ "$video_decision" != y ]
             then
                 echo 'setenv video_mode ET0350' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 2 ]
             then
                 echo 'setenv video_mode ET0430' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 3 ]
             then
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 4 ]
             then
                 echo 'setenv video_mode ETQ570' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 5 ]
             then
                 echo 'setenv video_mode ET0700' > ${port}
@@ -204,8 +232,11 @@ if [ "$video_decision" != y ]
                 echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
                 echo > ${port}
                 sleep 3
+                echo "Finished!"
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
+            sleep 3
+            echo "Finished!"
          fi
 fi

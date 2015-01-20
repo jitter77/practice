@@ -23,7 +23,28 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
+uboot=u-boot-tx6q-1010.bin                  #Bootloader
+image=setenv_poly_tx6.img                   #Environment
+dtb=imx6q-tx6q-1010.dtb                     #Device Tree
+kernel=uImage_tx6                           #Linux Kernel
+rootfs=mucross-2.0-polytouchdemo-tx6.ubi    #Polytouchdemo
 echo
+#preparation
+echo "Please check:"
+echo "tftp - server running?"
+echo "serial cable connected?"
+echo "ethernet connected?"
+echo "module TX28 inserted?"
+echo "power supply connected?"
+echo "continue (y/n)"
+read continue
+if [ "$continue" != y ]
+ then
+    echo "exiting now!"
+    exit
+ else
+    clear
+fi
 #Keep or set IP adresses / serial port?
 echo "IP adresses currently set to:"
 echo "Host: "${IPH}
@@ -75,7 +96,7 @@ echo 'setenv autostart no' > ${port}
 echo 'saveenv' > ${port}
 echo " 4/20 - Update Bootloader"
 sleep 5
-echo 'tftp ${loadaddr} u-boot-tx6q-1010.bin' > ${port}
+echo 'tftp ${loadaddr}' ${uboot} > ${port}
 echo " 5/20 - Transfering Bootloader"
 sleep 10
 echo " 6/20 - Installing Bootloader"
@@ -95,7 +116,7 @@ echo "10/20 - Transfer Environment"
 echo > ${port}
 sleep 3
 #copy and source predefinded environment
-echo 'tftp ${loadaddr} setenv_poly_tx6.img' > ${port}
+echo 'tftp ${loadaddr}' ${image} > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5
@@ -106,7 +127,7 @@ echo 'saveenv' > ${port}
 echo > ${port}
 sleep 3
 echo "11/20 - Transfering device tree"
-echo 'tftp ${loadaddr} imx6q-tx6q-1010.dtb' > ${port}
+echo 'tftp ${loadaddr}' ${dtb} > ${port}
 sleep 3
 echo > ${port}
 sleep 8
@@ -121,7 +142,7 @@ sleep 5
 echo > ${port}
 #copy and install kernel
 echo "13/20 - Transfering Linux Kernel"
-echo 'tftp ${loadaddr} uImage_tx6' > ${port}
+echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
 sleep 5
@@ -130,7 +151,7 @@ echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
-echo 'tftp ${loadaddr} mucross-2.0-polytouchdemo-tx6.ubi' > ${port}
+echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 echo > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
@@ -169,7 +190,6 @@ echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
 echo "5: ET0700		ET0700G0DH6"
 echo "6: VGA		standard VGA"
 echo "change video mode? (y/n)"
-echo
 read video_decision
 if [ "$video_decision" != y ]
     then
@@ -182,18 +202,26 @@ if [ "$video_decision" != y ]
             then
                 echo 'setenv video_mode ET0350' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 2 ]
             then
                 echo 'setenv video_mode ET0430' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 3 ]
             then
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 4 ]
             then
                 echo 'setenv video_mode ETQ570' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 5 ]
             then
                 echo 'setenv video_mode ET0700' > ${port}
@@ -211,8 +239,11 @@ if [ "$video_decision" != y ]
                 echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
                 echo > ${port}
                 sleep 3
+                echo "Finished!"
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
+            sleep 3
+                echo "Finished!"
          fi
 fi

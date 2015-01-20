@@ -23,6 +23,11 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
+uboot=u-boot-tx28-40x1.sb       #Bootloader
+image=setenv_poly_tx28.img      #Environment
+dtb=imx28-tx28.dtb              #Device Tree
+kernel=uImage-tx28-m09-raw      #Linux kernel
+rootfs=touchdemo-m09-flip.ubi   #Polytouchdemo
 echo
 #preparation
 echo "Please check:"
@@ -32,7 +37,6 @@ echo "ethernet connected?"
 echo "module TX28 inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
-echo
 read continue
 if [ "$continue" != y ]
  then
@@ -48,7 +52,6 @@ echo "Target: "${IPT}
 echo "Serial port is currently set to "${port}
 echo 
 echo "Keep these settings (y) or enter new adresses (n)?"
-echo
 read settings
 if [ "$settings" != y ] 
 	then
@@ -93,7 +96,7 @@ echo 'setenv autostart no' > ${port}
 echo 'saveenv' > ${port}
 echo " 4/20 - Update Bootloader"
 sleep 5
-echo 'tftp ${loadaddr} u-boot-tx28-40x1.sb' > ${port}
+echo 'tftp ${loadaddr}' ${uboot} > ${port}
 echo " 5/20 - Transfering Bootloader"
 sleep 10
 echo " 6/20 - Installing Bootloader"
@@ -111,7 +114,7 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo "10/20 - Transfer Environment"
 #copy and source predefinded environment
-echo 'tftp ${loadaddr} setenv_poly_tx28.img' > ${port}
+echo 'tftp ${loadaddr}' ${image} > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5
@@ -120,7 +123,7 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
 echo "11/20 - Transfering device tree"
-echo 'tftp ${loadaddr} imx28-tx28.dtb' > ${port}
+echo 'tftp ${loadaddr}' ${dtb} > ${port}
 sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
@@ -133,7 +136,7 @@ sleep 5
 echo > ${port}
 #copy and install kernel
 echo "13/20 - Transfering Linux Kernel"
-echo 'tftp ${loadaddr} uImage-tx28-m09-raw' > ${port}
+echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
 sleep 5
@@ -142,7 +145,7 @@ echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
-echo 'tftp ${loadaddr} touchdemo-m09-flip.ubi' > ${port}
+echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
@@ -180,7 +183,6 @@ echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
 echo "5: ET0700		ET0700G0DH6"
 echo "6: VGA		standard VGA"
 echo "change video mode? (y/n)"
-echo
 read video_decision
 if [ "$video_decision" != y ]
     then
@@ -193,18 +195,26 @@ if [ "$video_decision" != y ]
             then
                 echo 'setenv video_mode ET0350' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 2 ]
             then
                 echo 'setenv video_mode ET0430' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 3 ]
             then
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 4 ]
             then
                 echo 'setenv video_mode ETQ570' > ${port}
                 echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
          elif [ "$video_mode" = 5 ]
             then
                 echo 'setenv video_mode ET0700' > ${port}
@@ -222,8 +232,11 @@ if [ "$video_decision" != y ]
                 echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
                 echo > ${port}
                 sleep 3
+                echo "Finished!"
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
+            sleep 3
+            echo "Finished!"
          fi
 fi
