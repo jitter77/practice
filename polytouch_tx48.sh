@@ -25,7 +25,7 @@ IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
 #uboot=u-boot-tx28-40x1.sb
 #image=setenv_tx48_poly.img
-#dtb=
+#dtb=am335x-tx48.dtb
 #kernel=
 #rootfs=
 echo

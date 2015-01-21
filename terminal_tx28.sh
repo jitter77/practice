@@ -4,7 +4,7 @@
 # Tool to program a polytouchdemo on Karo TX28 #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
-# Dominik Peuker November 2014                 # 
+# Dominik Peuker November 2014                 #
 # Glyn Gmbh & Co. KG                           #
 #                                              #
 #History                                       #
@@ -24,11 +24,11 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
-uboot=u-boot-tx28-40x1.sb       #Bootloader
-image=setenv_poly_tx28.img      #Environment
-dtb=imx28-tx28.dtb              #Device Tree
-kernel=uImage_tx28              #Linux kernel
-rootfs=touchdemo-m09-flip.ubi   #Polytouchdemo
+uboot=u-boot-tx28-40x1.sb                   #Bootloader
+image=setenv_poly_tx28.img                  #Environment
+dtb=imx28-tx28.dtb                          #Device Tree
+kernel=uImage_tx28                          #Linux kernel
+rootfs=mucross-2.0-console-image-tx28.ubi   #Terminaldemo
 echo
 #preparation
 echo "Please check:"
@@ -51,14 +51,14 @@ echo "IP adresses currently set to:"
 echo "Host: "${IPH}
 echo "Target: "${IPT}
 echo "Serial port is currently set to "${port}
-echo 
+echo
 echo "Keep these settings (y) or enter new adresses (n)?"
 read settings
-if [ "$settings" != y ] 
+if [ "$settings" != y ]
 	then
 		#Host
 		echo "Please enter IP of your host (serverip):"
-		read IPH 
+		read IPH
 		echo
 		#Target
 		echo "Please enter IP of your target (ipaddr):"
@@ -77,7 +77,7 @@ if [ "$settings" != y ]
 		clear
 	else
 		#clear screen
-		clear 
+		clear
 fi
 #Mainfunction
 #cleanup

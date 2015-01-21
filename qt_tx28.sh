@@ -4,7 +4,7 @@
 # Tool to program a polytouchdemo on Karo TX28 #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
-# Dominik Peuker November 2014                 # 
+# Dominik Peuker November 2014                 #
 # Glyn Gmbh & Co. KG                           #
 #                                              #
 #History                                       #
@@ -24,11 +24,11 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
-uboot=u-boot-tx28-40x1.sb       #Bootloader
-image=setenv_poly_tx28.img      #Environment
-dtb=imx28-tx28.dtb              #Device Tree
-kernel=uImage_tx28              #Linux kernel
-rootfs=touchdemo-m09-flip.ubi   #Polytouchdemo
+uboot=u-boot-tx28-40x1.sb                   #Bootloader
+image=setenv_poly_tx28.img                  #Environment
+dtb=imx28-tx28.dtb                          #Device Tree
+kernel=uImage_tx28                          #Linux kernel
+rootfs=mucross-2.0-qt4_8-x11-demo-image-tx28.ubi   #Terminaldemo
 echo
 #preparation
 echo "Please check:"
@@ -51,14 +51,14 @@ echo "IP adresses currently set to:"
 echo "Host: "${IPH}
 echo "Target: "${IPT}
 echo "Serial port is currently set to "${port}
-echo 
+echo
 echo "Keep these settings (y) or enter new adresses (n)?"
 read settings
-if [ "$settings" != y ] 
+if [ "$settings" != y ]
 	then
 		#Host
 		echo "Please enter IP of your host (serverip):"
-		read IPH 
+		read IPH
 		echo
 		#Target
 		echo "Please enter IP of your target (ipaddr):"
@@ -77,7 +77,7 @@ if [ "$settings" != y ]
 		clear
 	else
 		#clear screen
-		clear 
+		clear
 fi
 #Mainfunction
 #cleanup
@@ -146,13 +146,13 @@ echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
-echo 'tftp ${loadaddr}' ${rootfs} > ${port}
+echo 'tftp 0x40000000' ${rootfs} > ${port}                          #Caution: Because of size 0x40000000
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/20 - Save Filesystem"
-echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
-sleep 15
+echo 'nand write.trimffs 0x40000000 rootfs ${filesize}' > ${port}   #Caution: Because of size 0x40000000!!!
+sleep 25
 echo "17/20 - Reset and Reboot"
 echo 'reset' > ${port}
 sleep 3
