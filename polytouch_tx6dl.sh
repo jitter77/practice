@@ -159,6 +159,7 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/20 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
+echo > ${port}
 sleep 15
 echo "17/20 - Reset and Reboot"
 echo 'reset' > ${port}

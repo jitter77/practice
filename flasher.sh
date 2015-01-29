@@ -1,4 +1,4 @@
-#!/bin/bash -p
+#!/bin/bash
 ################################################
 # Tool to program a polytouchdemo on Karo TX28 #
 # Please send feedback to:                     #
@@ -12,18 +12,20 @@
 ################################################
 
 #presets
-clear
 demo=0
 com=0
+path=~/PycharmProjects/practice/    #FIXME for release
+clear
 echo "Please choose your module from the list"
 echo "---------------------------------------"
-echo "1: TX28S"
-echo "2: TX28"
-echo "3: TX48"
-echo "4: TX53"
-echo "5: TX6S"
-echo "6: TX6DL"
-echo "7: TX6Q"
+echo "1: TX28S (TX28-4130)"
+echo "2: TX28 (TX28-4031)"
+echo "3: TX48 (TX48-7020)"
+echo "4: TX53 (TX53-8030)"
+echo "5: TX6S (TX6S-8034)"
+echo "6: TX6SeMMC (TX6S-8035)"
+echo "7: TX6DL (TX6U-8010)"
+echo "8: TX6Q (TX6Q-1010"
 echo "Enter number of Module here: "
 read module
 case ${module} in
@@ -32,8 +34,9 @@ case ${module} in
     3) com=TX48; echo "Chosen Module:" ${com};;
     4) com=TX53; echo "Chosen Module:" ${com};;
     5) com=TX6S; echo "Chosen Module:" ${com};;
-    6) com=TX6DL; echo "Chosen Module:" ${com};;
-    7) com=TX6Q; "Chosen Module:" echo ${com};;
+    6) com=TX6Semmc; echo "Chosen Module:" ${com};;
+    7) com=TX6DL; echo "Chosen Module:" ${com};;
+    8) com=TX6Q; "Chosen Module:" echo ${com};;
     *) echo "Please enter number between 1 & 7"
 esac
 clear
@@ -53,46 +56,51 @@ case ${program} in
     *) echo "Please choose number between 1 & 4"
 esac
 result=${com}${demo}
-echo ${result}
+#echo ${result}
 clear
 echo "Your configuration is:" ${com} ${demo}
-echo ${com}+${demo}
+#echo ${com}+${demo}
 echo "Going to program this now."
 sleep 3
 case ${result} in
-    #TX28S
-    "TX28Spoly") echo ${result};;
-    "TX28Sgpe") echo ${result};;
-    "TX28Sterm") echo ${result};;
-    "TX28Sqt") echo ${result};;
-    #TX28
-    "TX28poly") exec /bin/sh /home/dp/PycharmProjects/practice/polytouch_tx28.sh;;  #FIXME Pfad!
-    "TX28gpe") exec /home/dp/PycharmProjects/practice/gpe_tx28.sh;;                 #FIXME Pfad!
-    "TX28term") exec /home/dp/PycharmProjects/practice/terminal_tx28.sh;;           #FIXME Pfad!
-    "TX28qt") echo ${result};;
-    #TX48
-    "TX48poly") echo ${result};;
-    "TX48gpe") echo ${result};;
-    "TX48term") echo ${result};;
-    "TX48qt") echo ${result};;
-    #TX53
-    "TX53poly") echo ${result};;
-    "TX53gpe") echo ${result};;
-    "TX53term") echo ${result};;
-    "TX53qt") echo ${result};;
-    #TX6S
-    "TX6Spoly") echo ${result};;
-    "TX6Sgpe") echo ${result};;
-    "TX6Sterm") echo ${result};;
-    "TX6Sqt") echo ${result};;
-    #TX6DL
-    "TX6DLpoly") echo ${result};;
-    "TX6DLgpe") echo ${result};;
-    "TX6DLterm") echo ${result};;
-    "TX6DLqt") echo ${result};;
-    #TX6Q
-    "TX6Qpoly") echo ${result};;
-    "TX6Qgpe") echo ${result};;
-    "TX6Qterm") echo ${result};;
-    "TX6Qqt") echo ${result};;
+    #TX28S(4130)
+    "TX28Spoly") exec /bin/sh ${path};;
+    "TX28Sgpe") exec /bin/sh ${path};;
+    "TX28Sterm") exec /bin/sh ${path};;
+    "TX28Sqt") exec /bin/sh ${path};;
+    #TX28(4030)
+    "TX28poly") exec /bin/sh ${path}polytouch_tx28.sh;;
+    "TX28gpe") exec /bin/sh ${path}gpe_tx28.sh;;
+    "TX28term") exec /bin/sh ${path}terminal_tx28.sh;;
+    "TX28qt") exec /bin/sh ${path}practice/qt_tx28.sh;;
+    #TX48(7020)
+    "TX48poly") exec /bin/sh ${path};;
+    "TX48gpe") exec /bin/sh ${path};;
+    "TX48term") exec /bin/sh ${path};;
+    "TX48qt") exec /bin/sh ${path};;
+    #TX53(8030)
+    "TX53poly") exec /bin/sh ${path};;
+    "TX53gpe") exec /bin/sh ${path};;
+    "TX53term") exec /bin/sh ${path};;
+    "TX53qt") exec /bin/sh ${path};;
+    #TX6S(8034)
+    "TX6Spoly") exec /bin/sh ${path};;
+    "TX6Sgpe") exec /bin/sh ${path};;
+    "TX6Sterm") exec /bin/sh ${path};;
+    "TX6Sqt") exec /bin/sh ${path};;
+    #TX6Semmc(8035)
+    "TX6Semmcpoly") exec /bin/sh ${path};;
+    "TX6Semmcgpe") exec /bin/sh ${path};;
+    "TX6Semmcterm") exec /bin/sh ${path};;
+    "TX6Semmcqt") exec /bin/sh ${path};;
+    #TX6DL(8010)
+    "TX6DLpoly") exec /bin/sh ${path}polytouch_tx6dl.sh;;
+    "TX6DLgpe") exec /bin/sh ${path};;
+    "TX6DLterm") exec /bin/sh ${path};;
+    "TX6DLqt") exec /bin/sh ${path};;
+    #TX6Q(1010)
+    "TX6Qpoly") exec /bin/sh ${path};;
+    "TX6Qgpe") exec /bin/sh ${path};;
+    "TX6Qterm") exec /bin/sh ${path};;
+    "TX6Qqt") exec /bin/sh ${path};;
 esac
