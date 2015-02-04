@@ -13,6 +13,7 @@
 #1.0 - 13.01.2015 - Override IP - settings in  #
 #                   predefined environment     #
 #1.1 - 13.01.2015 - Change display settings    #
+#1.2 - 30.01.2015 - Removed Backlightsettings  #
 ################################################
 
 clear
@@ -80,39 +81,39 @@ if [ "$settings" != y ]
 fi
 #Mainfunction
 #cleanup
-echo " 1/20 - Clean Partitions"
+echo " 1/18 - Clean Partitions"
 #delete kernel
 echo 'nand erase.part linux' > ${port}
 sleep 3
 #delete rootfs
 echo 'nand erase.part rootfs' > ${port}
 sleep 3
-echo " 2/20 - Set IP adresses"
+echo " 2/18 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
-echo " 3/20 - Change autostart / autoload"
+echo " 3/18 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
 echo 'setenv autostart no' > ${port}
 echo 'saveenv' > ${port}
-echo " 4/20 - Update Bootloader"
+echo " 4/18 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
-echo " 5/20 - Transfering Bootloader"
+echo " 5/18 - Transfering Bootloader"
 sleep 10
-echo " 6/20 - Installing Bootloader"
+echo " 6/18 - Installing Bootloader"
 sleep 5
 echo 'romupdate ${fileaddr}' > ${port}
 sleep 5
-echo " 7/20 - Reset"
+echo " 7/18 - Reset"
 echo 'reset' > ${port}
 sleep 5
-echo " 8/20 - Set default environment"
+echo " 8/18 - Set default environment"
 echo 'env default -f -a' > ${port}
-echo " 9/20 - Set IP adresses"
+echo " 9/18 - Set IP adresses"
 sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
-echo "10/20 - Transfer Environment"
+echo "10/18 - Transfer Environment"
 echo > ${port}
 sleep 3
 #copy and source predefinded environment
@@ -126,7 +127,7 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
-echo "11/20 - Transfering device tree"
+echo "11/18 - Transfering device tree"
 sleep 3
 echo > ${port}
 sleep 3
@@ -135,7 +136,7 @@ echo > ${port}
 sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
-echo "12/20 - Save device tree"
+echo "12/18 - Save device tree"
 echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
 sleep 5
 echo 'saveenv' > ${port}
@@ -143,44 +144,44 @@ echo 'reset' > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
-echo "13/20 - Transfering Linux Kernel"
+echo "13/18 - Transfering Linux Kernel"
 echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
 sleep 5
-echo "14/20 - Save Linux Kernel"
+echo "14/18 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
-echo "15/20 - Transfering Filesystem"
+echo "15/18 - Transfering Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
-echo "16/20 - Save Filesystem"
+echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
 echo > ${port}
 sleep 15
-echo "17/20 - Reset and Reboot"
+echo "17/18 - Reset and Reboot"
 echo 'reset' > ${port}
 sleep 3
 echo > ${port}
 echo > ${port}
 #backlight is only 50% so far, set it to 100%
-echo "18/20 - Set backlight to full brightness"
-sleep 6
-echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
-sleep 3
-echo > ${port}
-sleep 3
-echo 'nand erase.part dtb' > ${port}
-sleep 3
-echo "19/20 - Save environment"
-sleep 3
-echo > ${port}
-echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-sleep 3
-echo "20/20 - Done!"
+#echo "18/20 - Set backlight to full brightness"
+#sleep 6
+#echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
+#sleep 3
+#echo > ${port}
+#sleep 3
+#echo 'nand erase.part dtb' > ${port}
+#sleep 3
+#echo "19/20 - Save environment"
+#sleep 3
+#echo > ${port}
+#echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
+#sleep 3
+echo "18/18 - Done!"
 #ready for start
 #change displaysettings
 echo "Display currently set to EDT 5,7 (ETV570)"
@@ -192,7 +193,6 @@ echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
 echo "5: ET0700		ET0700G0DH6"
 echo "6: VGA		standard VGA"
 echo "change video mode? (y/n)"
-echo
 read video_decision
 if [ "$video_decision" != y ]
     then

@@ -14,6 +14,9 @@
 #                   predefined environment     #
 #1.1 - 13.01.2015 - Change display settings    #
 #1.2 - 21.01.2015 - New u-boot, new kernel     #
+#1.3 - 04.02.2015 - Enhanced setting for       #
+#                   pixelclock of old and new  #
+#                   EDT 7"                     #
 ################################################
 
 clear
@@ -35,7 +38,7 @@ echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX28 inserted?"
+echo "module TX28 (TX28-4031) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
@@ -181,7 +184,7 @@ echo "1: ET0350		ET0350G0DH6"
 echo "2: ET0430		ET0430G0DH6"
 echo "3: ET0500		ET0500G0DH6"
 echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
-echo "5: ET0700		ET0700G0DH6"
+echo "5: ET0700		ET0700G0DH6 or ET0700G0BDH6"
 echo "6: VGA		standard VGA"
 echo "change video mode? (y/n)"
 read video_decision
@@ -222,18 +225,28 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 echo > ${port}
                 sleep 3
-                #we need to invert the pixelclock for the 7". Otherwise the output won't be correct and some pixels are strange
-                echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
-                sleep 3
-                echo > ${port}
-                sleep 3
-                echo 'nand erase.part dtb' > ${port}
-                echo > ${port}
-                sleep 3
-                echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                echo > ${port}
-                sleep 3
-                echo "Finished!"
+                #we need to invert the pixelclock for the newer 7"
+                #Otherwise the output won't be correct and some pixels are strange
+                echo "For newer EDT 7 inch Displays pixelclock needs to be inverted"
+                echo "Partnumber is: (G-)ETM0700G0BDH6"
+                echo "Invert pixelclock? (y/n)"
+                read invert
+                if [ ${invert} = y ]
+                    then
+                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                    sleep 3
+                    echo > ${port}
+                    sleep 3
+                    echo 'nand erase.part dtb' > ${port}
+                    echo > ${port}
+                    sleep 3
+                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
+                    echo > ${port}
+                    sleep 3
+                    echo "Finished!"
+                else
+                    echo "Finished!"
+                fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'

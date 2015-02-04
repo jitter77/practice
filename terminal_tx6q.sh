@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a polytouchdemo on Karo TX6Q #
+# Tool to program a GPE demo on Karo TX6Q      #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker December 2014                 #
@@ -9,19 +9,12 @@
 #                                              #
 #History                                       #
 #----------------------------------------------#
-#0.1 - 16.12.2014 - Initial Version            #
-#1.0 - 13.01.2015 - Override IP - settings in  #
-#                   predefined environment     #
-#1.1 - 13.01.2015 - Change display settings    #
-#1.2 - 30.01.2015 - Removed Backlightsetting   #
-#1.3 - 04.02.2015 - Enhanced setting for       #
-#                   pixelclock of old and new  #
-#                   EDT 7"                     #
+#0.1 - 03.02.2015 - Initial Version            #
 ################################################
 
 clear
-echo "Program Polytouchdemo to TX6Q"
-echo "-----------------------------"
+echo "Program Console - Image to TX6Q"
+echo "-------------------------------"
 echo
 #Presetting
 IPH=192.168.15.173 #Host
@@ -31,14 +24,14 @@ uboot=u-boot-tx6q-1010.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=imx6q-tx6q-1010.dtb                     #Device Tree
 kernel=uImage_tx6                           #Linux Kernel
-rootfs=mucross-2.0-polytouchdemo-tx6.ubi    #Polytouchdemo
+rootfs=mucross-2.0-console-image-tx6.ubi    #Console - Image
 echo
 #preparation
 echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX6 (TX6Q-1010) inserted?"
+echo "module TX28 inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
@@ -54,14 +47,14 @@ echo "IP adresses currently set to:"
 echo "Host: "${IPH}
 echo "Target: "${IPT}
 echo "Serial port is currently set to "${port}
-echo 
+echo
 echo "Keep these settings (y) or enter new adresses (n)?"
 read settings
-if [ "$settings" != y ] 
+if [ "$settings" != y ]
 	then
 		#Host
 		echo "Please enter IP of your host (serverip):"
-		read IPH 
+		read IPH
 		echo
 		#Target
 		echo "Please enter IP of your target (ipaddr):"
@@ -80,7 +73,7 @@ if [ "$settings" != y ]
 		clear
 	else
 		#clear screen
-		clear 
+		clear
 fi
 #Mainfunction
 #cleanup
@@ -232,28 +225,18 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 echo > ${port}
                 sleep 3
-                #we need to invert the pixelclock for the newer 7"
-                #Otherwise the output won't be correct and some pixels are strange
-                echo "For newer EDT 7 inch Displays pixelclock needs to be inverted"
-                echo "Partnumber is: (G-)ETM0700G0BDH6"
-                echo "Invert pixelclock? (y/n)"
-                read invert
-                if [ ${invert} = y ]
-                    then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
-                    sleep 3
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand erase.part dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
-                    echo "Finished!"
-                else
-                    echo "Finished!"
-                fi
+                #we need to invert the pixelclock for the 7". Otherwise the output won't be correct and some pixels are strange
+                echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                sleep 3
+                echo > ${port}
+                sleep 3
+                echo 'nand erase.part dtb' > ${port}
+                echo > ${port}
+                sleep 3
+                echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
+                echo > ${port}
+                sleep 3
+                echo "Finished!"
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
@@ -261,3 +244,4 @@ if [ "$video_decision" != y ]
                 echo "Finished!"
          fi
 fi
+

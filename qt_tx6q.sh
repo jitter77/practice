@@ -1,27 +1,23 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a polytouchdemo on Karo TX6Q #
+# Tool to program a Qt demo on Karo TX6Q       #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
-# Dominik Peuker December 2014                 #
+# Dominik Peuker February 2015                 #
 # Glyn Gmbh & Co. KG                           #
 #                                              #
 #History                                       #
 #----------------------------------------------#
-#0.1 - 16.12.2014 - Initial Version            #
-#1.0 - 13.01.2015 - Override IP - settings in  #
-#                   predefined environment     #
-#1.1 - 13.01.2015 - Change display settings    #
-#1.2 - 30.01.2015 - Removed Backlightsetting   #
-#1.3 - 04.02.2015 - Enhanced setting for       #
+#0.1 - 03.02.2015 - Initial Version            #
+#1.0 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
 ################################################
 
 clear
-echo "Program Polytouchdemo to TX6Q"
-echo "-----------------------------"
+echo "Program Qt - Demo to TX6Q"
+echo "-------------------------"
 echo
 #Presetting
 IPH=192.168.15.173 #Host
@@ -31,14 +27,14 @@ uboot=u-boot-tx6q-1010.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=imx6q-tx6q-1010.dtb                     #Device Tree
 kernel=uImage_tx6                           #Linux Kernel
-rootfs=mucross-2.0-polytouchdemo-tx6.ubi    #Polytouchdemo
+rootfs=mucross-2.0-qt-embedded-demo-tx6.ubi #Qt - demo
 echo
 #preparation
 echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX6 (TX6Q-1010) inserted?"
+echo "module TX6Q (TX6Q-1010) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
@@ -54,14 +50,14 @@ echo "IP adresses currently set to:"
 echo "Host: "${IPH}
 echo "Target: "${IPT}
 echo "Serial port is currently set to "${port}
-echo 
+echo
 echo "Keep these settings (y) or enter new adresses (n)?"
 read settings
-if [ "$settings" != y ] 
+if [ "$settings" != y ]
 	then
 		#Host
 		echo "Please enter IP of your host (serverip):"
-		read IPH 
+		read IPH
 		echo
 		#Target
 		echo "Please enter IP of your target (ipaddr):"
@@ -80,7 +76,7 @@ if [ "$settings" != y ]
 		clear
 	else
 		#clear screen
-		clear 
+		clear
 fi
 #Mainfunction
 #cleanup
@@ -157,7 +153,7 @@ sleep 5
 echo "15/18 - Transfering Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 echo > ${port}
-sleep 25
+sleep 35
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
@@ -261,3 +257,4 @@ if [ "$video_decision" != y ]
                 echo "Finished!"
          fi
 fi
+
