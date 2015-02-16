@@ -27,10 +27,10 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
-uboot=u-boot-tx28-40x1.sb       #Bootloader
+uboot=u-boot-tx28-41x0.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment
 dtb=imx28-tx28.dtb              #Device Tree
-kernel=uImage_tx28              #Linux kernel
+kernel=uImage_tx28s              #Linux kernel
 rootfs=touchdemo-m09-flip.ubi   #Polytouchdemo
 echo
 #preparation
@@ -38,7 +38,7 @@ echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX28 (TX28-4031) inserted?"
+echo "module TX28 (TX28-4130) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
@@ -149,12 +149,12 @@ echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
-echo 'tftp ${loadaddr}' ${rootfs} > ${port}
+echo 'tftp 0x40000000' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/20 - Save Filesystem"
-echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
+echo 'nand write.trimffs $0x40000000 rootfs ${filesize}' > ${port}
 sleep 15
 echo "17/20 - Reset and Reboot"
 echo 'reset' > ${port}
@@ -235,7 +235,7 @@ if [ "$video_decision" != y ]
                     then
                     echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
                     sleep 3
-                    echo > ${port}2
+                    echo > ${port}
                     sleep 3
                     echo 'nand erase.part dtb' > ${port}
                     echo > ${port}

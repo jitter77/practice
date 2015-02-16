@@ -37,7 +37,7 @@ case ${module} in
     6) com=TX6Semmc; echo "Chosen Module:" ${com};;
     7) com=TX6DL; echo "Chosen Module:" ${com};;
     8) com=TX6Q; echo "Chosen Module:" ${com};;
-    *) echo "Please enter number between 1 & 8"
+    *) echo "Please enter number between 1 & 8! Exiting now."; exit;;
 esac
 clear
 echo "Please choose desired demo from the list"
@@ -53,7 +53,7 @@ case ${program} in
     2) demo=gpe; echo "Chosen Demo: GPE"; sleep 3;;
     3) demo=term; echo "Chosen Demo: Terminal"; sleep 3;;
     4) demo=qt; echo "Chosen Demo: Qt Application"; sleep 3;;
-    *) echo "Please choose number between 1 & 4"
+    *) echo "Please choose number between 1 & 4! Exiting now."; exit;;
 esac
 result=${com}${demo}
 #echo ${result}
@@ -64,7 +64,7 @@ echo "Going to program this now."
 sleep 3
 case ${result} in
     #TX28S(4130)
-    "TX28Spoly") exec /bin/sh ${path}polytouch_tx28.sh;;
+    "TX28Spoly") exec /bin/sh ${path}polytouch_tx28s.sh;;
     "TX28Sgpe") exec /bin/sh ${path}gpe_tx28.sh;;
     "TX28Sterm") exec /bin/sh ${path}terminal_tx28.sh;;
     "TX28Sqt") exec /bin/sh ${path}qt_tx28.sh;;
@@ -87,7 +87,7 @@ case ${result} in
     #TX6S(8034)
     "TX6Spoly") exec /bin/sh ${path};;
     "TX6Sgpe") exec /bin/sh ${path};;
-    "TX6Sterm") exec /bin/sh ${path};;
+    "TX6Sterm") exec /bin/sh ${path}terminal_tx6s.sh;;
     "TX6Sqt") exec /bin/sh ${path};;
     #TX6Semmc(8035)
     "TX6Semmcpoly") exec /bin/sh ${path};;
