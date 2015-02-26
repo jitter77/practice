@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a polytouchdemo on Karo TX6DL#
+# Tool to program a GPE demo on Karo TX6Q      #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker December 2014                 #
@@ -9,36 +9,32 @@
 #                                              #
 #History                                       #
 #----------------------------------------------#
-#0.1 - 16.12.2014 - Initial Version            #
-#1.0 - 13.01.2015 - Override IP - settings in  #
-#                   predefined environment     #
-#1.1 - 13.01.2015 - Change display settings    #
-#1.2 - 30.01.2015 - Removed Backlightsettings  #
-#1.3 - 04.02.2015 - Enhanced setting for       #
+#0.1 - 03.02.2015 - Initial Version            #
+#1.0 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
 ################################################
 
 clear
-echo "Program Polytouchdemo to TX6DL(8110)"
-echo "------------------------------------"
+echo "Program Console - Image to TX6DL(8034)"
+echo "--------------------------------------"
 echo
 #Presetting
-IPH=192.168.15.173                         #Host
-IPT=192.168.15.205                         #Target
-uboot=u-boot-tx6u-81x0.bin                 #Bootloader
-image=setenv_poly_tx6.img                  #Environment
-dtb=imx6dl-tx6u-811x.dtb                   #Device Tree
-kernel=uImage_tx6                          #Linux Kernel
-rootfs=mucross-2.0-polytouchdemo-tx6.ubi   #Polytouchdemo
-port=/dev/ttyUSB0                          #serial port for console
+IPH=192.168.15.173 #Host
+IPT=192.168.15.205 #Target
+port=/dev/ttyUSB0
+uboot=u-boot-tx6s-8034.bin                  #Bootloader
+image=setenv_poly_tx6.img                   #Environment
+dtb=imx6dl-tx6s-8034.dtb                    #Device Tree
+kernel=uImage_tx6                           #Linux Kernel
+rootfs=    #Console - Image
 echo
 #preparation
 echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX6DL (TX6U-8110) inserted?"
+echo "module TX6S (TX6S-8034) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
@@ -121,8 +117,6 @@ echo > ${port}
 sleep 3
 #copy and source predefinded environment
 echo 'tftp ${loadaddr}' ${image} > ${port}
-sleep 3
-echo > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5
@@ -130,11 +124,11 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
-echo "11/18 - Transfering device tree"
-sleep 3
 echo > ${port}
 sleep 3
+echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
+sleep 3
 echo > ${port}
 sleep 8
 echo 'nand erase.part dtb' > ${port}
@@ -158,12 +152,12 @@ sleep 5
 #copy and install filesystem
 echo "15/18 - Transfering Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
+echo > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
-echo > ${port}
 sleep 15
 echo "17/18 - Reset and Reboot"
 echo 'reset' > ${port}
@@ -206,35 +200,30 @@ if [ "$video_decision" != y ]
          read video_mode
          if [ "$video_mode" = 1 ]
             then
-                #3,5" EDT
                 echo 'setenv video_mode ET0350' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
          elif [ "$video_mode" = 2 ]
             then
-                #4,3" EDT
                 echo 'setenv video_mode ET0430' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
          elif [ "$video_mode" = 3 ]
             then
-                #5" EDT
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
          elif [ "$video_mode" = 4 ]
             then
-                #5,7" EDT QVGA (320x240px)
                 echo 'setenv video_mode ETQ570' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
          elif [ "$video_mode" = 5 ]
             then
-                #7" EDT WVGA (800x480px)
                 echo 'setenv video_mode ET0700' > ${port}
                 echo 'saveenv' > ${port}
                 echo > ${port}
@@ -264,5 +253,8 @@ if [ "$video_decision" != y ]
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
+            sleep 3
+                echo "Finished!"
          fi
 fi
+
