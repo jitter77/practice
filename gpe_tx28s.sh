@@ -31,7 +31,7 @@ uboot=u-boot-tx28-41x0.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment
 dtb=imx28-tx28.dtb              #Device Tree
 kernel=uImage-tx28-m09-raw      #Linux kernel
-rootfs=   #Polytouchdemo
+rootfs=mucross-2.0-gpe-demo.ubi #GPE-Demo
 echo
 #preparation
 echo "Please check:"
