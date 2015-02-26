@@ -23,11 +23,11 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
-uboot=u-boot-tx6s-8034.bin                  #Bootloader
-image=setenv_poly_tx6.img                   #Environment
-dtb=imx6dl-tx6s-8034.dtb                    #Device Tree
-kernel=uImage_tx6                           #Linux Kernel
-rootfs=    #Console - Image
+uboot=u-boot-tx6s-8034.bin                      #Bootloader
+image=setenv_poly_tx6.img                       #Environment
+dtb=imx6dl-tx6s-8034.dtb                        #Device Tree
+kernel=uImage_tx6                               #Linux Kernel
+rootfs=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi  #Qt-Demo
 echo
 #preparation
 echo "Please check:"

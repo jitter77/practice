@@ -27,7 +27,7 @@ uboot=u-boot-tx6s-8034.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=imx6dl-tx6s-8034.dtb                    #Device Tree
 kernel=uImage_tx6                           #Linux Kernel
-rootfs=    #Polytouchdemo
+rootfs=mucross-2.0-polytouchdemo-tx6.ubi    #Polytouchdemo
 echo
 #preparation
 echo "Please check:"

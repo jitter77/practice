@@ -9,10 +9,14 @@
 #History                                       #
 #----------------------------------------------#
 #0.1 - 20.01.2015 - Initial Version            #
+#0.9 - 26.02.2015 - Several Boards added. File #
+#                   working                    #
 ################################################
 
 #presets
 demo=0
+#available modules (so far):TX28S(4130), TX28(4031), TX48(7020), TX53(8030), TX6S(8033),
+#TX6S(8034), TX6S(8035), TX6DL(8110), TX6Q(1010)
 com=0
 path=~/PycharmProjects/practice/    #FIXME for release
 clear
@@ -70,44 +74,53 @@ case ${result} in
     "TX28Sgpe") exec /bin/sh ${path}gpe_tx28s.sh;;
     "TX28Sterm") exec /bin/sh ${path}terminal_tx28s.sh;;
     "TX28Sqt") exec /bin/sh ${path}qt_tx28s.sh;;
+    "TX28Syocto") echo "Not available! Exiting now."; exit;;
     #TX28(4030)
     "TX28poly") exec /bin/sh ${path}polytouch_tx28.sh;;
     "TX28gpe") exec /bin/sh ${path}gpe_tx28.sh;;
     "TX28term") exec /bin/sh ${path}terminal_tx28.sh;;
     "TX28qt") exec /bin/sh ${path}qt_tx28.sh;;
+    "TX28yocto") echo "Not available! Exiting now."; exit;;
     #TX48(7020)
     "TX48poly") exec /bin/sh ${path}gpe_tx48.sh;;
     "TX48gpe") exec /bin/sh ${path}gpe_tx48.sh;;
     "TX48term") exec /bin/sh ${path}terminal_tx48.sh;;
     "TX48qt") exec /bin/sh ${path}qt_tx48.sh;;
+    "TX48yocto") echo "Not available! Exiting now."; exit;;
     #TX53(8030)
     "TX53poly") exec /bin/sh ${path};;
     "TX53gpe") exec /bin/sh ${path};;
     "TX53term") exec /bin/sh ${path};;
     "TX53qt") exec /bin/sh ${path};;
+    "TX53yocto") echo "Not available! Exiting now."; exit;;
     #TX6DLemmc(8033)
     "TX6DLemmcpoly") exec /bin/sh ${path};;
     "TX6DLemmcgpe") exec /bin/sh ${path};;
     "TX6DLemmcterm") exec /bin/sh ${path};;
     "TX6DLemmcqt") exec /bin/sh ${path};;
+    "TX6DLemmcyocto") echo "Not available! Exiting now."; exit;;
     #TX6S(8034)
     "TX6Spoly") exec /bin/sh ${path}polytouch_tx6s_8034.sh;;
     "TX6Sgpe") exec /bin/sh ${path}gpe_tx6s_8034.sh;;
     "TX6Sterm") exec /bin/sh ${path}terminal_tx6s.sh;;
     "TX6Sqt") exec /bin/sh ${path}qt_tx6s_8034.sh;;
+    "TX6Syocto") echo "Not available! Exiting now."; exit;;
     #TX6Semmc(8035)
     "TX6Semmcpoly") exec /bin/sh ${path};;
     "TX6Semmcgpe") exec /bin/sh ${path};;
     "TX6Semmcterm") exec /bin/sh ${path};;
     "TX6Semmcqt") exec /bin/sh ${path};;
+    "TX6Semmcyocto") echo "Not available! Exiting now."; exit;;
     #TX6DL(8110)
     "TX6DLpoly") exec /bin/sh ${path}polytouch_tx6dl.sh;;
     "TX6DLgpe") exec /bin/sh ${path}gpe_tx6dl_8110.sh;;
     "TX6DLterm") exec /bin/sh ${path}terminal_tx6dl_8110.sh;;
     "TX6DLqt") exec /bin/sh ${path}qt_tx6dl_8110.sh;;
+    "TX6DLyocto") echo "Not available! Exiting now."; exit;;
     #TX6Q(1010)
     "TX6Qpoly") exec /bin/sh ${path}polytouch_tx6.sh;;
     "TX6Qgpe") exec /bin/sh ${path}gpe_tx6q.sh;;
     "TX6Qterm") exec /bin/sh ${path}terminal_tx6q.sh;;
     "TX6Qqt") exec /bin/sh ${path}qt_tx6q.sh;;
+    "TX6Qyocto") echo "Not available! Exiting now."; exit;;
 esac

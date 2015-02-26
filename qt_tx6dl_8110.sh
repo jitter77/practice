@@ -24,14 +24,14 @@ echo "Program Polytouchdemo to TX6DL(8110)"
 echo "------------------------------------"
 echo
 #Presetting
-IPH=192.168.15.173                         #Host
-IPT=192.168.15.205                         #Target
-uboot=u-boot-tx6u-81x0.bin                 #Bootloader
-image=setenv_poly_tx6.img                  #Environment
-dtb=imx6dl-tx6u-811x.dtb                   #Device Tree
-kernel=uImage_tx6                          #Linux Kernel
-rootfs=   #Polytouchdemo
-port=/dev/ttyUSB0                          #serial port for console
+IPH=192.168.15.173                              #Host
+IPT=192.168.15.205                              #Target
+uboot=u-boot-tx6u-81x0.bin                      #Bootloader
+image=setenv_poly_tx6.img                       #Environment
+dtb=imx6dl-tx6u-811x.dtb                        #Device Tree
+kernel=uImage_tx6                               #Linux Kernel
+rootfs=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi  #Qt-Demo
+port=/dev/ttyUSB0                               #serial port for console
 echo
 #preparation
 echo "Please check:"

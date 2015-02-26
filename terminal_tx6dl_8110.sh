@@ -30,7 +30,7 @@ uboot=u-boot-tx6u-81x0.bin                 #Bootloader
 image=setenv_poly_tx6.img                  #Environment
 dtb=imx6dl-tx6u-811x.dtb                   #Device Tree
 kernel=uImage_tx6                          #Linux Kernel
-rootfs=   #Polytouchdemo
+rootfs=mucross-2.0-console-image-tx6.ubi   #Terminaldemo
 port=/dev/ttyUSB0                          #serial port for console
 echo
 #preparation
