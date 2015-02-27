@@ -20,15 +20,15 @@
 ################################################
 
 clear
-echo "Program Polytouchdemo to TX6DL(8110)" #FIXME no LVDS!
+echo "Program Polytouchdemo to TX6DL(8030)"
 echo "------------------------------------"
 echo
 #Presetting
 IPH=192.168.15.173                         #Host
 IPT=192.168.15.205                         #Target
-uboot=u-boot-tx6u-81x0.bin                 #Bootloader
+uboot=u-boot-tx6u-80x0.bin                 #Bootloader
 image=setenv_poly_tx6.img                  #Environment
-dtb=imx6dl-tx6u-811x.dtb                   #Device Tree #FIXME no LVDS!
+dtb=imx6dl-tx6u-80xx.dtb                   #Device Tree
 kernel=uImage_tx6                          #Linux Kernel
 rootfs=mucross-2.0-polytouchdemo-tx6.ubi   #Polytouchdemo
 port=/dev/ttyUSB0                          #serial port for console
@@ -38,7 +38,7 @@ echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX6DL (TX6U-8110) inserted?" #FIXME noLVDS!
+echo "module TX6DL (TX6U-8030) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
