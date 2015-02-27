@@ -128,6 +128,7 @@ echo > ${port}
 sleep 3
 echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
+echo > ${port}
 sleep 3
 echo > ${port}
 sleep 8
@@ -152,6 +153,8 @@ sleep 5
 #copy and install filesystem
 echo "15/18 - Transfering Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
+echo > ${port}
+sleep 3
 echo > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
