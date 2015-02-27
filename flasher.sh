@@ -111,11 +111,11 @@ case ${result} in
     "TX6Semmcterm") exec /bin/sh ${path};;
     "TX6Semmcqt") exec /bin/sh ${path};;
     "TX6Semmcyocto") echo "Not available! Exiting now."; exit;;
-    #TX6DL(8110)#FIXME 8030! 8110 is LVDS!
-    "TX6DLpoly") exec /bin/sh ${path}polytouch_tx6dl.sh;;
-    "TX6DLgpe") exec /bin/sh ${path}gpe_tx6dl_8110.sh;;
-    "TX6DLterm") exec /bin/sh ${path}terminal_tx6dl_8110.sh;;
-    "TX6DLqt") exec /bin/sh ${path}qt_tx6dl_8110.sh;;
+    #TX6DL(8030)
+    "TX6DLpoly") exec /bin/sh ${path}polytouch_tx6dl_8030.sh;;
+    "TX6DLgpe") exec /bin/sh ${path}gpe_tx6dl_8030.sh;;
+    "TX6DLterm") exec /bin/sh ${path}terminal_tx6dl_8030.sh;;
+    "TX6DLqt") exec /bin/sh ${path}qt_tx6dl_8030.sh;;
     "TX6DLyocto") echo "Not available! Exiting now."; exit;;
     #TX6Q(1010)
     "TX6Qpoly") exec /bin/sh ${path}polytouch_tx6.sh;;
