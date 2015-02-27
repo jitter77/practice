@@ -29,7 +29,7 @@ echo "4: TX53 (TX53-8030)" #FIXME enter TX6S-8033(emmc)
 echo "5: TX6S (TX6S-8034)"
 echo "6: TX6SeMMC (TX6S-8035)"
 echo "7: TX6DL (TX6U-8030)"
-echo "8: TX6Q (TX6Q-1010)"
+echo "8: TX6Q (TX6Q-1030)" #FIXME enter TX6Q-1020(emmc)
 echo "Enter number of Module here: "
 read module
 case ${module} in
@@ -117,7 +117,7 @@ case ${result} in
     "TX6DLterm") exec /bin/sh ${path}terminal_tx6dl_8030.sh;;
     "TX6DLqt") exec /bin/sh ${path}qt_tx6dl_8030.sh;;
     "TX6DLyocto") echo "Not available! Exiting now."; exit;;
-    #TX6Q(1010)
+    #TX6Q(1030)
     "TX6Qpoly") exec /bin/sh ${path}polytouch_tx6.sh;;
     "TX6Qgpe") exec /bin/sh ${path}gpe_tx6q.sh;;
     "TX6Qterm") exec /bin/sh ${path}terminal_tx6q.sh;;

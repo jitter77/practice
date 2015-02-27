@@ -20,16 +20,16 @@
 ################################################
 
 clear
-echo "Program Polytouchdemo to TX6Q"
-echo "-----------------------------"
+echo "Program Polytouchdemo to TX6Q(1030)"
+echo "-----------------------------------"
 echo
 #Presetting
 IPH=192.168.15.173                          #Host
 IPT=192.168.15.205                          #Target
 port=/dev/ttyUSB0                           #serial port for console
-uboot=u-boot-tx6q-1010.bin                  #Bootloader
+uboot=u-boot-tx6q-10x0.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
-dtb=imx6q-tx6q-1010.dtb                     #Device Tree
+dtb=imx6q-tx6q-10x0.dtb                     #Device Tree
 kernel=uImage_tx6                           #Linux Kernel
 rootfs=mucross-2.0-polytouchdemo-tx6.ubi    #Polytouchdemo
 echo
@@ -38,7 +38,7 @@ echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX6 (TX6Q-1010) inserted?"
+echo "module TX6 (TX6Q-1030) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
