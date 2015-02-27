@@ -16,20 +16,22 @@
 #presets
 demo=0
 #available modules (so far):TX28S(4130), TX28(4031), TX48(7020), TX53(8030), TX6S(8033),
-#TX6S(8034), TX6S(8035), TX6DL(8110), TX6Q(1010)
+#TX6S(8034), TX6S(8035), TX6DL(8110), TX6Q(1010) #FIXME
 com=0
 path=~/PycharmProjects/practice/    #FIXME for release
 clear
 echo "Please choose your module from the list"
 echo "---------------------------------------"
-echo "1: TX28S (TX28-4130)"
-echo "2: TX28 (TX28-4031)"
-echo "3: TX48 (TX48-7020)"
-echo "4: TX53 (TX53-8030)" #FIXME enter TX6S-8033(emmc)
-echo "5: TX6S (TX6S-8034)"
-echo "6: TX6SeMMC (TX6S-8035)"
-echo "7: TX6DL (TX6U-8030)"
-echo "8: TX6Q (TX6Q-1030)" #FIXME enter TX6Q-1020(emmc)
+echo "1:  TX28S (TX28-4130)"
+echo "2:  TX28 (TX28-4031)"
+echo "3:  TX48 (TX48-7020)"
+echo "4:  TX53 (TX53-8030)"
+echo "5:  TX6S (TX6S-8034)"
+echo "6:  TX6S (TX6S-8035)"
+echo "7:  TX6DL (TX6U-8030)"
+echo "8:  TX6DL (TX6U-8033)"
+echo "9:  TX6Q (TX6Q-1030)"
+echo "10: TX6Q (TX6Q-1020)"
 echo "Enter number of Module here: "
 read module
 case ${module} in
@@ -40,8 +42,10 @@ case ${module} in
     5) com=TX6S; echo "Chosen Module:" ${com};;
     6) com=TX6Semmc; echo "Chosen Module:" ${com};;
     7) com=TX6DL; echo "Chosen Module:" ${com};;
-    8) com=TX6Q; echo "Chosen Module:" ${com};;
-    *) echo "Please enter number between 1 & 8! Exiting now."; exit;;
+    8) com=TX6DLemmc; echo "Chosen Module:" ${com};;
+    9) com=TX6Q; echo "Chosen Module:" ${com};;
+    10) com=TX6Qemmc; echo "Chosen Module:" ${com};;
+    *) echo "Please enter number between 1 & 10! Exiting now."; exit;;
 esac
 clear
 echo "Please choose desired demo from the list"
@@ -118,9 +122,16 @@ case ${result} in
     "TX6DLqt") exec /bin/sh ${path}qt_tx6dl_8030.sh;;
     "TX6DLyocto") echo "Not available! Exiting now."; exit;;
     #TX6Q(1030)
-    "TX6Qpoly") exec /bin/sh ${path}polytouch_tx6.sh;;
-    "TX6Qgpe") exec /bin/sh ${path}gpe_tx6q.sh;;
-    "TX6Qterm") exec /bin/sh ${path}terminal_tx6q.sh;;
-    "TX6Qqt") exec /bin/sh ${path}qt_tx6q.sh;;
+    "TX6Qpoly") exec /bin/sh ${path}polytouch_tx6q_1030.sh;;
+    "TX6Qgpe") exec /bin/sh ${path}gpe_tx6q_1030.sh;;
+    "TX6Qterm") exec /bin/sh ${path}terminal_tx6q_1030.sh;;
+    "TX6Qqt") exec /bin/sh ${path}qt_tx6q_1030.sh;;
     "TX6Qyocto") echo "Not available! Exiting now."; exit;;
+    #FIXME TX6Q1020
+    #TX6Q(1020)
+    "TX6Qemmcpoly") exec /bin/sh ${path};;
+    "TX6Qemmcgpe") exec /bin/sh ${path};;
+    "TX6Qemmcterm") exec /bin/sh ${path};;
+    "TX6Qemmcqt")  exec /bin/sh ${path};;
+    "TX6Qemmcyocto") echo "Not available! Exiting now."; exit;;
 esac
