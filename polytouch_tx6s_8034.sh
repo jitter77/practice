@@ -13,11 +13,14 @@
 #1.0 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.1 - 06.03.2015 - Chenged settings for       #
+#                   pixelclock for 7" and run  #
+#                   fdtsave                    #
 ################################################
 
 clear
 echo "Program Console - Image to TX6S(8034)"
-echo "--------------------------------------"
+echo "-------------------------------------"
 echo
 #Presetting
 IPH=192.168.15.173 #Host
@@ -90,21 +93,29 @@ sleep 3
 echo " 2/18 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
+#echo > ${port}
 echo " 3/18 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
 echo 'setenv autostart no' > ${port}
+echo > ${port}
+sleep 2
 echo 'saveenv' > ${port}
+echo > ${port}
+sleep 2
 echo " 4/18 - Update Bootloader"
 sleep 5
-echo 'tftp ${loadaddr}' ${uboot} > ${port}
 echo " 5/18 - Transfering Bootloader"
+echo 'tftp ${loadaddr}' ${uboot} > ${port}
+echo > ${port}
 sleep 10
 echo " 6/18 - Installing Bootloader"
 sleep 5
 echo 'romupdate ${fileaddr}' > ${port}
+echo > ${port}
 sleep 5
 echo " 7/18 - Reset"
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo " 8/18 - Set default environment"
 echo 'env default -f -a' > ${port}
@@ -130,14 +141,13 @@ echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
 sleep 3
 echo > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
+sleep 3
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo 'run fdtsave' > ${port}
+echo > ${port}
 sleep 5
-echo 'saveenv' > ${port}
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
@@ -158,6 +168,7 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
+echo > ${port}
 sleep 15
 echo "17/18 - Reset and Reboot"
 echo 'reset' > ${port}
@@ -236,14 +247,10 @@ if [ "$video_decision" != y ]
                 read invert
                 if [ ${invert} = y ]
                     then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
-                    sleep 3
+                    echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     echo > ${port}
                     sleep 3
-                    echo 'nand erase.part dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
                     sleep 3
                     echo "Finished!"

@@ -17,6 +17,9 @@
 #1.3 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.4 - 06.03.2015 - Changed settings for       #
+#                   pixelclock for 7" and run  #
+#                   fdtsave                    #
 ################################################
 
 clear
@@ -134,13 +137,9 @@ echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
 sleep 3
 echo > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
-sleep 5
-echo 'saveenv' > ${port}
+echo 'run fdtsave' > ${port}
+sleep 1
 echo 'reset' > ${port}
 sleep 5
 echo > ${port}
@@ -152,6 +151,7 @@ echo 'nand erase.part linux' > ${port}
 sleep 5
 echo "14/18 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
+echo > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/18 - Transfering Filesystem"
@@ -162,6 +162,7 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
+echo > ${port}
 sleep 15
 echo "17/18 - Reset and Reboot"
 echo 'reset' > ${port}
@@ -240,16 +241,10 @@ if [ "$video_decision" != y ]
                 read invert
                 if [ ${invert} = y ]
                     then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                    echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     sleep 3
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
-                    sleep 3
-                    echo 'nand erase.part dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
                     echo "Finished!"
                 else
                     echo "Finished!"

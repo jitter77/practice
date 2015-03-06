@@ -13,6 +13,9 @@
 #1.0 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.1 - 06.03.2015 - Change settings for        #
+#                   pixelclock for 7" and run  #
+#                   fdtsave                    #
 ################################################
 
 clear
@@ -128,26 +131,26 @@ echo > ${port}
 sleep 3
 echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
-sleep 3
 echo > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
 sleep 5
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo 'run fdtsave' > ${port}
+echo > ${port}
 sleep 5
-echo 'saveenv' > ${port}
 echo 'reset' > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
 echo "13/18 - Transfering Linux Kernel"
 echo 'tftp ${loadaddr}' ${kernel} > ${port}
-sleep 15
+echo > ${port}
+sleep 5
 echo 'nand erase.part linux' > ${port}
+echo > ${port}
 sleep 5
 echo "14/18 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
+echo > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/18 - Transfering Filesystem"
@@ -155,6 +158,7 @@ echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 echo > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
+echo > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
@@ -236,16 +240,12 @@ if [ "$video_decision" != y ]
                 read invert
                 if [ ${invert} = y ]
                     then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                    echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     sleep 3
                     echo > ${port}
-                    sleep 3
-                    echo 'nand erase.part dtb' > ${port}
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
+                    sleep 1
                     echo "Finished!"
                 else
                     echo "Finished!"

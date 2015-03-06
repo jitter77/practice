@@ -13,6 +13,9 @@
 #1.0 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.1 - 05.03.2015 - Change settings for        #
+#                   pixelclock for new 7"      #
+#1.2 - 06.03.2015 - run fdtsave                #
 ################################################
 
 clear
@@ -117,9 +120,11 @@ echo > ${port}
 sleep 3
 #copy and source predefinded environment
 echo 'tftp ${loadaddr}' ${image} > ${port}
-sleep 8
-echo 'source ${fileaddr}' > ${port}
+echo > ${port}
 sleep 5
+echo 'source ${fileaddr}' > ${port}
+echo > ${port}
+sleep 2
 #override IP - Settings in predefined Environment
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
@@ -130,14 +135,9 @@ echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
 echo > ${port}
 sleep 3
-echo > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo 'run fdtsave' > ${port}
 sleep 5
-echo 'saveenv' > ${port}
 echo 'reset' > ${port}
 sleep 5
 echo > ${port}
@@ -239,14 +239,11 @@ if [ "$video_decision" != y ]
                 read invert
                 if [ ${invert} = y ]
                     then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                    echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     sleep 3
                     echo > ${port}
                     sleep 3
-                    echo 'nand erase.part dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
                     sleep 3
                     echo "Finished!"

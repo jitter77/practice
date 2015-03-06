@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a polytouchdemo on Karo TX48 #
+# Tool to program a Qt-Demo on Karo TX48       #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker December 2014                 # 
@@ -16,8 +16,8 @@
 ################################################
 
 clear
-echo "Program Polytouchdemo to TX48"
-echo "-----------------------------"
+echo "Program Qt-Demo to TX48"
+echo "-----------------------"
 echo
 #Presetting
 IPH=192.168.15.173 #Host
@@ -34,7 +34,7 @@ echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX28 inserted?"
+echo "module TX48(TX48-7020) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue

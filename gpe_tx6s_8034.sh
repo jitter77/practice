@@ -13,6 +13,9 @@
 #1.0 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.1 - 06.03.2015 - Changed settings for       #
+#                   pixelclock for 7" and run  #
+#                   fdtsave                    #
 ################################################
 
 clear
@@ -130,14 +133,13 @@ echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
 sleep 3
 echo > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
+sleep 3
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo 'run fdtsave' > ${port}
+echo > ${port}
 sleep 5
-echo 'saveenv' > ${port}
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
@@ -148,7 +150,7 @@ echo 'nand erase.part linux' > ${port}
 sleep 5
 echo "14/18 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
-sleep 5
+sleep 8
 #copy and install filesystem
 echo "15/18 - Transfering Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
@@ -158,9 +160,10 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
-sleep 15
+sleep 20
 echo "17/18 - Reset and Reboot"
 echo 'reset' > ${port}
+echo > ${port}
 sleep 3
 echo > ${port}
 echo > ${port}
@@ -236,14 +239,10 @@ if [ "$video_decision" != y ]
                 read invert
                 if [ ${invert} = y ]
                     then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
-                    sleep 3
+                    echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     echo > ${port}
                     sleep 3
-                    echo 'nand erase.part dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
                     sleep 3
                     echo "Finished!"

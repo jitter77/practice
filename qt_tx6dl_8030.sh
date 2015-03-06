@@ -247,7 +247,7 @@ if [ "$video_decision" != y ]
                 read invert
                 if [ ${invert} = y ]
                     then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                    echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     sleep 3
                     echo > ${port}
                     sleep 3

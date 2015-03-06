@@ -23,18 +23,18 @@ echo
 IPH=192.168.15.173 #Host
 IPT=192.168.15.205 #Target
 port=/dev/ttyUSB0
-#uboot=u-boot-tx28-40x1.sb
-#image=setenv_tx48_poly.img
-#dtb=am335x-tx48.dtb
-#kernel=
-#rootfs=
+uboot=u-boot-tx48.img
+image=setenv_tx48_poly.img
+dtb=am335x-tx48.dtb
+kernel=uImage_tx48
+rootfs=
 echo
 #preparation
 echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX28 inserted?"
+echo "module TX48 (TX48-7020) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
@@ -95,7 +95,7 @@ echo 'setenv autostart no' > ${port}
 echo 'saveenv' > ${port}
 echo " 4/20 - Update Bootloader"
 sleep 5
-echo 'tftp ${loadaddr} u-boot-tx28-40x1.sb' > ${port} # FIXME
+echo 'tftp ${loadaddr}' ${uboot} > ${port}
 echo " 5/20 - Transfering Bootloader"
 sleep 10
 echo " 6/20 - Installing Bootloader"
@@ -113,7 +113,7 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo "10/20 - Transfer Environment"
 #copy and source predefinded environment
-echo 'tftp ${loadaddr} setenv_tx48_poly.img' > ${port}
+echo 'tftp ${loadaddr}' ${image} > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
 sleep 5
@@ -122,7 +122,7 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
 echo "11/20 - Transfering device tree"
-echo 'tftp ${loadaddr} imx28-tx28.dtb' > ${port} # FIXME
+echo 'tftp ${loadaddr}' ${dtb} > ${port}
 sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
@@ -135,7 +135,7 @@ sleep 5
 echo > ${port}
 #copy and install kernel
 echo "13/20 - Transfering Linux Kernel"
-echo 'tftp ${loadaddr} uImage-tx28-m09-raw' > ${port} # FIXME
+echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
 sleep 5
@@ -144,7 +144,7 @@ echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
-echo 'tftp ${loadaddr} touchdemo-m09-flip.ubi' > ${port} # FIXME
+echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
@@ -222,7 +222,7 @@ if [ "$video_decision" != y ]
                 echo > ${port}
                 sleep 3
                 #we need to invert the pixelclock for the 7". Otherwise the output won't be correct and some pixels are strange
-                echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                echo 'fdt set display/display-timings/ET0700/ pixelclk-active <0>' > ${port}
                 sleep 3
                 echo > ${port}
                 sleep 3

@@ -17,6 +17,8 @@
 #1.3 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.4 - 05.02.2015 - Change settings for        #
+#                   pixelclock for new 7"      #
 ################################################
 
 clear
@@ -247,7 +249,7 @@ if [ "$video_decision" != y ]
                 read invert
                 if [ ${invert} = y ]
                     then
-                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                    echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     sleep 3
                     echo > ${port}
                     sleep 3
