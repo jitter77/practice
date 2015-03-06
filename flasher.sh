@@ -106,7 +106,7 @@ case ${result} in
     #TX6S(8034)
     "TX6Spoly") exec /bin/sh ${path}polytouch_tx6s_8034.sh;;
     "TX6Sgpe") exec /bin/sh ${path}gpe_tx6s_8034.sh;;
-    "TX6Sterm") exec /bin/sh ${path}terminal_tx6s.sh;;
+    "TX6Sterm") exec /bin/sh ${path}terminal_tx6s_8034.sh;;
     "TX6Sqt") exec /bin/sh ${path}qt_tx6s_8034.sh;;
     "TX6Syocto") echo "Not available! Exiting now."; exit;;
     #TX6Semmc(8035)
