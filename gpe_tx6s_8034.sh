@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a GPE demo on Karo TX6Q      #
+# Tool to program a GPE demo on Karo TX6S      #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker December 2014                 #
@@ -30,7 +30,7 @@ uboot=u-boot-tx6s-8034.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=imx6dl-tx6s-8034.dtb                    #Device Tree
 kernel=uImage_tx6                           #Linux Kernel
-rootfs=mucross-2.0-gpe-demo-tx6.ubi         #Console - Image
+rootfs=mucross-2.0-gpe-demo-tx6.ubi         #GPE - Image
 echo
 #preparation
 echo "Please check:"

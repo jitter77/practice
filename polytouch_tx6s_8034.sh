@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a GPE demo on Karo TX6Q      #
+# Tool to program a GPE demo on Karo TX6S      #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker December 2014                 #

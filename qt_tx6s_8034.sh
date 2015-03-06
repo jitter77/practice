@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a GPE demo on Karo TX6Q      #
+# Tool to program a GPE demo on Karo TX6S      #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker December 2014                 #
@@ -13,6 +13,9 @@
 #1.0 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.1 - 06.03.2015 - Changed settings for       #
+#                   pixelclock for 7" and run  #
+#                   fdtsave                    #
 ################################################
 
 clear
@@ -117,8 +120,10 @@ echo > ${port}
 sleep 3
 #copy and source predefinded environment
 echo 'tftp ${loadaddr}' ${image} > ${port}
+echo > ${port}
 sleep 8
 echo 'source ${fileaddr}' > ${port}
+echo > ${port}
 sleep 5
 #override IP - Settings in predefined Environment
 echo 'setenv serverip '${IPH} > ${port}
@@ -134,10 +139,11 @@ sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo 'run fdtsave' > ${port}
+echo > ${port}
 sleep 5
-echo 'saveenv' > ${port}
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
@@ -153,12 +159,14 @@ sleep 5
 echo "15/18 - Transfering Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 echo > ${port}
-sleep 25
+sleep 40
 echo 'nand erase.part rootfs' > ${port}
+echo > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
-sleep 15
+echo > ${port}
+sleep 35
 echo "17/18 - Reset and Reboot"
 echo 'reset' > ${port}
 sleep 3
@@ -237,15 +245,11 @@ if [ "$video_decision" != y ]
                 if [ ${invert} = y ]
                     then
                     echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
-                    sleep 3
                     echo > ${port}
-                    sleep 3
-                    echo 'nand erase.part dtb' > ${port}
+                    sleep 5
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
+                    sleep 5
                     echo "Finished!"
                 else
                     echo "Finished!"
