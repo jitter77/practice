@@ -19,6 +19,7 @@
 #                   EDT 7"                     #
 #1.4 - 05.02.2015 - Change settings for        #
 #                   pixelclock for new 7"      #
+#1.5 - 11.03.2015 - run fdtsave                #
 ################################################
 
 clear
@@ -133,18 +134,12 @@ echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
 echo "11/18 - Transfering device tree"
-sleep 3
-echo > ${port}
-sleep 3
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
+sleep 3
 echo > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
-sleep 5
-echo 'saveenv' > ${port}
+echo 'run fdtsave' > ${port}
+sleep 1
 echo 'reset' > ${port}
 sleep 5
 echo > ${port}
@@ -251,14 +246,8 @@ if [ "$video_decision" != y ]
                     then
                     echo 'fdt set display/display-timings/ET0700/ pixelclk-active <1>' > ${port}
                     sleep 3
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
-                    sleep 3
-                    echo 'nand erase.part dtb' > ${port} #FIXME run fdtsave
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
                     echo "Finished!"
                 else
                     echo "Finished!"
