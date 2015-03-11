@@ -98,7 +98,7 @@ case ${result} in
     "TX53qt") exec /bin/sh ${path};;
     "TX53yocto") echo "Not available! Exiting now."; exit;;
     #TX6DLemmc(8033)
-    "TX6DLemmcpoly") exec /bin/sh ${path};;
+    "TX6DLemmcpoly") exec /bin/sh ${path}polytouch_tx6dl_8033.sh;;
     "TX6DLemmcgpe") exec /bin/sh ${path};;
     "TX6DLemmcterm") exec /bin/sh ${path};;
     "TX6DLemmcqt") exec /bin/sh ${path};;

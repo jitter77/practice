@@ -17,6 +17,7 @@
 #1.3 - 04.02.2015 - Enhanced setting for       #
 #                   pixelclock of old and new  #
 #                   EDT 7"                     #
+#1.4 - 11.03.2015 - run fdtsave                #
 ################################################
 
 clear
@@ -128,13 +129,11 @@ echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
 echo "11/20 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
-echo "12/20 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
-sleep 5
-echo 'saveenv' > ${port}
+sleep 3
+echo > ${port}
+echo "12/18 - Save device tree"
+echo 'run fdtsave' > ${port}
+sleep 1
 echo 'reset' > ${port}
 sleep 5
 echo > ${port}
@@ -235,14 +234,8 @@ if [ "$video_decision" != y ]
                     then
                     echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
                     sleep 3
-                    echo > ${port}2
-                    sleep 3
-                    echo 'nand erase.part dtb' > ${port}
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
                     echo "Finished!"
                 else
                     echo "Finished!"

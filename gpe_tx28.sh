@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a polytouchdemo on Karo TX28 #
+# Tool to program a GPE -demo on Karo TX28     #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker November 2014                 #
@@ -14,11 +14,12 @@
 #                   predefined environment     #
 #1.1 - 13.01.2015 - Change display settings    #
 #1.2 - 21.01.2015 - New u-boot, new kernel     #
+#1.3 - 11.03.2015 - run fdtsave                #
 ################################################
 
 clear
-echo "Program Polytouchdemo to TX28"
-echo "-----------------------------"
+echo "Program GPE - demo to TX28"
+echo "--------------------------"
 echo
 #Presetting
 IPH=192.168.15.173                           #Host
@@ -28,7 +29,7 @@ uboot=u-boot-tx28-40x1.sb                    #Bootloader
 image=setenv_poly_tx28.img                   #Environment
 dtb=imx28-tx28.dtb                           #Device Tree
 kernel=uImage_tx28                           #Linux kernel
-rootfs=mucross-2.0-gpe-demo-image-tx28.ubi   #Polytouchdemo
+rootfs=mucross-2.0-gpe-demo-image-tx28.ubi   #GPE - demo
 echo
 #preparation
 echo "Please check:"
@@ -163,15 +164,9 @@ echo "18/20 - Set backlight to full brightness"
 sleep 2
 echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
 sleep 3
-echo > ${port}
-sleep 3
-echo 'nand erase.part dtb' > ${port}
-sleep 3
 echo "19/20 - Save environment"
-sleep 3
+echo 'run fdtsave' > ${port}
 echo > ${port}
-echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-sleep 3
 echo "20/20 - Done!"
 #ready for start
 #change displaysettings
