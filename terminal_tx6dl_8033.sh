@@ -47,7 +47,7 @@ read continue
 if [ "$continue" != y ]
  then
     echo "exiting now!"
-    exit
+    exit 0
  else
     clear
 fi

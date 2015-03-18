@@ -48,7 +48,7 @@ read continue
 if [ "$continue" != y ]
  then
     echo "exiting now!"
-    exit
+    exit 0
  else
     clear
 fi
@@ -135,12 +135,18 @@ echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
 echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
+echo > ${port}
 sleep 3
 echo > ${port}
-echo "12/18 - Save device tree"
-echo 'run fdtsave' > ${port}
-sleep 1
+echo "12/20 - Save device tree"
+echo 'nand erase.part dtb' > ${port}
+echo > ${port}
+sleep 3
+echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo > ${port}
+sleep 3
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel

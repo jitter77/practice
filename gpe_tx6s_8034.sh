@@ -130,16 +130,19 @@ echo 'saveenv' > ${port}
 echo > ${port}
 sleep 3
 echo "11/18 - Transfering device tree"
+sleep 3
+echo > ${port}
+sleep 3
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
-sleep 3
 echo > ${port}
-sleep 3
-echo "12/18 - Save device tree"
-echo 'run fdtsave' > ${port}
-echo > ${port}
+sleep 8
+echo 'nand erase.part dtb' > ${port}
 sleep 5
+echo "12/18 - Save device tree"
+echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+sleep 5
+echo 'saveenv' > ${port}
 echo 'reset' > ${port}
-echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
@@ -197,7 +200,7 @@ read video_decision
 if [ "$video_decision" != y ]
     then
         echo "Video resolution set to ETV570, exiting now!"
-        exit
+        exit 0
     else
          echo "Please enter number of desired video mode (1-6)"
          read video_mode

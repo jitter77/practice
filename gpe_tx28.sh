@@ -43,7 +43,7 @@ read continue
 if [ "$continue" != y ]
  then
     echo "exiting now!"
-    exit
+    exit 0
  else
     clear
 fi
@@ -99,9 +99,9 @@ echo 'saveenv' > ${port}
 echo " 4/20 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
-echo " 5/20 - Transfering Bootloader"
+echo " 5/20 - Transfer Bootloader"
 sleep 10
-echo " 6/20 - Installing Bootloader"
+echo " 6/20 - Install Bootloader"
 sleep 5
 echo 'romupdate ${fileaddr}' > ${port}
 sleep 5
@@ -124,20 +124,24 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
-echo "11/20 - Transfering device tree"
+echo "11/20 - Transfer device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
+echo > ${port}
+sleep 3
+echo > ${port}
 echo "12/20 - Save device tree"
+echo 'nand erase.part dtb' > ${port}
+echo > ${port}
+sleep 3
 echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
-sleep 5
-echo 'saveenv' > ${port}
+echo > ${port}
+sleep 3
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
-echo "13/20 - Transfering Linux Kernel"
+echo "13/20 - Transfer Linux Kernel"
 echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
@@ -146,7 +150,7 @@ echo "14/20 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
-echo "15/20 - Transfering Filesystem"
+echo "15/20 - Transfer Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}

@@ -15,9 +15,29 @@ setenv bootcmd_nand 'set autostart no;run bootargs_ubifs;nboot linux'
 setenv bootcmd_net 'set autoload y;set autostart n;run bootargs_nfs;dhcp'
 setenv bootdelay 3
 setenv bootfile uImage
-setenv bootcmd 'bootm ${loadaddr} - ${fdtaddr}'
+setenv bootm_cmd 'bootm ${loadaddr} - ${fdtaddr}'
 setenv cpu_clk 720
 setenv default_bootargs 'set bootargs init=/linuxrc console=ttyO0,115200 rw debug panic=1 ${append_bootargs}'
 setenv ethact cpsw
 setenv fdtaddr 81000000
 setenv fdtsave 'fdt resize;nand erase.part dtb;nand write ${fdtaddr} dtb ${fdtsize}'
+setenv fdtsize 8fc4
+setenv fileaddr 83000000
+setenv ipaddr 192.168.15.205
+setenv loadaddr 83000000
+setenv mtddevname u-boot-spl
+setenv mtddevnum 0
+setenv mtdids 'nand0=omap2-nand.0'
+setenv mtdparts 'mtdparts=omap2-nand.0:128k(u-boot-spl),1m(u-boot),384k(env),6m(linux),119040k(rootfs),3328k@127232k(logo.bmp),512k@127m(dtb),512k(bbt)ro'
+setenv nfsroot /tftpboot/rootfs
+setenv otg_mode device
+setenv partition nand0,0
+setenv serverip 192.168.15.173
+setenv splashimage 83000000
+setenv splashpos m,m
+setenv stderr serial
+setenv stdin serial
+setenv stdout serial
+setenv touchpanel edt-ft5x06
+setenv ver U-Boot 2013.07-00715-g0a44bb7 (Aug 27 2014 - 13:20:10)
+setenv video_mode ETV570

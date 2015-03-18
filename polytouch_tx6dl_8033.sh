@@ -48,7 +48,7 @@ read continue
 if [ "$continue" != y ]
  then
     echo "exiting now!"
-    exit
+    exit 0
  else
     clear
 fi
@@ -138,12 +138,14 @@ sleep 3
 echo > ${port}
 sleep 3
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
-echo 'tftp ${loadaddr}' ${dtb} > ${port}
-sleep 3
 echo > ${port}
+sleep 8
+echo 'nand erase.part dtb' > ${port}
+sleep 5
 echo "12/18 - Save device tree"
-echo 'run fdtsave' > ${port}
-sleep 1
+echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+sleep 5
+echo 'saveenv' > ${port}
 echo 'reset' > ${port}
 sleep 5
 echo > ${port}

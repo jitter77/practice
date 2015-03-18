@@ -46,7 +46,7 @@ read continue
 if [ "$continue" != y ]
  then
     echo "exiting now!"
-    exit
+    exit 0
  else
     clear
 fi
@@ -102,9 +102,9 @@ echo 'saveenv' > ${port}
 echo " 4/20 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
-echo " 5/20 - Transfering Bootloader"
+echo " 5/20 - Transfer Bootloader"
 sleep 10
-echo " 6/20 - Installing Bootloader"
+echo " 6/20 - Install Bootloader"
 sleep 5
 echo 'romupdate ${fileaddr}' > ${port}
 sleep 5
@@ -127,18 +127,24 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
-echo "11/20 - Transfering device tree"
+echo "11/20 - Transfer device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
+echo > ${port}
 sleep 3
 echo > ${port}
-echo "12/18 - Save device tree"
-echo 'run fdtsave' > ${port}
-sleep 1
+echo "12/20 - Save device tree"
+echo 'nand erase.part dtb' > ${port}
+echo > ${port}
+sleep 3
+echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo > ${port}
+sleep 3
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
-echo "13/20 - Transfering Linux Kernel"
+echo "13/20 - Transfer Linux Kernel"
 echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
@@ -147,7 +153,7 @@ echo "14/20 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
-echo "15/20 - Transfering Filesystem"
+echo "15/20 - Transfer Filesystem"
 echo 'tftp 0x40000000' ${rootfs} > ${port}                          #Caution: Because of size 0x40000000
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
@@ -162,19 +168,15 @@ echo > ${port}
 echo > ${port}
 #backlight is only 50% so far, set it to 100%
 echo "18/20 - Set backlight to full brightness"
-sleep 6
+sleep 2
 echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
-sleep 3
+sleep 2
+echo > ${port}
+echo "19/20 - Save Environment"
+echo 'run fdtsave' > ${port}
 echo > ${port}
 sleep 3
-echo 'nand erase.part dtb' > ${port}
-sleep 3
-echo "19/20 - Save environment"
-sleep 3
-echo > ${port}
-echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-sleep 3
-echo "20/20 - Done!"
+echo "20/20 - Finished Programming!"
 #ready for start
 #change displaysettings
 echo "Display currently set to EDT 5,7 (ETV570)"
