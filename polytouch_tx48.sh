@@ -82,52 +82,52 @@ if [ "$settings" != y ]
 fi
 #Mainfunction
 #cleanup
-echo " 1/19 - Clean Partitions"
+echo " 1/20 - Clean Partitions"
 #delete kernel
 echo 'nand erase.part linux' > ${port}
 sleep 3
 #delete rootfs
 echo 'nand erase.part rootfs' > ${port}
 sleep 3
-echo " 2/19 - Set IP adresses"
+echo " 2/20 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
-echo " 3/19 - Change autostart / autoload"
+echo " 3/20 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
 echo 'setenv autostart no' > ${port}
 echo 'saveenv' > ${port}
-echo " 4/19 - Update Bootloader - Transfer Bootloader Part 1"
+echo " 4/20 - Update Bootloader - Transfer Bootloader Part 1"
 echo 'tftp ${loadaddr}' ${uboot1} > ${port}
 echo > ${port}
 sleep 10
-echo " 6/19 - Install Bootloader Part 1"
+echo " 6/20 - Install Bootloader Part 1"
 echo 'nand erase.part u-boot-spl' > ${port}
 echo > ${port}
 sleep 5
 echo 'nand write ${fileaddr} u-boot-spl ${filesize}' > ${port}
 echo > ${port}
 sleep 10
-echo " 7/19 - Transfer Bootloader Part 2"
+echo " 7/20 - Transfer Bootloader Part 2"
 echo 'tftp ${loadaddr}' ${uboot2} > ${port}
 echo > ${port}
 sleep 10
-echo " 8/19 - Install Bootloader Part 2"
+echo " 8/20 - Install Bootloader Part 2"
 echo 'nand erase.part u-boot' > ${port}
 echo > ${port}
 sleep 5
 echo 'nand write ${fileaddr} u-boot ${filesize}' > ${port}
 echo > ${port}
 sleep 7
-echo " 8/19 - Reset"
+echo " 8/20 - Reset"
 echo 'reset' > ${port}
 sleep 5
-echo " 9/19 - Set default environment"
+echo " 9/20 - Set default environment"
 echo 'env default -f -a' > ${port}
-echo "10/19 - Set IP adresses"
+echo "10/20 - Set IP adresses"
 sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
-echo "11/19 - Transfer Environment"
+echo "11/20 - Transfer Environment"
 #copy and source predefinded environment
 echo 'tftp ${loadaddr}' ${image} > ${port}
 sleep 8
@@ -137,12 +137,24 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
-echo "12/19 - Transfer device tree"
+echo "12/20 - Install Splashscreen"
+echo 'nand erase.part logo.bmp' > ${port}
+echo > ${port}
+sleep 3
+echo 'tftp ${loadaddr}' ${splash} > ${port}
+sleep 5
+echo > ${port}
+sleep 5
+echo 'nand write ${fileaddr} logo.bmp ${filesize}' > ${port}
+echo > ${port}
+sleep 5
+echo > ${port}
+echo "13/20 - Transfer device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
 sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
-echo "13/19 - Save device tree"
+echo "14/20 - Save device tree"
 echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
 sleep 5
 echo 'saveenv' > ${port}
@@ -150,24 +162,24 @@ echo 'reset' > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
-echo "14/19 - Transfer Linux Kernel"
+echo "15/20 - Transfer Linux Kernel"
 echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
 sleep 5
-echo "15/19 - Save Linux Kernel"
+echo "16/20 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
-echo "16/19 - Transfer Filesystem"
+echo "17/20 - Transfer Filesystem"
 echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
-echo "17/19 - Save Filesystem"
+echo "18/20 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
 sleep 15
-echo "18/19 - Reset and Reboot"
+echo "19/20 - Reset and Reboot"
 echo 'reset' > ${port}
 sleep 3
 echo > ${port}
@@ -187,7 +199,7 @@ echo > ${port}
 #echo > ${port}
 #echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
 #sleep 3
-echo "19/19 - Finished Programming!"
+echo "20/20 - Finished Programming!"
 #ready for start
 #change displaysettings
 echo "Display currently set to EDT 5,7 (ETV570)"
@@ -252,7 +264,7 @@ if [ "$video_decision" != y ]
                     echo > ${port}
                     echo "Finished!"
                 else
-                    echo 'Finished!' > ${port}
+                    echo 'Finished!'
                 fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
