@@ -275,5 +275,6 @@ if [ "$video_decision" != y ]
             echo 'saveenv'
             sleep 3
             echo "Finished!"
+            exit 0
          fi
 fi

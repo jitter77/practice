@@ -202,7 +202,7 @@ read video_decision
 if [ "$video_decision" != y ]
     then
         echo "Video resolution set to ETV570, exiting now!"
-        exit
+        exit 0
     else
          echo "Please enter number of desired video mode (1-6)"
          read video_mode
@@ -213,6 +213,7 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 2 ]
             then
                 #4,3" EDT
@@ -220,6 +221,7 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 3 ]
             then
                 #5" EDT
@@ -227,6 +229,7 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 4 ]
             then
                 #5,7" EDT QVGA (320x240px)
@@ -234,6 +237,7 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 5 ]
             then
                 #7" EDT WVGA (800x480px)
@@ -253,18 +257,24 @@ if [ "$video_decision" != y ]
                     sleep 3
                     echo > ${port}
                     sleep 3
-                    echo 'nand erase.part dtb' > ${port}
+                    echo 'nand erase.part dtb' > ${port} #FIXME run fdtsave
                     echo > ${port}
                     sleep 3
                     echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
                     echo > ${port}
                     sleep 3
                     echo "Finished!"
+                    exit 0
                 else
                     echo "Finished!"
+                    exit 0
                 fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
+            echo > ${port}
+            sleep 3
+            echo "Finished!"
+            exit 0
          fi
 fi

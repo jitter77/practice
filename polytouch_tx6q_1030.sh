@@ -205,7 +205,7 @@ read video_decision
 if [ "$video_decision" != y ]
     then
         echo "Video resolution set to ETV570, exiting now!"
-        exit
+        exit 0
     else
          echo "Please enter number of desired video mode (1-6)"
          read video_mode
@@ -215,24 +215,28 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 2 ]
             then
                 echo 'setenv video_mode ET0430' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 3 ]
             then
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 4 ]
             then
                 echo 'setenv video_mode ETQ570' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 5 ]
             then
                 echo 'setenv video_mode ET0700' > ${port}
@@ -252,13 +256,17 @@ if [ "$video_decision" != y ]
                     echo 'run fdtsave' > ${port}
                     echo > ${port}
                     echo "Finished!"
+                    exit 0
                 else
                     echo "Finished!"
+                    exit 0
                 fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
+            echo > ${port}
             sleep 3
-                echo "Finished!"
+            echo "Finished!"
+            exit 0
          fi
 fi

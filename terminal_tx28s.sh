@@ -24,9 +24,9 @@ echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
-port=/dev/ttyUSB0
+IPH=192.168.15.173                          #Host
+IPT=192.168.15.205                          #Target
+port=/dev/ttyUSB0                           #serial console
 uboot=u-boot-tx28-41x0.sb                   #Bootloader
 image=setenv_poly_tx28.img                  #Environment
 dtb=imx28-tx28.dtb                          #Device Tree
@@ -191,7 +191,7 @@ read video_decision
 if [ "$video_decision" != y ]
     then
         echo "Video resolution set to ETV570, exiting now!"
-        exit
+        exit 0
     else
          echo "Please enter number of desired video mode (1-6)"
          read video_mode
@@ -201,24 +201,28 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 2 ]
             then
                 echo 'setenv video_mode ET0430' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 3 ]
             then
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 4 ]
             then
                 echo 'setenv video_mode ETQ570' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
                 echo "Finished!"
+                exit 0
          elif [ "$video_mode" = 5 ]
             then
                 echo 'setenv video_mode ET0700' > ${port}
@@ -244,13 +248,16 @@ if [ "$video_decision" != y ]
                     echo > ${port}
                     sleep 3
                     echo "Finished!"
+                    exit 0
                 else
                     echo "Finished!"
+                    exit 0
                 fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
             sleep 3
             echo "Finished!"
+            exit 0
          fi
 fi

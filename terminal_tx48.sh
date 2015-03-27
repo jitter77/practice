@@ -272,7 +272,7 @@ if [ "$video_decision" != y ]
                 fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
-            echo 'saveenv'
+            echo 'saveenv' > ${port}
             sleep 3
             echo "Finished!"
             exit 0
