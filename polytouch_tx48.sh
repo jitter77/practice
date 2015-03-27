@@ -252,7 +252,7 @@ if [ "$video_decision" != y ]
                     echo > ${port}
                     echo "Finished!"
                 else
-                    echo 'Finished!' > ${port}
+                    echo 'Finished!'
                 fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
