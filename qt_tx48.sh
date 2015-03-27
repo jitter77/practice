@@ -1,7 +1,7 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a Console - demo on Karo TX48#
+# Tool to program a Qt - demo on Karo TX48     #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker December 2014                 # 
@@ -20,17 +20,17 @@ echo "Program Qt-demo to TX48"
 echo "-----------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
-port=/dev/ttyUSB0
+IPH=192.168.15.173                              #Host
+IPT=192.168.15.205                              #Target
+port=/dev/ttyUSB0                               #Port
 #TX48 needs 2 parts of the bootloader
-uboot1=MLO-tx48
-uboot2=u-boot-tx48.img
-image=setenv_poly_tx48.img
-dtb=am335x-tx48.dtb
-kernel=uImage_tx48
-rootfs=mucross-2.0-qt-embedded-demo-tx48.ubifs
-splash=glynsplash.bmp
+uboot1=MLO-tx48                                 #Part 1
+uboot2=u-boot-tx48.img                          #Part 2
+image=setenv_poly_tx48.img                      #Environment
+dtb=am335x-tx48.dtb                             #Device tree
+kernel=uImage_tx48                              #Kernel
+rootfs=mucross-2.0-qt-embedded-demo-tx48.ubifs  #Qt - demo
+splash=glynsplash.bmp                           #Splashscreen
 echo
 #preparation
 echo "Please check:"
@@ -187,6 +187,7 @@ echo > ${port}
 sleep 5
 echo > ${port}
 #backlight is only 50% so far, set it to 100%
+#Fixme seems backlight change not necessary
 echo "20/22 - Set backlight to full brightness"
 sleep 6
 echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
@@ -247,18 +248,22 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 echo > ${port}
                 sleep 3
-                #we need to invert the pixelclock for the 7". Otherwise the output won't be correct and some pixels are strange
-                echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
-                sleep 3
-                echo > ${port}
-                sleep 3
-                echo 'nand erase.part dtb' > ${port} #fixme run fdtsave
-                echo > ${port}
-                sleep 3
-                echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                echo > ${port}
-                sleep 3
-                echo "Finished!"
+                #we need to invert the pixelclock for the newer 7"
+                #Otherwise the output won't be correct and some pixels are strange
+                echo "For newer EDT 7 inch Displays pixelclock needs to be inverted"
+                echo "Partnumber is: (G-)ETM0700G0BDH6"
+                echo "Invert pixelclock? (y/n)"
+                read invert
+                if [ ${invert} = y ]
+                    then
+                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port} #FIXME check!
+                    sleep 3
+                    echo 'run fdtsave' > ${port}
+                    echo > ${port}
+                    echo "Finished!"
+                else
+                    echo 'Finished!' > ${port}
+                fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'

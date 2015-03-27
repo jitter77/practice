@@ -19,14 +19,26 @@
 #                   EDT 7"                     #
 ################################################
 
+# **********
+# *Caution!*
+# **********
+#
+# This demo won't run in this configuration!
+# Problem: There are too many pictures in /home/root/pics
+# so the demo will crash because of size problems
+# You can log in via console and remove some pics
+# change bootargs_nand init-process to /bin/sh
+# then cd to /home/root/pics
+# remove (rm) some of the pics in this folder and the demo will run
+
 clear
 echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
-port=/dev/ttyUSB0
+IPH=192.168.15.173              #Host
+IPT=192.168.15.205              #Target
+port=/dev/ttyUSB0               #Port
 uboot=u-boot-tx28-41x0.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment
 dtb=imx28-tx28.dtb              #Device Tree
@@ -149,12 +161,12 @@ echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
 sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
-echo 'tftp 0x40000000' ${rootfs} > ${port}
+echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/20 - Save Filesystem"
-echo 'nand write.trimffs $0x40000000 rootfs ${filesize}' > ${port}
+echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
 sleep 15
 echo "17/20 - Reset and Reboot"
 echo 'reset' > ${port}

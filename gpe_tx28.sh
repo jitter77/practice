@@ -164,6 +164,7 @@ sleep 1
 echo > ${port}
 echo > ${port}
 #backlight is only 50% so far, set it to 100%
+#Fixme seems backlight change not necessary
 echo "18/20 - Set backlight to full brightness"
 sleep 2
 echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}

@@ -1,6 +1,7 @@
 #!/bin/bash
 ################################################
-# Tool to program a polytouchdemo on Karo TX28 #
+# Tool to program a Demo on several Karo TX    #
+#                                       boards #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker November 2014                 #
@@ -60,7 +61,7 @@ read program
 case ${program} in
     1) demo=poly; echo "Chosen Demo: Polytouch"; sleep 3;;
     2) demo=gpe; echo "Chosen Demo: GPE"; sleep 3;;
-    3) demo=term; echo "Chosen Demo: Terminal"; sleep 3;;
+    3) demo=term; echo "Chosen Demo: µcross-Terminal"; sleep 3;;
     4) demo=qt; echo "Chosen Demo: Qt Application"; sleep 3;;
     5) demo=yocto; echo "Chosen Demo: Yocto Application. Not yet available!"; sleep 3;; #FIXME when ready
     *) echo "Please choose number between 1 & 5! Exiting now."; exit 0;;

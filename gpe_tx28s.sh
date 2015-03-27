@@ -150,12 +150,12 @@ sleep 5
 #copy and install filesystem
 echo "15/20 - Transfering Filesystem"
 echo 'tftp 0x40000000' ${rootfs} > ${port}
-sleep 25
+sleep 35
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/20 - Save Filesystem"
-echo 'nand write.trimffs $0x40000000 rootfs ${filesize}' > ${port}
-sleep 15
+echo 'nand write.trimffs 0x40000000 rootfs ${filesize}' > ${port}
+sleep 20
 echo "17/20 - Reset and Reboot"
 echo 'reset' > ${port}
 sleep 3

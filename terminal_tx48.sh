@@ -20,17 +20,17 @@ echo "Program Qt-demo to TX48"
 echo "-----------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
-port=/dev/ttyUSB0
+IPH=192.168.15.173                          #Host
+IPT=192.168.15.205                          #Target
+port=/dev/ttyUSB0                           #serial console
 #TX48 needs 2 parts of the bootloader
-uboot1=MLO-tx48
-uboot2=u-boot-tx48.img
-image=setenv_poly_tx48.img
-dtb=am335x-tx48.dtb
-kernel=uImage_tx48
-rootfs=mucross-2.0-console-image-tx48.ubi
-splash=glynsplash.bmp
+uboot1=MLO-tx48                             #Part 1
+uboot2=u-boot-tx48.img                      #Part 2
+image=setenv_poly_tx48.img                  #Environment
+dtb=am335x-tx48.dtb                         #Device tree
+kernel=uImage_tx48                          #Kernel
+rootfs=mucross-2.0-console-image-tx48.ubi   #Console-demo
+splash=glynsplash.bmp                       #Splashscreen
 echo
 #preparation
 echo "Please check:"
@@ -82,52 +82,52 @@ if [ "$settings" != y ]
 fi
 #Mainfunction
 #cleanup
-echo " 1/22 - Clean Partitions"
+echo " 1/20 - Clean Partitions"
 #delete kernel
 echo 'nand erase.part linux' > ${port}
 sleep 3
 #delete rootfs
 echo 'nand erase.part rootfs' > ${port}
 sleep 3
-echo " 2/22 - Set IP adresses"
+echo " 2/20 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
-echo " 3/22 - Change autostart / autoload"
+echo " 3/20 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
 echo 'setenv autostart no' > ${port}
 echo 'saveenv' > ${port}
-echo " 4/22 - Update Bootloader - Transfer Bootloader Part 1"
+echo " 4/20 - Update Bootloader - Transfer Bootloader Part 1"
 echo 'tftp ${loadaddr}' ${uboot1} > ${port}
 echo > ${port}
 sleep 10
-echo " 6/22 - Install Bootloader Part 1"
+echo " 6/20 - Install Bootloader Part 1"
 echo 'nand erase.part u-boot-spl' > ${port}
 echo > ${port}
 sleep 5
 echo 'nand write ${fileaddr} u-boot-spl ${filesize}' > ${port}
 echo > ${port}
 sleep 10
-echo " 7/22 - Transfer Bootloader Part 2"
+echo " 7/20 - Transfer Bootloader Part 2"
 echo 'tftp ${loadaddr}' ${uboot2} > ${port}
 echo > ${port}
 sleep 10
-echo " 8/22 - Install Bootloader Part 2"
+echo " 8/20 - Install Bootloader Part 2"
 echo 'nand erase.part u-boot' > ${port}
 echo > ${port}
 sleep 5
 echo 'nand write ${fileaddr} u-boot ${filesize}' > ${port}
 echo > ${port}
 sleep 7
-echo " 8/22 - Reset"
+echo " 8/20 - Reset"
 echo 'reset' > ${port}
 sleep 5
-echo " 9/22 - Set default environment"
+echo " 9/20 - Set default environment"
 echo 'env default -f -a' > ${port}
-echo "10/22 - Set IP adresses"
+echo "10/20 - Set IP adresses"
 sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
-echo "11/22 - Transfer Environment"
+echo "11/20 - Transfer Environment"
 #copy and source predefinded environment
 echo 'tftp ${loadaddr}' ${image} > ${port}
 sleep 8
@@ -137,44 +137,7 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
-echo "12/22 - Transfer device tree"
-echo 'tftp ${loadaddr}' ${dtb} > ${port}
-echo > ${port}
-sleep 5
-echo "13/22 - Save device tree"
-echo 'nand erase.part dtb' > ${port}
-echo > ${port}
-sleep 2
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
-echo > ${port}
-sleep 7
-echo 'reset' > ${port}
-sleep 5
-echo > ${port}
-#copy and install kernel
-echo "14/22 - Transfer Linux Kernel"
-echo 'tftp ${loadaddr}' ${kernel} > ${port}
-sleep 15
-echo 'nand erase.part linux' > ${port}
-sleep 5
-echo "15/22 - Save Linux Kernel"
-echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
-sleep 5
-#copy and install filesystem
-echo "16/22 - Transfer Filesystem"
-echo 'tftp ${loadaddr}' ${rootfs} > ${port}
-sleep 25
-echo 'nand erase.part rootfs' > ${port}
-sleep 5
-echo "17/22 - Save Filesystem"
-echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
-sleep 15
-echo "18/22 - Reset and Reboot"
-echo 'reset' > ${port}
-sleep 3
-echo > ${port}
-echo > ${port}
-echo "19/22 - Install Splashscreen"
+echo "12/20 - Install Splashscreen"
 echo 'nand erase.part logo.bmp' > ${port}
 echo > ${port}
 sleep 3
@@ -186,17 +149,55 @@ echo 'nand write ${fileaddr} logo.bmp ${filesize}' > ${port}
 echo > ${port}
 sleep 5
 echo > ${port}
-#backlight is only 50% so far, set it to 100%
-echo "20/22 - Set backlight to full brightness"
-sleep 6
-echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
+echo "13/20 - Transfer device tree"
+echo 'tftp ${loadaddr}' ${dtb} > ${port}
+echo > ${port}
+sleep 5
+echo "14/20 - Save device tree"
+echo 'nand erase.part dtb' > ${port}
+echo > ${port}
+sleep 2
+echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo > ${port}
+sleep 7
+echo 'reset' > ${port}
+sleep 5
+echo > ${port}
+#copy and install kernel
+echo "15/20 - Transfer Linux Kernel"
+echo 'tftp ${loadaddr}' ${kernel} > ${port}
+sleep 15
+echo 'nand erase.part linux' > ${port}
+sleep 5
+echo "16/20 - Save Linux Kernel"
+echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
+sleep 5
+#copy and install filesystem
+echo "17/20 - Transfer Filesystem"
+echo 'tftp ${loadaddr}' ${rootfs} > ${port}
+sleep 25
+echo 'nand erase.part rootfs' > ${port}
+sleep 5
+echo "18/20 - Save Filesystem"
+echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
+sleep 15
+echo "19/20 - Reset and Reboot"
+echo 'reset' > ${port}
 sleep 3
 echo > ${port}
-echo "21/22 - Save environment"
-sleep 3
-echo 'run fdtsave' > ${port}
-sleep 3
-echo "22/22 - Finished Programming!"
+echo > ${port}
+#backlight is only 50% so far, set it to 100%
+#Fixme seems backlight change not necessary
+#echo "20/22 - Set backlight to full brightness"
+#sleep 6
+#echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
+#sleep 3
+#echo > ${port}
+#echo "21/22 - Save environment"
+#sleep 3
+#echo 'run fdtsave' > ${port}
+#sleep 3
+echo "20/20 - Finished Programming!"
 #ready for start
 #change displaysettings
 echo "Display currently set to EDT 5,7 (ETV570)"
@@ -247,18 +248,22 @@ if [ "$video_decision" != y ]
                 echo 'saveenv' > ${port}
                 echo > ${port}
                 sleep 3
-                #we need to invert the pixelclock for the 7". Otherwise the output won't be correct and some pixels are strange
-                echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
-                sleep 3
-                echo > ${port}
-                sleep 3
-                echo 'nand erase.part dtb' > ${port} #Fixme run fdtsave
-                echo > ${port}
-                sleep 3
-                echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                echo > ${port}
-                sleep 3
-                echo "Finished!"
+                #we need to invert the pixelclock for the newer 7"
+                #Otherwise the output won't be correct and some pixels are strange
+                echo "For newer EDT 7 inch Displays pixelclock needs to be inverted"
+                echo "Partnumber is: (G-)ETM0700G0BDH6"
+                echo "Invert pixelclock? (y/n)"
+                read invert
+                if [ ${invert} = y ]
+                    then
+                    echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port} #FIXME check!
+                    sleep 3
+                    echo 'run fdtsave' > ${port}
+                    echo > ${port}
+                    echo "Finished!"
+                else
+                    echo 'Finished!' > ${port}
+                fi
          else [ "$video_mode" = 6 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
