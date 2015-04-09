@@ -87,12 +87,12 @@ if [ "$settings" != y ]
 fi
 #Mainfunction
 #cleanup
-echo " 1/18 - Clean Partitions"
+#echo " 1/18 - Clean Partitions"
 #delete kernel
-echo 'nand erase.part linux' > ${port}
+#echo 'nand erase.part linux' > ${port}
 sleep 3
 #delete rootfs
-echo 'nand erase.part rootfs' > ${port}
+#echo 'nand erase.part rootfs' > ${port}
 sleep 3
 echo " 2/18 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
@@ -273,3 +273,41 @@ if [ "$video_decision" != y ]
             exit 0
          fi
 fi
+
+load 0x10500000 mfg.env
+load 0x
+load 0x10600000 u-boot.bin
+load 0x10700000 default.env
+load 0x10780000 u-boot.env
+load 0x10800000 uImage-mfg
+load 0x11800000 initramfs.cpio.gz.uboot
+load 0x11500000 tx6.dtb
+load 0x12000000 emmc-4g.mbr
+#load 0x12000000 uImage_tx6
+load 0x18000000 rootfs_tx6_ubi.image
+boot
+
+
+
+
+
+env default -f -a
+setenv serverip 192.168.15.173
+setenv ipaddr 192.168.15.205
+tftp 0x10700000 default.env
+tftp 0x10780000 u-boot.env
+tftp 0x10800000 uImage-mfg
+tftp 0x11800000 initramfs.cpio.gz.uboot
+tftp 0x11500000 tx6.dtb
+tftp 0x12000000 emmc-4g.mbr
+env import 0x10700000
+env import 0x10780000
+saveenv
+mmc open 0 1
+mmc write 0x10600000 0 400
+mmc write 0x11500000 0x680 80
+mmc close 0 1
+mmc write 0x12000000 0 1
+set bootargs console=ttymxc0,115200 rdinit=/linuxrc enable_wait_mode=off
+set machid 114d
+bootm 0x10800000 0x11800000
