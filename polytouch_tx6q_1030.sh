@@ -100,6 +100,7 @@ echo 'setenv ipaddr '${IPT} > ${port}
 echo " 3/18 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
 echo 'setenv autostart no' > ${port}
+echo > ${port}
 echo 'saveenv' > ${port}
 echo " 4/18 - Update Bootloader"
 sleep 5
@@ -143,7 +144,7 @@ sleep 8
 echo 'nand erase.part dtb' > ${port}
 sleep 5
 echo "12/18 - Save device tree"
-echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
+echo 'nand write.trimffs ${fileaddr} dtb ${filesize}' > ${port}
 sleep 5
 echo 'saveenv' > ${port}
 echo 'reset' > ${port}

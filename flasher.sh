@@ -31,7 +31,7 @@ echo "5:  TX6S (TX6S-8034)"
 echo "6:  TX6S (TX6S-8035)"
 echo "7:  TX6DL (TX6U-8030)"
 echo "8:  TX6DL (TX6U-8033)"
-echo "9:  TX6Q (TX6Q-1030 / TX6Q-1030)"
+echo "9:  TX6Q (TX6Q-1010 / TX6Q-1030)"
 echo "10: TX6Q (TX6Q-1020)"
 echo "Enter number of Module here: "
 read module

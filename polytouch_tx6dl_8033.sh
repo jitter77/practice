@@ -296,8 +296,8 @@ setenv serverip 192.168.15.173
 setenv ipaddr 192.168.15.205
 tftp 0x10700000 default.env
 tftp 0x10780000 u-boot.env
-tftp 0x10800000 uImage-mfg
-tftp 0x11800000 initramfs.cpio.gz.uboot
+tftp 0x10800000 uImage_tx6 #uImage-mfg
+tftp 0x11800000 mucross-2.0-polytouchdemo-tx6.ubi #initramfs.cpio.gz.uboot
 tftp 0x11500000 tx6.dtb
 tftp 0x12000000 emmc-4g.mbr
 env import 0x10700000
