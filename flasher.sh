@@ -16,15 +16,49 @@
 
 #presets
 demo=0
-#available modules (so far):TX28S(4130), TX28(4031), TX48(7020), TX53(8030), TX6S(8033),
-#TX6S(8034), TX6S(8035), TX6DL(8110), TX6Q(1010), TX6Q(1030) #FIXME
+#available modules (so far):TX28S(4130), TX28(4031), TX28(4032), TX48(7020), TX53(8030),
+#TX6S(8034), TX6S(8035), TX6DL(8030), TX6DL(8033) TX6Q(1010), TX6Q(1020), TX6Q(1030)
+#
+#Configuration
+#-------------
+#
+#TX28S(4130):
+#i.MX287 - 454MHz - 64MB RAM - 128MB NAND - TTL output
+#
+#TX28(4031):
+#i.MX287 - 454MHz - 128MB RAM - 128MB NAND - TTL output
+#
+#TX28(4032):
+#i.MX287 - 454MHz - 256MB RAM - 128MB NAND - TTL output
+#
+#TX48(7020):
+#AM3354 - 720MHz - 256MB RAM - 128MB NAND - TTL output
+#
+#TX6S-8034:
+#i.MX6S7 - 800MHz - 256MB RAM - 128MB NAND - TTL output
+#
+#TX6S-8035:
+#i.MX6S7 - 800MHz - 512MB RAM - 4GB eMMC - TTL output
+#
+#TX6U-8030:
+#i.MX6U7 - 2x800MHz - 1GB RAM - 128MB NAND - TTL output
+#
+#TX6U-8033:
+#i.MX6u7 - 2x800MHz - 1GB RAM - 4GB eMMC - TTL output
+#
+#TX6Q-1010 / TX6Q1030:
+#i.MX6Q5 - 4x1GHz - 1GB RAM - 128MB NAND - TTL output
+#
+#TX6Q-1020:
+#i.MX6Q5 - 4x1GHz - 1GB RAM - 8GB eMMC - TTL output
+
 com=0
 path=~/PycharmProjects/practice/    #FIXME for release
 clear
 echo "Please choose your module from the list"
 echo "---------------------------------------"
 echo "1:  TX28S (TX28-4130)"
-echo "2:  TX28 (TX28-4031)"
+echo "2:  TX28 (TX28-4031 / TX28-4032)"
 echo "3:  TX48 (TX48-7020)"
 echo "4:  TX53 (TX53-8030)"
 echo "5:  TX6S (TX6S-8034)"

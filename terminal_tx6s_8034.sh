@@ -16,6 +16,7 @@
 #1.1 - 06.03.2015 - Change settings for        #
 #                   pixelclock for 7" and run  #
 #                   fdtsave                    #
+#1.2 - 05.05.2015 - add ETV570                 #
 ################################################
 
 clear
@@ -192,8 +193,10 @@ echo "1: ET0350		ET0350G0DH6"
 echo "2: ET0430		ET0430G0DH6"
 echo "3: ET0500		ET0500G0DH6"
 echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
-echo "5: ET0700		ET0700G0DH6"
-echo "6: VGA		standard VGA"
+#add ETV570 if "y" was entered unintenionally
+echo "5: ETV570     ETM570"
+echo "6: ET0700		ET0700G0DH6"
+echo "7: VGA		standard VGA"
 echo "change video mode? (y/n)"
 read video_decision
 if [ "$video_decision" != y ]
@@ -233,6 +236,13 @@ if [ "$video_decision" != y ]
                 exit 0
          elif [ "$video_mode" = 5 ]
             then
+                echo 'setenv video_mode ETV570' > ${port}
+                echo 'saveenv' > ${port}
+                sleep 3
+                echo "Finished!"
+                exit 0
+         elif [ "$video_mode" = 6 ]
+            then
                 echo 'setenv video_mode ET0700' > ${port}
                 echo 'saveenv' > ${port}
                 echo > ${port}
@@ -255,7 +265,7 @@ if [ "$video_decision" != y ]
                 else
                     echo "Finished!"
                 fi
-         else [ "$video_mode" = 6 ]
+         else [ "$video_mode" = 7 ]
             echo 'setenv video_mode VGA' > ${port}
             echo 'saveenv'
             echo > ${port}
