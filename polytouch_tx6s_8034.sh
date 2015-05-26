@@ -98,17 +98,19 @@ echo 'setenv ipaddr '${IPT} > ${port}
 echo " 3/18 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
 echo 'setenv autostart no' > ${port}
+sleep 1
 echo > ${port}
-sleep 2
+sleep 3
 echo 'saveenv' > ${port}
 echo > ${port}
-sleep 2
+sleep 3
 echo " 4/18 - Update Bootloader"
 sleep 5
 echo " 5/18 - Transfering Bootloader"
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
+sleep 1
 echo > ${port}
-sleep 10
+sleep 8
 echo " 6/18 - Installing Bootloader"
 sleep 5
 echo 'romupdate ${fileaddr}' > ${port}

@@ -12,27 +12,29 @@
 #0.1 - 20.01.2015 - Initial Version            #
 #0.9 - 26.02.2015 - Several Boards added. File #
 #                   working                    #
+#0.9.1 - 26.05.2015 - TX5A added               #
 ################################################
 
 #presets
 demo=0
-#available modules (so far):TX28S(4130), TX28(4031), TX28(4032), TX48(7020), TX53(8030),
+#available modules (so far):
+#TX28S(4130), TX28(4031), TX28(4032), TX48(7020), TX53(8030),
 #TX6S(8034), TX6S(8035), TX6DL(8030), TX6DL(8033) TX6Q(1010), TX6Q(1020), TX6Q(1030)
+#TX5A(5010), TX5A(5011)
 #
 #Configuration
 #-------------
 #
-#TX28S(4130):
+#Freescale
+#---------
+#TX28S-4130:
 #i.MX287 - 454MHz - 64MB RAM - 128MB NAND - TTL output
 #
-#TX28(4031):
+#TX28-4031:
 #i.MX287 - 454MHz - 128MB RAM - 128MB NAND - TTL output
 #
-#TX28(4032):
+#TX28-4032:
 #i.MX287 - 454MHz - 256MB RAM - 128MB NAND - TTL output
-#
-#TX48(7020):
-#AM3354 - 720MHz - 256MB RAM - 128MB NAND - TTL output
 #
 #TX6S-8034:
 #i.MX6S7 - 800MHz - 256MB RAM - 128MB NAND - TTL output
@@ -51,6 +53,19 @@ demo=0
 #
 #TX6Q-1020:
 #i.MX6Q5 - 4x1GHz - 1GB RAM - 8GB eMMC - TTL output
+#
+#Texas Instruments:
+#------------------
+#TX48-7020:
+#AM3354 - 720MHz - 256MB RAM - 128MB NAND - TTL output
+#
+#Atmel:
+#------
+#TXA5-5010:
+#SAMA5D42 - 528MHz - 256MB RAM - 128MB NAND - TTL output
+#
+#TXA5-5011:
+#SAMA5D42 - 528MHz - 256MB RAM - 4GB eMMC - TTL output
 
 com=0
 path=~/PycharmProjects/practice/    #FIXME for release
@@ -67,6 +82,8 @@ echo "7:  TX6DL (TX6U-8030)"
 echo "8:  TX6DL (TX6U-8033)"
 echo "9:  TX6Q (TX6Q-1010 / TX6Q-1030)"
 echo "10: TX6Q (TX6Q-1020)"
+#echo "11: TX5A (TX5A-5010)"
+#echo "12: TX5A (TX5A-5020)"
 echo "Enter number of Module here: "
 read module
 case ${module} in
@@ -80,6 +97,8 @@ case ${module} in
     8) com=TX6DLemmc; echo "Chosen Module:" ${com};;
     9) com=TX6Q; echo "Chosen Module:" ${com};;
     10) com=TX6Qemmc; echo "Chosen Module:" ${com};;
+    #11) com=TX5A; echo "Chosen Module:" ${com};;
+    #12) com=TX5Aemmc; echo "Chosen Module:" ${com};;
     *) echo "Please enter number between 1 & 10! Exiting now."; exit 0;;
 esac
 clear
@@ -168,4 +187,16 @@ case ${result} in
     "TX6Qemmcterm") exec /bin/sh ${path}; exit 0;;
     "TX6Qemmcqt")  exec /bin/sh ${path}; exit 0;;
     "TX6Qemmcyocto") echo "Not available! Exiting now."; exit 0;;
+    #TX5A-5010
+    #"TX5Apoly") exec /bin/sh ${path}; exit 0;;
+    #"TX5Agpe") exec /bin/sh ${path}; exit 0;;
+    #"TX5Aterm") exec /bin/sh ${path}; exit 0;;
+    #"TX5Aqt") exec /bin/sh ${path}; exit 0;;
+    #"TX5Ayocto") echo "Not available! Exiting now."; exit 0;;
+    #TX5A-5011
+    #"TX5Aemmcpoly") exec /bin/sh ${path}; exit 0;;
+    #"TX5Aemmcgpe") exec /bin/sh ${path}; exit 0;;
+    #"TX5Aemmcterm") exec /bin/sh ${path}; exit 0;;
+    #"TX5Aemmcqt") exec /bin/sh ${path}; exit 0;;
+    #"TX5Aemmcyocto") echo "Not available! Exiting now."; exit 0;;
 esac
