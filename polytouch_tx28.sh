@@ -40,7 +40,7 @@ echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX28 (TX28-4031) inserted?"
+echo "module TX28 (TX28-4031 / TX28-4032) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue

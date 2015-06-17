@@ -251,7 +251,7 @@ if [ "$video_decision" != y ]
                     sleep 3
                     echo > ${port}
                     sleep 3
-                    echo 'nand erase.part dtb' > ${port} #FIXME run fdtsave
+                    echo 'nand erase.part dtb' > ${port}
                     echo > ${port}
                     sleep 3
                     echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}

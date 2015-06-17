@@ -227,7 +227,7 @@ if [ "$video_decision" != y ]
                 exit 0
          elif [ "$video_mode" = 3 ]
             then
-                #5" EDT
+                #5" EDT WVGA (800 x 480)
                 echo 'setenv video_mode ET0500' > ${port}
                 echo 'saveenv' > ${port}
                 sleep 3
@@ -267,7 +267,7 @@ if [ "$video_decision" != y ]
                     sleep 3
                     echo > ${port}
                     sleep 3
-                    echo 'nand erase.part dtb' > ${port} #FIXME run fdtsave
+                    echo 'nand erase.part dtb' > ${port}
                     echo > ${port}
                     sleep 3
                     echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
