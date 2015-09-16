@@ -25,8 +25,8 @@ echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
+IPH=192.168.15.176              #Host
+IPT=192.168.15.205              #Target
 port=/dev/ttyUSB0
 uboot=u-boot-tx28-41x0.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment

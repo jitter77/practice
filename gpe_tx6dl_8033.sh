@@ -28,7 +28,7 @@ echo "Program Polytouchdemo to TX6DL(8033)"
 echo "------------------------------------"
 echo
 #Presetting
-IPH=192.168.15.173                         #Host
+IPH=192.168.15.176                         #Host
 IPT=192.168.15.205                         #Target
 uboot=u-boot-tx6u-8033.bin                 #Bootloader
 image=setenv_poly_tx6.img                  #Environment

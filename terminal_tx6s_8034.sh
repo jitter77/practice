@@ -24,9 +24,9 @@ echo "Program Console - Image to TX6DL(8034)"
 echo "--------------------------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
-port=/dev/ttyUSB0
+IPH=192.168.15.176                          #Host
+IPT=192.168.15.205                          #Target
+port=/dev/ttyUSB0                           #serial port for console
 uboot=u-boot-tx6s-8034.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=imx6dl-tx6s-8034.dtb                    #Device Tree

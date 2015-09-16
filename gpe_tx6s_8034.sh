@@ -24,14 +24,15 @@ echo "Program Console - Image to TX6DL(8034)"
 echo "--------------------------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
+IPH=192.168.15.176                          #Host
+IPT=192.168.15.205                          #Target
 port=/dev/ttyUSB0
 uboot=u-boot-tx6s-8034.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=imx6dl-tx6s-8034.dtb                    #Device Tree
 kernel=uImage_tx6                           #Linux Kernel
-rootfs=mucross-2.0-gpe-demo-tx6.ubi         #GPE - Image
+rootfs=mucross-2.0-qt4-8-embedded-sample-mini-tx6-VGA.ubi #mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi
+# mucross-2.0-gpe-demo-tx6.ubi         #GPE - Image
 echo
 #preparation
 echo "Please check:"
@@ -164,7 +165,7 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 5
 echo "16/18 - Save Filesystem"
 echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
-sleep 20
+sleep 22
 echo "17/18 - Reset and Reboot"
 echo 'reset' > ${port}
 echo > ${port}

@@ -24,7 +24,7 @@ echo "Program GPE - Demo to TX6Q(1030)"
 echo "--------------------------------"
 echo
 #Presetting
-IPH=192.168.15.173                          #Host
+IPH=192.168.15.176                          #Host
 IPT=192.168.15.205                          #Target
 port=/dev/ttyUSB0                           #serial console
 uboot=u-boot-tx6q-10x0.bin                  #Bootloader

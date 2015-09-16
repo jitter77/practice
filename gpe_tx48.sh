@@ -21,7 +21,7 @@ echo "Program GPE-demo to TX48"
 echo "------------------------"
 echo
 #Presetting
-IPH=192.168.15.173                      #Host
+IPH=192.168.15.176                      #Host
 IPT=192.168.15.205                      #Target
 port=/dev/ttyUSB0                       #serial console
 #TX48 needs 2 parts of the bootloader

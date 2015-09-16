@@ -19,7 +19,7 @@
 demo=0
 #available modules (so far):
 #TX28S(4130), TX28(4031), TX28(4032), TX48(7020), TX53(8030),
-#TX6S(8034), TX6S(8035), TX6DL(8030), TX6DL(8033) TX6Q(1010), TX6Q(1020), TX6Q(1030)
+#TXUL(5011), TX6S(8034), TX6S(8035), TX6DL(8030), TX6DL(8033) TX6Q(1010), TX6Q(1020), TX6Q(1030)
 #TX5A(5010), TX5A(5011)
 #
 #Configuration
@@ -35,6 +35,9 @@ demo=0
 #
 #TX28-4032:
 #i.MX287 - 454MHz - 256MB RAM - 128MB NAND - TTL output
+#
+#TXUL-5011:
+#i.MX6G2 - 528MHz - 256MB RAM - 128MB NAND - TTL output
 #
 #TX6S-8034:
 #i.MX6S7 - 800MHz - 256MB RAM - 128MB NAND - TTL output
@@ -84,6 +87,7 @@ echo "9:  TX6Q (TX6Q-1010 / TX6Q-1030)"
 echo "10: TX6Q (TX6Q-1020)"
 #echo "11: TX5A (TX5A-5010)"
 #echo "12: TX5A (TX5A-5020)"
+#echo "13: TXUL (TXUL-5011)" Fixme Change order of modules when available
 echo "Enter number of Module here: "
 read module
 case ${module} in
@@ -99,6 +103,7 @@ case ${module} in
     10) com=TX6Qemmc; echo "Chosen Module:" ${com};;
     #11) com=TX5A; echo "Chosen Module:" ${com};;
     #12) com=TX5Aemmc; echo "Chosen Module:" ${com};;
+    #13) com=TXUL; echo "Chosen Module:" ${com};;
     *) echo "Please enter number between 1 & 10! Exiting now."; exit 0;;
 esac
 clear
@@ -199,4 +204,8 @@ case ${result} in
     #"TX5Aemmcterm") exec /bin/sh ${path}; exit 0;;
     #"TX5Aemmcqt") exec /bin/sh ${path}; exit 0;;
     #"TX5Aemmcyocto") echo "Not available! Exiting now."; exit 0;;
+    #"TXUL-5011
+    #"TXULpoly") exec /bin/sh ${path}; exit 0;;
+    #"TXULgpe") exec /bin/sh ${path}; exit 0;;
+    #"TXULterm") exec /bin/sh ${path}; exit 0;;
 esac

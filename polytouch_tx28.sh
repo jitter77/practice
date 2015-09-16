@@ -26,13 +26,13 @@ echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.173 #Host
-IPT=192.168.15.205 #Target
-port=/dev/ttyUSB0
+IPH=192.168.15.176              #Host
+IPT=192.168.15.205              #Target
+port=/dev/ttyUSB0               #serial port for console
 uboot=u-boot-tx28-40x1.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment
 dtb=imx28-tx28.dtb              #Device Tree
-kernel=uImage_tx28  #uImage-tx28-m09-raw #Linux kernel
+kernel=uImage_tx28 #uImage-tx28-m09-raw Linux kernel
 rootfs=touchdemo-m09-flip.ubi #mucross-2.0-polytouchdemo-tx28.ubi Polytouchdemo
 echo
 #preparation
