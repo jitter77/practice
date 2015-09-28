@@ -1,60 +1,37 @@
 #!/bin/sh
 
 ################################################
-# Tool to program a polytouchdemo on Karo TX28 #
+# Tool to program a polytouchdemo on Karo TXUL #
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
-# Dominik Peuker November 2014                 # 
+# Dominik Peuker September 2015                #
 # Glyn Gmbh & Co. KG                           #
 #                                              #
 #History                                       #
 #----------------------------------------------#
-#0.1 - 16.12.2014 - Initial Version            #
-#1.0 - 13.01.2015 - Override IP - settings in  #
-#                   predefined environment     #
-#1.1 - 13.01.2015 - Change display settings    #
-#1.2 - 21.01.2015 - New u-boot, new kernel     #
-#1.3 - 04.02.2015 - Enhanced setting for       #
-#                   pixelclock of old and new  #
-#                   EDT 7"                     #
-#1.4 - 26.05.2015 - add ETV570                 #
-#1.5 - 28.09.2015 - change loadaddr for        #
-#                   filesystem due to size     #
+#0.1 - 28.09.2015 - Initial Version            #
 ################################################
 
-# **********
-# *Caution!*
-# **********
-#
-# This demo won't run in this configuration!
-# Problem: There are too many pictures in /home/root/pics
-# so the demo will crash because of size problems
-# You can log in via console and remove some pics
-# change bootargs_nand init-process to /bin/sh
-# then cd to /home/root/pics
-# remove (rm) some of the pics in this folder and the demo will run
-# TODO change rootfs with less pics
-
 clear
-echo "Program Polytouchdemo to TX28"
+echo "Program Polytouchdemo to TXUL"
 echo "-----------------------------"
 echo
 #Presetting
 IPH=192.168.15.176              #Host
 IPT=192.168.15.205              #Target
 port=/dev/ttyUSB0               #serial port for console
-uboot=u-boot-tx28-41x0.sb       #Bootloader
-image=setenv_poly_tx28.img      #Environment
-dtb=imx28-tx28.dtb              #Device Tree
-kernel=uImage-tx28-m09-raw      #Linux kernel
-rootfs=touchdemo-m09-flip.ubi   #Polytouchdemo
+uboot=                          #Bootloader
+image=                          #Environment
+dtb=                            #Device Tree
+kernel=                         #Linux kernel
+rootfs=                         #Polytouchdemo
 echo
 #preparation
 echo "Please check:"
 echo "tftp - server running?"
 echo "serial cable connected?"
 echo "ethernet connected?"
-echo "module TX28 (TX28-4130) inserted?"
+echo "module TX6UL (TX6UL-5010) inserted?"
 echo "power supply connected?"
 echo "continue (y/n)"
 read continue
@@ -117,9 +94,9 @@ echo 'saveenv' > ${port}
 echo " 4/20 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
-echo " 5/20 - Transfering Bootloader"
+echo " 5/20 - Transfer Bootloader"
 sleep 10
-echo " 6/20 - Installing Bootloader"
+echo " 6/20 - Install Bootloader"
 sleep 5
 echo 'romupdate ${fileaddr}' > ${port}
 sleep 5
@@ -142,30 +119,34 @@ sleep 5
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
 echo 'saveenv' > ${port}
-echo "11/20 - Transfering device tree"
+echo "11/20 - Transfer device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
-sleep 8
-echo 'nand erase.part dtb' > ${port}
-sleep 5
+echo > ${port}
+sleep 3
+echo > ${port}
 echo "12/20 - Save device tree"
+echo 'nand erase.part dtb' > ${port}
+echo > ${port}
+sleep 3
 echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
-sleep 5
-echo 'saveenv' > ${port}
+echo > ${port}
+sleep 3
 echo 'reset' > ${port}
+echo > ${port}
 sleep 5
 echo > ${port}
 #copy and install kernel
-echo "13/20 - Transfering Linux Kernel"
+echo "13/20 - Transfer Linux Kernel"
 echo 'tftp ${loadaddr}' ${kernel} > ${port}
 sleep 15
 echo 'nand erase.part linux' > ${port}
 sleep 5
 echo "14/20 - Save Linux Kernel"
 echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
-sleep 7
+sleep 5
 #copy and install filesystem
-echo "15/20 - Transfering Filesystem"
-echo 'tftp 40000000' ${rootfs} > ${port}
+echo "15/20 - Transfer Filesystem"
+echo 'tftp ${loadaddr}' ${rootfs} > ${port}
 sleep 25
 echo 'nand erase.part rootfs' > ${port}
 sleep 5
@@ -179,19 +160,15 @@ echo > ${port}
 echo > ${port}
 #backlight is only 50% so far, set it to 100%
 echo "18/20 - Set backlight to full brightness"
-sleep 6
+sleep 2
 echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
-sleep 3
+sleep 2
+echo > ${port}
+echo "19/20 - Save Environment"
+echo 'run fdtsave' > ${port}
 echo > ${port}
 sleep 3
-echo 'nand erase.part dtb' > ${port}
-sleep 3
-echo "19/20 - Save environment"
-sleep 3
-echo > ${port}
-echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-sleep 3
-echo "20/20 - Done!"
+echo "20/20 - Finished Programming!"
 #ready for start
 #change displaysettings
 echo "Display currently set to EDT 5,7 (ETV570)"
@@ -200,8 +177,8 @@ echo "1: ET0350		ET0350G0DH6"
 echo "2: ET0430		ET0430G0DH6"
 echo "3: ET0500		ET0500G0DH6"
 echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
-#add ETV570 if "y" was entered unintenionally
-acho "5: ETV570     ETV570"
+#add ETV570 if "y" was entered unintentionally
+echo "5: ETV570     ETMV570"
 echo "6: ET0700		ET0700G0DH6 or ET0700G0BDH6"
 echo "7: VGA		standard VGA"
 echo "change video mode? (y/n)"
@@ -264,14 +241,8 @@ if [ "$video_decision" != y ]
                     then
                     echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
                     sleep 3
+                    echo 'run fdtsave' > ${port}
                     echo > ${port}
-                    sleep 3
-                    echo 'nand erase.part dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
-                    echo 'nand write.jffs2 ${fdtaddr} dtb' > ${port}
-                    echo > ${port}
-                    sleep 3
                     echo "Finished!"
                     exit 0
                 else

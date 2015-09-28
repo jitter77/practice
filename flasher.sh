@@ -13,13 +13,14 @@
 #0.9 - 26.02.2015 - Several Boards added. File #
 #                   working                    #
 #0.9.1 - 26.05.2015 - TX5A added               #
+#0.9.2 - 16.09.2015 - TX6UL added              #
 ################################################
 
 #presets
 demo=0
 #available modules (so far):
 #TX28S(4130), TX28(4031), TX28(4032), TX48(7020), TX53(8030),
-#TXUL(5011), TX6S(8034), TX6S(8035), TX6DL(8030), TX6DL(8033) TX6Q(1010), TX6Q(1020), TX6Q(1030)
+#TX6UL(5010),TX6UL(5011), TX6S(8034), TX6S(8035), TX6DL(8030), TX6DL(8033) TX6Q(1010), TX6Q(1020), TX6Q(1030)
 #TX5A(5010), TX5A(5011)
 #
 #Configuration
@@ -36,8 +37,11 @@ demo=0
 #TX28-4032:
 #i.MX287 - 454MHz - 256MB RAM - 128MB NAND - TTL output
 #
+#TXUL-5010:
+#i.MX6G2 - 528MHz - 265MB RAM - 128MB NAND  - TTL output
+#
 #TXUL-5011:
-#i.MX6G2 - 528MHz - 256MB RAM - 128MB NAND - TTL output
+#i.MX6G2 - 528MHz - 256MB RAM - 4GB eMMC - TTL output
 #
 #TX6S-8034:
 #i.MX6S7 - 800MHz - 256MB RAM - 128MB NAND - TTL output
@@ -87,7 +91,8 @@ echo "9:  TX6Q (TX6Q-1010 / TX6Q-1030)"
 echo "10: TX6Q (TX6Q-1020)"
 #echo "11: TX5A (TX5A-5010)"
 #echo "12: TX5A (TX5A-5020)"
-#echo "13: TXUL (TXUL-5011)" Fixme Change order of modules when available
+#echo "13: TX6UL (TX6UL-5010)"
+#echo "14: TX6UL (TX6UL-5011)" Fixme Change order of modules when available
 echo "Enter number of Module here: "
 read module
 case ${module} in
@@ -103,8 +108,9 @@ case ${module} in
     10) com=TX6Qemmc; echo "Chosen Module:" ${com};;
     #11) com=TX5A; echo "Chosen Module:" ${com};;
     #12) com=TX5Aemmc; echo "Chosen Module:" ${com};;
-    #13) com=TXUL; echo "Chosen Module:" ${com};;
-    *) echo "Please enter number between 1 & 10! Exiting now."; exit 0;;
+    #13) com=TX6UL; echo "Chosen Module:" ${com};;
+    #14) com=TX6ULemmc; echo "Chosen Module:" ${com};;
+    *) echo "Please enter number between 1 & 14! Exiting now."; exit 0;;
 esac
 clear
 echo "Please choose desired demo from the list"
@@ -204,8 +210,15 @@ case ${result} in
     #"TX5Aemmcterm") exec /bin/sh ${path}; exit 0;;
     #"TX5Aemmcqt") exec /bin/sh ${path}; exit 0;;
     #"TX5Aemmcyocto") echo "Not available! Exiting now."; exit 0;;
-    #"TXUL-5011
-    #"TXULpoly") exec /bin/sh ${path}; exit 0;;
-    #"TXULgpe") exec /bin/sh ${path}; exit 0;;
-    #"TXULterm") exec /bin/sh ${path}; exit 0;;
+    #"TXUL-5010
+    #"TX6ULpoly") exec /bin/sh ${path}polytouch_tx6ul_5010.sh; exit 0;;
+    "TX6ULgpe") exec /bin/sh ${path}gpe_tx6ul_5010.sh; exit 0;;
+    #"TX6ULterm") exec /bin/sh ${path}terminal_tx6ul_5010; exit 0;;
+    #"TX6ULqt") exec /bin/sh ${path}qt_tx6ul_5010; exit 0;;
+    #TX6UL-5011
+    #"TX6ULemmcpoly") exec /bin/sh ${path}; exit 0;;
+    #"TX6ULemmcgpe") exec /bin/sh ${path}; exit 0;;
+    #"TX6ULemmcterm") exec /bin/sh ${path}; exit 0;;
+    #"TX6ULemmcqt") exec /bin/sh ${path}; exit 0;;
+    #"TX6ULemmcyocto") exec /bin/sh ${path}
 esac
