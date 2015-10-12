@@ -5,7 +5,7 @@
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker November 2014                 #
-# Glyn Gmbh & Co. KG                           #
+# Glyn GmbH & Co. KG                           #
 #                                              #
 #History                                       #
 #----------------------------------------------#

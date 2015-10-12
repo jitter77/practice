@@ -1,0 +1,37 @@
+setenv autoload=no
+setenv autostart=no
+setenv baseboard stk5-v5
+setenv baudrate 115200
+setenv boot_mode nand
+setenv bootargs_jffs2 'run default_bootargs;set bootargs ${bootargs} root=/dev/mtdblock4 rootfstype=jffs2'
+setenv bootargs_mmc 'run default_bootargs;set bootargs ${bootargs} root=/dev/mmcblk0p2 rootwait'
+setenv bootargs_nfs 'run default_bootargs;set bootargs ${bootargs} root=/dev/nfs nfsroot=${nfs_server}:${nfsroot},nolock ip=dhcp'
+setenv bootargs_ubifs 'run default_bootargs;set bootargs ${bootargs} ubi.mtd=rootfs root=ubi0:rootfs rootfstype=ubifs'
+setenv bootcmd 'run bootcmd_${boot_mode} bootm_cmd'
+setenv bootcmd_jffs2 'set autostart no;run bootargs_jffs2;nboot linux'
+setenv bootcmd_mmc 'set autostart no;run bootargs_mmc;fatload mmc 0 ${loadaddr} uImage'
+setenv bootcmd_nand 'set autostart no;run bootargs_ubifs;nboot linux'
+setenv bootcmd_net 'set autoload y;set autostart n;run bootargs_nfs;dhcp'
+setenv bootdelay 3
+setenv bootfile uImage
+setenv bootm_cmd 'bootm ${loadaddr} - ${fdtaddr}'
+setenv default_bootargs 'set bootargs init=/linuxrc console=ttyS0,115200 ro debug panic=1 ${append_bootargs} ${mtdparts}'
+setenv ethact gmac0
+setenv fdtaddr 21000000
+setenv fdtsave 'fdt resize;nand erase.part dtb;nand write ${fdtaddr} dtb ${fdtsize}'
+setenv ipaddr 192.168.15.205
+setenv loadaddr 22000000
+setenv mtddevname u-boot-spl
+setenv mtddevnum 0
+setenv mtdids 'nand0=atmel_nand'
+setenv mtdparts 'mtdparts=atmel_nand:128k(u-boot-spl),1m(u-boot),0x60000(env),6m(linux),32m(rootfs),89600k(userfs),512k@0x7f00000(dtb),512k@0x7f80000(bbt)ro'
+setenv nfsroot '/tftpboot/rootfs'
+setenv otg_mode device
+setenv partition nand0,0
+setenv serverip 192.168.15.176
+setenv stderr lcd
+setenv stdin serial
+setenv stdout lcd
+setenv touchpanel edt-ft5x06
+setenv ver 'U-Boot 2015.04-rc1-04377-gb85d4a2-dirty (Jun 26 2015 - 08:00:44)'
+setenv video_mode ETV570

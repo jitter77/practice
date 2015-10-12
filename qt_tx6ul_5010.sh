@@ -5,7 +5,7 @@
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker September 2015                #
-# Glyn Gmbh & Co. KG                           #
+# Glyn GmbH & Co. KG                           #
 #                                              #
 #History                                       #
 #----------------------------------------------#
@@ -13,8 +13,8 @@
 ################################################
 
 clear
-echo "Program Qt - Demo to TXUL"
-echo "-------------------------"
+echo "Program Qt - Demo to TX6UL"
+echo "--------------------------"
 echo
 #Presetting
 IPH=192.168.15.176              #Host
@@ -78,7 +78,7 @@ fi
 #Mainfunction
 #cleanup
 echo " 1/20 - Clean Partitions"
-#delet kernel
+#delete kernel
 echo 'nand erase.part linux' > ${port}
 sleep 3
 #delete rootfs

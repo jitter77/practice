@@ -5,7 +5,7 @@
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker September 2015                #
-# Glyn Gmbh & Co. KG                           #
+# Glyn GmbH & Co. KG                           #
 #                                              #
 #History                                       #
 #----------------------------------------------#
@@ -78,7 +78,7 @@ fi
 #Mainfunction
 #cleanup
 echo " 1/20 - Clean Partitions"
-#delet kernel
+#delete kernel
 echo 'nand erase.part linux' > ${port}
 sleep 3
 #delete rootfs

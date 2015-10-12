@@ -5,7 +5,7 @@
 # Please send feedback to:                     #
 # dominik.peuker@glyn.de                       #
 # Dominik Peuker September 2015                #
-# Glyn Gmbh & Co. KG                           #
+# Glyn GmbH & Co. KG                           #
 #                                              #
 #History                                       #
 #----------------------------------------------#
@@ -23,8 +23,8 @@ port=/dev/ttyUSB0
 uboot=u-boot-txa5-5010.bin                  #Bootloader
 image=                                      #Environment
 dtb=at91-sama5d4-txa5-5010.dtb              #Device Tree
-kernel=                                     #Linux Kernel
-rootfs=
+kernel=uImage_txa5                          #Linux Kernel
+rootfs=rootfs_txa_ubi.image                 #Terminaldemo
 echo
 #preparation
 echo "Please check:"
