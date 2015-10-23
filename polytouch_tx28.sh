@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ################################################
 # Tool to program a polytouchdemo on Karo TX28 #
@@ -21,14 +21,21 @@
 #1.5 - 05.05.2015 - add ETV570                 #
 ################################################
 
-clear
+`clear`
 echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.176              #Host
-IPT=192.168.15.205              #Target
-port=/dev/ttyUSB0               #serial port for console
+IPH=`cat flasher.conf | grep IPH | cut -d= -f2`
+IPT=`cat flasher.conf | grep IPT | cut -d= -f2`
+port=`cat flasher.conf | grep port | cut -d= -f2`
+#. $HOME/PycharmProjects/practice/flasher.conf
+echo ${IPH}
+echo ${IPT}
+echo ${port}
+#IPH=192.168.15.176              #Host
+#IPT=192.168.15.205              #Target
+#port=/dev/ttyUSB0               #serial port for console
 uboot=u-boot-tx28-40x1.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment
 dtb=imx28-tx28.dtb              #Device Tree
@@ -82,17 +89,17 @@ if [ "$settings" != y ]
 		clear
 	else
 		#clear screen
-		clear 
+		`clear`
 fi
 #Mainfunction
 #cleanup
 echo " 1/20 - Clean Partitions"
 #delete kernel
 echo 'nand erase.part linux' > ${port}
-sleep 3
+`sleep 3`
 #delete rootfs
 echo 'nand erase.part rootfs' > ${port}
-sleep 3
+`sleep 3`
 echo " 2/20 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}

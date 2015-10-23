@@ -17,7 +17,8 @@ echo "Program Consoledemo to TX5A(5010)"
 echo "---------------------------------"
 echo
 #Presetting
-IPH=192.168.15.176                          #Host
+exec $(ifconfig eth0 | head -n 2 | tail -n 1 | cut -d: -f2 | cut -d" " -f1)
+echo ${IPH}
 IPT=192.168.15.205                          #Target
 port=/dev/ttyUSB0
 uboot=u-boot-txa5-5010.bin                  #Bootloader

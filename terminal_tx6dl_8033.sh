@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ################################################
 # Tool to program a Consoledemo on Karo TX6DL  #

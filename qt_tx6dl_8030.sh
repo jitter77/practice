@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 ################################################
 # Tool to program a polytouchdemo on Karo TX6DL#
