@@ -19,7 +19,7 @@ uboot_tx48_1=MLO-tx48
 uboot_tx48_2=u-boot-tx48.img
 uboot_tx53=
 uboot_txa5=u-boot-txa5-5010.bin
-uboot_txul=
+uboot_tx6ul=
 uboot_tx6s=u-boot-tx6s-8034.bin
 uboot_tx6dl=u-boot-tx6u-80x0.bin
 uboot_tx6q=u-boot-tx6q-10x0.bin
@@ -30,7 +30,7 @@ dtb_tx28=imx28-tx28.dtb
 dtb_tx48=am335x-tx48.dtb
 dtb_tx53=
 dtb_txa5=at91-sama5d4-txa5-5010.dtb
-dtb_txul=
+dtb_tu6l=imx6ul_tx6ul-0010.dtb
 dtb_tx6s=imx6dl-tx6s-8034.dtb
 dtb_tx6dl=imx6dl-tx6u-80xx.dtb
 dtb_tx6q=imx6q-tx6q-10x0.dtb
@@ -41,6 +41,7 @@ kernel_tx28=uImage_tx28
 kernel_tx48=uImage_tx48
 kernel_tx53=
 kernel_txa5=uImage_txa5
+kernel_tx6ul=uImage_tx6ul
 kernel_tx6=uImage_tx6
 
 #Environment
@@ -49,7 +50,7 @@ env_tx28=setenv_poly_tx28.img
 env_tx48=setenv_poly_tx48.img
 env_tx53=
 env_txa5=
-env_txul=
+env_tx6ul=
 env_tx6=setenv_poly_tx6.img
 
 #rootfs - Polytouch
@@ -58,6 +59,7 @@ rootfs_TX28_poly=touchdemo-m09-flip.ubi
 rootfs_TX48_poly=
 rootfs_TX53_poly=
 rootfs_TXA5_poly=
+rootfs_TX6UL_poly=
 rootfs_TX6S_poly=mucross-2.0-polytouchdemo-tx6.ubi
 rootfs_TX6DL_poly=mucross-2.0-polytouchdemo-tx6.ubi
 rootfs_TX6Q_poly=mucross-2.0-polytouchdemo-tx6.ubi
@@ -67,7 +69,7 @@ rootfs_TX28S_gpe=mucross-2.0-gpe-demo.ubi
 rootfs_TX28_gpe=mucross-2.0-gpe-demo-image-tx28.ubi
 rootfs_TX48_gpe=mucross-2.0-gpe-demo-tx48.ubi
 rootfs_TXA5_gpe=
-rootfs_TXUL_gpe=
+rootfs_TX6UL_gpe=
 rootfs_TX6S_gpe=mucross-2.0-gpe-demo-tx6.ubi
 rootfs_TX6DL_gpe=mucross-2.0-gpe-demo-tx6.ubi
 rootfs_TX6Q_gpe=mucross-2.0-gpe-demo-tx6.ubi
@@ -77,7 +79,7 @@ rootfs_TX28S_term=mucross-2.0-console-image-tx28.ubi
 rootfs_TX28_term=mucross-2.0-console-image-tx28.ubi
 rootfs_TX48_term=mucross-2.0-console-image-tx48.ubi
 rootfs_TXA5_term=rootfs_txa_ubi.image
-rootfs_TXUL_term=
+rootfs_TX6UL_term=rootfs_tx6ul_ubi.image
 rootfs_TX6S_term=mucross-2.0-console-image-tx6.ubi
 roots_TX6DL_term=mucross-2.0-console-image-tx6.ubi
 rootfs_TX6Q_term=mucross-2.0-console-image-tx6.ubi
@@ -103,19 +105,6 @@ echo "$port"
 echo "$DIR"
 
 
-function print_var() {
-    echo "$var" "Der Test war falsch" "$var"
-    var="schnubbe"
-    return var
-
-}
-
-var=test
-echo "$var"
-var=bier
-
-print_var
-echo "$var"
 function flasher_env() {
 
     #Keep or set IP adresses / serial port?
@@ -151,7 +140,6 @@ function flasher_env() {
 		    #clear screen
 		    `clear`
     fi
-
 }
 
 function choose_module() {
@@ -279,6 +267,7 @@ function update_environment() {
     echo 'saveenv' > ${port}
     echo "Done!"
 }
+
 function flash_splash() {
 #install a custom splashscreen
     echo "Install Splashscreen"
