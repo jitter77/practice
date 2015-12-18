@@ -28,8 +28,8 @@ echo "Program Polytouchdemo to TX6Q(1030)"
 echo "-----------------------------------"
 echo
 #Presetting
-IPH=192.168.15.176                          #Host
-IPT=192.168.15.205                          #Target
+IPH=192.168.24.241                          #Host
+IPT=192.168.24.205                          #Target
 port=/dev/ttyUSB0                           #serial port for console
 uboot=u-boot-tx6q-10x0.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment

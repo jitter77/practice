@@ -105,7 +105,8 @@ echo "$port"
 echo "$DIR"
 
 
-function flasher_env() {
+flasher_env()
+{
 
     #Keep or set IP adresses / serial port?
     echo "IP addresses currently set to:"
@@ -142,7 +143,8 @@ function flasher_env() {
     fi
 }
 
-function choose_module() {
+choose_module()
+{
 
     echo "Please choose your module from the list"
     echo "---------------------------------------"
@@ -181,7 +183,8 @@ function choose_module() {
     esac
 }
 
-function choose_demo() {
+choose_demo()
+{
     echo "Please choose desired demo from the list"
     echo "----------------------------------------"
     echo "1: Polytouchdemo"
@@ -205,7 +208,8 @@ function choose_demo() {
     echo "Your configuration is:" ${com} ${demo}
 }
 
-function clear_board() {
+clear_board()
+{
 #clear all partitions
     echo "Cleaning Board"
     echo 'nand erase.part linux' > ${port}
@@ -215,7 +219,8 @@ function clear_board() {
     echo "Done!"
 }
 
-function set_ip() {
+set_ip()
+{
 #set ip-addresses and autostart
     echo "Set IP - addresses"
     echo 'setenv serverip '${IPH} > ${port}
@@ -225,10 +230,10 @@ function set_ip() {
     echo 'setenv autostart no' > ${port}
     echo 'saveenv' > ${port}
     echo "Done!"
-
 }
 
-function update_uboot() {
+update_uboot()
+{
 #update the Bootloader
 #TODO implement case...switch solution for tx48 and its two-stage bootloader
     echo "$uboot" #DEBUG only
@@ -247,7 +252,8 @@ function update_uboot() {
     echo "Done!"
 }
 
-function update_environment() {
+update_environment()
+{
 #update the environment
     echo "$image" #DEBUG only
     echo 'env default -f -a' > ${port}
@@ -268,7 +274,8 @@ function update_environment() {
     echo "Done!"
 }
 
-function flash_splash() {
+flash_splash()
+{
 #install a custom splashscreen
     echo "Install Splashscreen"
     echo 'nand erase.part logo.bmp' > ${port}
@@ -284,7 +291,8 @@ function flash_splash() {
     echo > ${port}
 }
 
-function update_dtb() {
+update_dtb()
+{
 #update the device tree
     echo "Transfer device tree"
     echo 'tftp ${loadaddr}' ${dtb} > ${port}
@@ -304,11 +312,11 @@ function update_dtb() {
     sleep 5
     echo > ${port}
     echo "Done!"
-
 }
 
-function update_kernel() {
-#update the Linux kernel
+update_kernel()
+{
+    # update the Linux kernel
     echo "Transfer Linux Kernel"
     echo 'tftp ${loadaddr}' ${kernel} > ${port}
     sleep 15
@@ -320,8 +328,9 @@ function update_kernel() {
     echo "Done!"
 }
 
-function update_rootfs() {
-#update the filesystem
+update_rootfs()
+{
+    # update the filesystem
     echo "Transfer Filesystem"
     echo 'tftp ${loadaddr}' ${rootfs} > ${port}
     sleep 25
@@ -337,9 +346,10 @@ function update_rootfs() {
     echo "Done!"
 }
 
-function full_backlight() {
-#set backlight to full brightness
-#backlight is only 50% so far, set it to 100%
+full_backlight()
+{
+  #set backlight to full brightness
+  #backlight is only 50% so far, set it to 100%
     echo "Set backlight to full brightness"
     sleep 2
     echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
@@ -352,9 +362,10 @@ function full_backlight() {
     echo "Done!"
 }
 
-function set_video_mode() {
-#set video_mode
-#change displaysettings
+set_video_mode()
+{
+  #set video_mode
+  #change displaysettings
     echo "Display currently set to EDT 5,7 (ETV570)"
     echo "possible other video modes are:"
     echo "1: ET0350		ET0350G0DH6"
@@ -443,6 +454,22 @@ function set_video_mode() {
     fi
 }
 
+set_init()
+{
+  # pass init=/home/root/touchdemo to the module
+  # @ bootargs_nand
+  echo "setenv bootargs_nand 'run default_bootargs;set bootargs ${bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/home/root/touchdemo'" > ${port}
+  echo saveenv ${port}
+  # TODO let user decide wether touchdemo, slideshow, touchtest, paintdemo
+}
+
+set_consoleblank ()
+{
+  # @ default_bootargs
+  echo "setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=${video_mode} consoleblank=0 ${append_bootargs}'" > ${port}
+  echo saveenv > ${port}
+}
+
 clear
 'clear'
 `clear`
@@ -476,7 +503,7 @@ echo "${demo}"
 clear_board
 set_ip
 case "$com" in
-    "TX28S") uboot=uboot_tx28s;;
+    "TX28S") uboot="$uboot_tx28s";;
     "TX28") uboot="$uboot_tx28";image="$env_tx28";dtb="$dtb_tx28";kernel="$kernel_tx28";;
     "TX48") uboot="$uboot_tx48";; #FIXME
     "TX53") uboot="$uboot_tx53";;
@@ -490,7 +517,7 @@ case "$com" in
 esac
 
 case "$demo" in
-    "poly") test="$rootfs_"$com"$_poly";rootfs="rootfs_""$com""_poly";rootfs="$test";;
+    "poly") rootfs="$rootfs_${com}_poly"; echo rootfs;;
     "gpe");;
     "term");;
     "qt");;
@@ -515,5 +542,10 @@ update_kernel
 update_rootfs
 #full_backlight
 #set_video_mode
+#set_init
+#set_consoleblank
+
 
 #TODO implement function to flash splashscreen
+#TODO implement linuxrc. Start with init=/linuxrc first to set up pathes. Afterwards change to init=/home/root/touchdemo
+#TODO implement reset - function
