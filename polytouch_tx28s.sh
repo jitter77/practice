@@ -40,9 +40,10 @@ echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.24.241              #Host
-IPT=192.168.24.205              #Target
-port=/dev/ttyUSB0               #serial port for console
+. /$HOME/PycharmProjects/practice/flasher.conf
+#IPH=192.168.24.241              #Host
+#IPT=192.168.24.205              #Target
+#port=/dev/ttyUSB0               #serial port for console
 uboot=u-boot-tx28-41x0.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment
 dtb=imx28-tx28.dtb              #Device Tree

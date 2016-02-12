@@ -24,9 +24,10 @@ echo "Program GPE - Demo to TX6Q(1030)"
 echo "--------------------------------"
 echo
 #Presetting
-IPH=192.168.15.176                          #Host
-IPT=192.168.15.205                          #Target
-port=/dev/ttyUSB0                           #serial console
+. /$HOME/PycharmProjects/practice/flasher.conf
+#IPH=192.168.15.176                          #Host
+#IPT=192.168.15.205                          #Target
+#port=/dev/ttyUSB0                           #serial console
 uboot=u-boot-tx6q-10x0.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=imx6q-tx6q-10x0.dtb                     #Device Tree

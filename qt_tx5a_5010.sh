@@ -17,9 +17,10 @@ echo "Program Qt - Demo to TX5A(5010)"
 echo "-------------------------------"
 echo
 #Presetting
-IPH=192.168.15.176                          #Host
-IPT=192.168.15.205                          #Target
-port=/dev/ttyUSB0
+. /$HOME/PycharmProjects/practice/flasher.conf
+#IPH=192.168.15.176                          #Host
+#IPT=192.168.15.205                          #Target
+#port=/dev/ttyUSB0
 uboot=u-boot-txa5-5010.bin                  #Bootloader
 image=                                      #Environment
 dtb=at91-sama5d4-txa5-5010.dtb              #Device Tree

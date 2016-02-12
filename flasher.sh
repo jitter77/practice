@@ -16,8 +16,7 @@
 #0.9.2 - 16.09.2015 - TX6UL added              #
 ################################################
 
-#presets
-demo=0
+
 #available modules (so far):
 #TX28S(4130), TX28(4031), TX28(4032), TX48(7020), TX53(8030),
 #TX6UL(5010),TX6UL(5011), TX6S(8034), TX6S(8035), TX6DL(8030), TX6DL(8033) TX6Q(1010), TX6Q(1020), TX6Q(1030)
@@ -74,6 +73,8 @@ demo=0
 #TXA5-5011:
 #SAMA5D42 - 528MHz - 256MB RAM - 4GB eMMC - TTL output
 
+#presets
+demo=0
 com=0
 path=~/PycharmProjects/practice/    #FIXME for release
 clear

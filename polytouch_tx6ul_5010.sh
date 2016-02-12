@@ -17,9 +17,10 @@ echo "Program Polytouchdemo to TXUL"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=192.168.15.176              #Host
-IPT=192.168.15.205              #Target
-port=/dev/ttyUSB0               #serial port for console
+. /$HOME/PycharmProjects/practice/flasher.conf
+#IPH=192.168.15.176              #Host
+#IPT=192.168.15.205              #Target
+#port=/dev/ttyUSB0               #serial port for console
 uboot=                          #Bootloader
 image=                          #Environment
 dtb=                            #Device Tree

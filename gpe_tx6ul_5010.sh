@@ -17,9 +17,10 @@ echo "Program Console - Image to TX6UL(5010)"
 echo "--------------------------------------"
 echo
 #Presetting
-IPH=192.168.15.176                          #Host
-IPT=192.168.15.205                          #Target
-port=/dev/ttyUSB0
+. /$HOME/PycharmProjects/practice/flasher.conf
+#IPH=192.168.15.176                          #Host
+#IPT=192.168.15.205                          #Target
+#port=/dev/ttyUSB0
 uboot=u-boot-tx6s-8034.bin                  #Bootloader
 image=setenv_poly_tx6.img                   #Environment
 dtb=                                        #Device Tree

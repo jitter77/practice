@@ -28,14 +28,15 @@ echo "Program Polytouchdemo to TX6DL(8033)"
 echo "------------------------------------"
 echo
 #Presetting
-IPH=192.168.15.176                         #Host
-IPT=192.168.15.205                         #Target
+. /$HOME/PycharmProjects/practice/flasher.conf
+#IPH=192.168.15.176                         #Host
+#IPT=192.168.15.205                         #Target
 uboot=u-boot-tx6u-8033.bin                 #Bootloader
 image=setenv_poly_tx6.img                  #Environment
 dtb=imx6dl-tx6u-8033.dtb                   #Device Tree
 kernel=uImage_tx6                          #Linux Kernel
 rootfs=                                    #GPE-demo
-port=/dev/ttyUSB0                          #serial port for console
+#port=/dev/ttyUSB0                          #serial port for console
 echo
 #preparation
 echo "Please check:"

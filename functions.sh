@@ -22,7 +22,7 @@ uboot_txa5=u-boot-txa5-5010.bin
 uboot_tx6ul=
 uboot_tx6s=u-boot-tx6s-8034.bin
 uboot_tx6dl=u-boot-tx6u-80x0.bin
-uboot_tx6q=u-boot-tx6q-10x0.bin
+uboot_tx6q=u-boot-tx6q-10x0.binhab gerade
 
 #Devicetree
 dtb_tx28s=imx28-tx28.dtb

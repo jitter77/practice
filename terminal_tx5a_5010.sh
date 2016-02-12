@@ -17,10 +17,11 @@ echo "Program Consoledemo to TX5A(5010)"
 echo "---------------------------------"
 echo
 #Presetting
-exec $(ifconfig eth0 | head -n 2 | tail -n 1 | cut -d: -f2 | cut -d" " -f1)
-echo ${IPH}
-IPT=192.168.15.205                          #Target
-port=/dev/ttyUSB0
+. /$HOME/PycharmProjects/practice/flasher.conf
+#exec $(ifconfig eth0 | head -n 2 | tail -n 1 | cut -d: -f2 | cut -d" " -f1)
+#echo ${IPH}
+#IPT=192.168.15.205                          #Target
+#port=/dev/ttyUSB0
 uboot=u-boot-txa5-5010.bin                  #Bootloader
 image=                                      #Environment
 dtb=at91-sama5d4-txa5-5010.dtb              #Device Tree

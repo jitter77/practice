@@ -21,9 +21,10 @@ echo "Program Qt-demo to TX48"
 echo "-----------------------"
 echo
 #Presetting
-IPH=192.168.15.176                              #Host
-IPT=192.168.15.205                              #Target
-port=/dev/ttyUSB0                               #serial port for console
+. /$HOME/PycharmProjects/practice/flasher.conf
+#IPH=192.168.15.176                              #Host
+#IPT=192.168.15.205                              #Target
+#port=/dev/ttyUSB0                               #serial port for console
 #TX48 needs 2 parts of the bootloader
 uboot1=MLO-tx48                                 #Part 1
 uboot2=u-boot-tx48.img                          #Part 2

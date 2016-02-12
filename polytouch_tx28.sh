@@ -26,10 +26,10 @@ echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
 #Presetting
-IPH=`cat flasher.conf | grep IPH | cut -d= -f2`
-IPT=`cat flasher.conf | grep IPT | cut -d= -f2`
-port=`cat flasher.conf | grep port | cut -d= -f2`
-#. $HOME/PycharmProjects/practice/flasher.conf
+#IPH=`cat flasher.conf | grep IPH | cut -d= -f2`
+#IPT=`cat flasher.conf | grep IPT | cut -d= -f2`
+#port=`cat flasher.conf | grep port | cut -d= -f2`
+. /$HOME/PycharmProjects/practice/flasher.conf
 echo ${IPH}
 echo ${IPT}
 echo ${port}
@@ -96,6 +96,7 @@ fi
 echo " 1/20 - Clean Partitions"
 #delete kernel
 echo 'nand erase.part linux' > ${port}
+echo > ${port}
 `sleep 3`
 #delete rootfs
 echo 'nand erase.part rootfs' > ${port}
@@ -103,13 +104,19 @@ echo 'nand erase.part rootfs' > ${port}
 echo " 2/20 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
+sleep 2
 echo " 3/20 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
+echo > ${port}
 echo 'setenv autostart no' > ${port}
+echo > ${port}
 echo 'saveenv' > ${port}
+echo > ${port}
 echo " 4/20 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
+echo > ${port}
 echo " 5/20 - Transfer Bootloader"
 sleep 10
 echo " 6/20 - Install Bootloader"
