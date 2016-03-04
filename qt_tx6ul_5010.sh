@@ -18,14 +18,14 @@ echo "--------------------------"
 echo
 #Presetting
 . /$HOME/PycharmProjects/practice/flasher.conf
-#IPH=192.168.15.176              #Host
-#IPT=192.168.15.205              #Target
-#port=/dev/ttyUSB0               #serial port for console
-uboot=                          #Bootloader
-image=                          #Environment
-dtb=                            #Device Tree
-kernel=                         #Linux kernel
-rootfs=                         #Polytouchdemo
+#IPH=192.168.15.176                                 #Host
+#IPT=192.168.15.205                                 #Target
+#port=/dev/ttyUSB0                                  #serial port for console
+uboot=u-boot-tx6ul-0010.bin                         #Bootloader
+image=setenv_tx6ul5010.img                          #Environment
+dtb=imx6ul-tx6ul-0010.dtb                           #Device Tree
+kernel=uImage_txul                                  #Linux kernel
+rootfs=mucross-2.0-qt4_8-x11-demo-image-tx28.ubi    #Polytouchdemo
 echo
 #preparation
 echo "Please check:"
@@ -87,11 +87,20 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 3
 echo " 2/20 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
+sleep 1
 echo " 3/20 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv autostart no' > ${port}
+echo > ${port}
 echo 'saveenv' > ${port}
+echo > ${port}
+sleep 1
 echo " 4/20 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
@@ -109,7 +118,11 @@ echo 'env default -f -a' > ${port}
 echo " 9/20 - Set IP adresses"
 sleep 5
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
+sleep 1
 echo "10/20 - Transfer Environment"
 #copy and source predefinded environment
 echo 'tftp ${loadaddr}' ${image} > ${port}
@@ -118,8 +131,14 @@ echo 'source ${fileaddr}' > ${port}
 sleep 5
 #override IP - Settings in predefined Environment
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
+sleep 1
 echo 'saveenv' > ${port}
+echo > ${port}
+sleep 1
 echo "11/20 - Transfer device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
 echo > ${port}

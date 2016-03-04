@@ -13,19 +13,19 @@
 ################################################
 
 clear
-echo "Program Console - Image to TX6UL(5010)"
-echo "--------------------------------------"
+echo "Program GPE - Image to TX6UL(5010)"
+echo "----------------------------------"
 echo
 #Presetting
 . /$HOME/PycharmProjects/practice/flasher.conf
 #IPH=192.168.15.176                          #Host
 #IPT=192.168.15.205                          #Target
 #port=/dev/ttyUSB0
-uboot=u-boot-tx6s-8034.bin                  #Bootloader
-image=setenv_poly_tx6.img                   #Environment
-dtb=                                        #Device Tree
-kernel=                                     #Linux Kernel
-rootfs=
+uboot=u-boot-tx6ul-0010.bin                 #Bootloader
+image=setenv_tx6ul5010.img                  #Environment
+dtb=u-boot-tx6ul-0010.bin                   #Device Tree
+kernel=uImage_txul                          #Linux Kernel
+rootfs=mucross-2.0-gpe-demo-image-tx28.ubi  #GPE Demo
 echo
 #preparation
 echo "Please check:"
@@ -87,11 +87,21 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 3
 echo " 2/18 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
+sleep 1
 echo " 3/18 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv autostart no' > ${port}
+echo > ${port}
+sleep 1
 echo 'saveenv' > ${port}
+echo > ${port}
+sleep 1
 echo " 4/18 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
@@ -109,7 +119,11 @@ echo 'env default -f -a' > ${port}
 echo " 9/18 - Set IP adresses"
 sleep 5
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
+sleep 1
 echo "10/18 - Transfer Environment"
 echo > ${port}
 sleep 3
@@ -120,7 +134,11 @@ echo 'source ${fileaddr}' > ${port}
 sleep 5
 #override IP - Settings in predefined Environment
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
+sleep 1
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
+sleep 1
 echo 'saveenv' > ${port}
 echo > ${port}
 sleep 3

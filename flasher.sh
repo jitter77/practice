@@ -81,18 +81,18 @@ clear
 echo "Please choose your module from the list"
 echo "---------------------------------------"
 echo "1:  TX28S (TX28-4130)"
-echo "2:  TX28 (TX28-4031 / TX28-4032)"
-echo "3:  TX48 (TX48-7020)"
-echo "4:  TX53 (TX53-8030)"
-echo "5:  TX6S (TX6S-8034)"
-echo "6:  TX6S (TX6S-8035)"
+echo "2:  TX28  (TX28-4031 / TX28-4032)"
+echo "3:  TX48  (TX48-7020)"
+echo "4:  TX53  (TX53-8030)"
+echo "5:  TX6S  (TX6S-8034)"
+echo "6:  TX6S  (TX6S-8035)"
 echo "7:  TX6DL (TX6U-8030)"
 echo "8:  TX6DL (TX6U-8033)"
-echo "9:  TX6Q (TX6Q-1010 / TX6Q-1030)"
-echo "10: TX6Q (TX6Q-1020)"
+echo "9:  TX6Q  (TX6Q-1010 / TX6Q-1030)"
+echo "10: TX6Q  (TX6Q-1020)"
 #echo "11: TX5A (TX5A-5010)"
 #echo "12: TX5A (TX5A-5020)"
-#echo "13: TX6UL (TX6UL-5010)"
+echo "13: TX6UL (TX6UL-5010)"
 #echo "14: TX6UL (TX6UL-5011)" Fixme Change order of modules when available
 echo "Enter number of Module here: "
 read module
@@ -109,7 +109,7 @@ case ${module} in
     10) com=TX6Qemmc; echo "Chosen Module:" ${com};;
     #11) com=TX5A; echo "Chosen Module:" ${com};;
     #12) com=TX5Aemmc; echo "Chosen Module:" ${com};;
-    #13) com=TX6UL; echo "Chosen Module:" ${com};;
+    13) com=TX6UL; echo "Chosen Module:" ${com};;
     #14) com=TX6ULemmc; echo "Chosen Module:" ${com};;
     *) echo "Please enter number between 1 & 14! Exiting now."; exit 0;;
 esac
@@ -212,10 +212,10 @@ case ${result} in
     #"TX5Aemmcqt") exec /bin/sh ${path}; exit 0;;
     #"TX5Aemmcyocto") echo "Not available! Exiting now."; exit 0;;
     #"TXUL-5010
-    #"TX6ULpoly") exec /bin/sh ${path}polytouch_tx6ul_5010.sh; exit 0;;
+    "TX6ULpoly") exec /bin/sh ${path}polytouch_tx6ul_5010.sh; exit 0;;
     "TX6ULgpe") exec /bin/sh ${path}gpe_tx6ul_5010.sh; exit 0;;
-    #"TX6ULterm") exec /bin/sh ${path}terminal_tx6ul_5010; exit 0;;
-    #"TX6ULqt") exec /bin/sh ${path}qt_tx6ul_5010; exit 0;;
+    "TX6ULterm") exec /bin/sh ${path}terminal_tx6ul_5010; exit 0;;
+    "TX6ULqt") exec /bin/sh ${path}qt_tx6ul_5010; exit 0;;
     #TX6UL-5011
     #"TX6ULemmcpoly") exec /bin/sh ${path}; exit 0;;
     #"TX6ULemmcgpe") exec /bin/sh ${path}; exit 0;;
