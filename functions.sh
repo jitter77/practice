@@ -12,7 +12,12 @@
 #0.1 - 23.10.2015 - Initial Version            #
 ################################################
 
-#Bootloader
+
+
+#************************************************
+#*************  Bootloader **********************
+#************************************************
+
 uboot_tx28s=u-boot-tx28-41x0.sb
 uboot_tx28=u-boot-tx28-40x1.sb
 uboot_tx48_1=MLO-tx48
@@ -24,7 +29,10 @@ uboot_tx6s=u-boot-tx6s-8034.bin
 uboot_tx6dl=u-boot-tx6u-80x0.bin
 uboot_tx6q=u-boot-tx6q-10x0.bin
 
-#Devicetree
+#************************************************
+#************  Devicetrees  *********************
+#************************************************
+
 dtb_tx28s=imx28-tx28.dtb
 dtb_tx28=imx28-tx28.dtb
 dtb_tx48=am335x-tx48.dtb
@@ -35,7 +43,10 @@ dtb_tx6s=imx6dl-tx6s-8034.dtb
 dtb_tx6dl=imx6dl-tx6u-80xx.dtb
 dtb_tx6q=imx6q-tx6q-10x0.dtb
 
-#Kernel
+#************************************************
+#*************  Kernels  ************************
+#************************************************
+
 kernel_tx28s=uImage_tx28
 kernel_tx28=uImage_tx28
 kernel_tx48=uImage_tx48
@@ -44,7 +55,10 @@ kernel_txa5=uImage_txa5
 kernel_tx6ul=uImage_tx6ul
 kernel_tx6=uImage_tx6
 
-#Environment
+#************************************************
+#*********  Environment Images  *****************
+#************************************************
+
 env_tx28s=setenv_poly_tx28.img
 env_tx28=setenv_poly_tx28.img
 env_tx48=setenv_poly_tx48.img
@@ -53,7 +67,11 @@ env_txa5=
 env_tx6ul=setenv_tx6ul5010.img
 env_tx6=setenv_poly_tx6.img
 
-#rootfs - Polytouch
+#************************************************
+#**************  Filesystems  *******************
+#*************  Polytouchdemo  ******************
+#************************************************
+
 rootfs_TX28S_poly=
 rootfs_TX28_poly=touchdemo-m09-flip.ubi
 rootfs_TX48_poly=
@@ -64,7 +82,11 @@ rootfs_TX6S_poly=mucross-2.0-polytouchdemo-tx6.ubi
 rootfs_TX6DL_poly=mucross-2.0-polytouchdemo-tx6.ubi
 rootfs_TX6Q_poly=mucross-2.0-polytouchdemo-tx6.ubi
 
-#rootfs - GPE
+#************************************************
+#**************  Filesystems  *******************
+#***************  GPE - Demo  *******************
+#************************************************
+
 rootfs_TX28S_gpe=mucross-2.0-gpe-demo.ubi
 rootfs_TX28_gpe=mucross-2.0-gpe-demo-image-tx28.ubi
 rootfs_TX48_gpe=mucross-2.0-gpe-demo-tx48.ubi
@@ -74,7 +96,11 @@ rootfs_TX6S_gpe=mucross-2.0-gpe-demo-tx6.ubi
 rootfs_TX6DL_gpe=mucross-2.0-gpe-demo-tx6.ubi
 rootfs_TX6Q_gpe=mucross-2.0-gpe-demo-tx6.ubi
 
-#rootfs - Terminal
+#************************************************
+#**************  Filesystems  *******************
+#***********  Console - Demo (no GUI) ***********
+#************************************************
+
 rootfs_TX28S_term=mucross-2.0-console-image-tx28.ubi
 rootfs_TX28_term=mucross-2.0-console-image-tx28.ubi
 rootfs_TX48_term=mucross-2.0-console-image-tx48.ubi
@@ -84,7 +110,11 @@ rootfs_TX6S_term=mucross-2.0-console-image-tx6.ubi
 roots_TX6DL_term=mucross-2.0-console-image-tx6.ubi
 rootfs_TX6Q_term=mucross-2.0-console-image-tx6.ubi
 
-#rootfs - Qt
+#************************************************
+#*************  Filesystems  ********************
+#*************  Qt - Demos  *********************
+#************************************************
+
 rootfs_TX28S_qt=
 rootfs_TX28_qt=mucross-2.0-qt4_8-x11-demo-image-tx28.ubi
 rootfs_TX48_qt=mucross-2.0-qt-embedded-demo-tx48.ubifs
@@ -94,12 +124,18 @@ rootfs_TX6S_qt=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi
 rootfs_TX6DL_qt=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi
 rootfs_TX6Q_qt=mucross-2.0-qt-embedded-demo-tx6.ubi
 
-#rootfs - Yocto
+#************************************************
+#*************  Filesystems  ********************
+#****************  Yocto  ***********************
+#************************************************
 
 
+
+#source Environment from Conf - File
 
 . /$HOME/PycharmProjects/practice/flasher.conf
 
+# just for debug
 echo ${IPH}
 echo ${IPT}
 echo ${port}
@@ -109,11 +145,10 @@ echo ${version}
 
 flasher_env()
 {
-
-    #Keep or set IP adresses / serial port?
+#Keep or set IP adresses / serial port?
     echo "IP addresses currently set to:"
-    echo "Host: ""${IPH}"
-    echo "Target: ""${IPT}"
+    echo "Host: "${IPH}
+    echo "Target: "${IPT}
     echo "Serial port is currently set to "${port}
     echo
     echo "Keep these settings (y) or enter new adresses (n)?"
@@ -147,7 +182,7 @@ flasher_env()
 
 choose_module()
 {
-
+#choose the KaRo - Board
     echo "Please choose your module from the list"
     echo "---------------------------------------"
     echo "1:  TX28S (TX28-4130)"
@@ -187,6 +222,7 @@ choose_module()
 
 choose_demo()
 {
+#choose the Filesystem
     echo "Please choose desired demo from the list"
     echo "----------------------------------------"
     echo "1: Polytouchdemo"
@@ -293,7 +329,7 @@ update_environment()
     echo 'source ${fileaddr}' > ${port}
     sleep 5
 #override IP - Settings in predefined Environment
-    #hier set_ip() ???
+#hier set_ip() ???
     echo 'setenv serverip '${IPH} > ${port}
     echo 'setenv ipaddr '${IPT} > ${port}
     echo 'saveenv' > ${port}
@@ -347,7 +383,7 @@ update_dtb()
 
 update_kernel()
 {
-    # update the Linux kernel
+#update the Linux kernel
     echo "Transfer Linux Kernel"
     echo
     echo 'tftp ${loadaddr}' ${kernel} > ${port}
@@ -363,7 +399,21 @@ update_kernel()
 
 update_rootfs()
 {
-    # update the filesystem
+#update the filesystem
+    sys=0
+    rootfs='rootfs_'${com}'_'${demo}
+    echo $rootfs
+    #$rootfs=rootfs
+    echo $rootfs
+    #rootfs=$(rootfs_${com}_${demo})
+    "$rootfs"=yrootfs
+    echo "$rootfs"
+    echo $rootfs_TX28_poly
+
+    #${sys}=rootfs_${com}_${demo}
+    #${rootfs}=${sys}
+
+    echo ${rootfs} #Debug
     echo "Transfer Filesystem"
     echo
     echo 'tftp ${loadaddr}' ${rootfs} > ${port}
@@ -385,8 +435,8 @@ update_rootfs()
 
 full_backlight()
 {
-  #set backlight to full brightness
-  #backlight is only 50% so far, set it to 100%
+#set backlight to full brightness
+#backlight is only 50% so far, set it to 100%
     echo "Set backlight to full brightness"
     echo
     sleep 2
@@ -404,15 +454,15 @@ full_backlight()
 
 set_video_mode()
 {
-  #set video_mode
-  #change displaysettings
+#set video_mode
+#change displaysettings
     echo "Display currently set to EDT 5,7 (ETV570)"
     echo "possible other video modes are:"
     echo "1: ET0350		ET0350G0DH6"
     echo "2: ET0430		ET0430G0DH6"
     echo "3: ET0500		ET0500G0DH6"
     echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
-    #add ETV570 if "y" was entered unintentionally
+#add ETV570 if "y" was entered unintentionally
     echo "5: ETV570     ETMV570"
     echo "6: ET0700		ET0700G0DH6 or ET0700G0BDH6"
     echo "7: VGA		standard VGA"
@@ -496,16 +546,16 @@ set_video_mode()
 
 set_init()
 {
-  # pass init=/home/root/touchdemo to the module
-  # @ bootargs_nand
+#pass init=/home/root/touchdemo to the module
+#@ bootargs_nand
   echo "setenv bootargs_nand 'run default_bootargs;set bootargs ${\bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/home/root/touchdemo'" > ${port}
   echo 'saveenv' > ${port}
-  # TODO let user decide wether touchdemo, slideshow, touchtest, paintdemo
+#TODO let user decide wether touchdemo, slideshow, touchtest, paintdemo
 }
 
 set_consoleblank()
 {
-  # @ default_bootargs
+#@default_bootargs
   echo "setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=${video_mode} consoleblank=0 ${append_bootargs}'" > ${port}
   echo saveenv > ${port}
 }
@@ -532,36 +582,68 @@ if [ "$continue" != y ]
     clear
 fi
 
-#Main
+#************************************************
+#*************  Main - Function  ****************
+#************************************************
 
-flasher_env
+#**********
+#setup Host
+#**********
+
+#flasher_env
+
+#******************
+#get Board and demo
+#******************
+
 choose_module
-echo "${com}"
+echo "${com}" #debug only
 choose_demo
-echo "${com}"
-echo "${demo}"
-clear_board
-set_ip
+echo "${com}" #debug only
+echo "${demo}" #debug only
+
+#********************************
+#clean-up to get a "fresh" board
+#********************************
+
+#clear_board
+
+#**************************
+#set server- and device IPs
+#**************************
+
+#set_ip
+
+#*********************************************************
+#Combine Module with Bootloader (uboot), Environment Image
+#Devicetree (dtb) and Kernel
+#*********************************************************
+
 case "$com" in
     "TX28S") uboot="$uboot_tx28s";;
     "TX28") uboot="$uboot_tx28";image="$env_tx28";dtb="$dtb_tx28";kernel="$kernel_tx28";;
     "TX48") uboot="$uboot_tx48";; #FIXME
-    "TX53") uboot="$uboot_tx53";;
-    "TXA5") uboot="";;
-    "TXA5emmc") uboot="";;
-    "TXUL") uboot="$uboot_txul";;
-    "TX6S") uboot="$uboot_tx6s";;
-    "TX6DL") uboot="$uboot_tx6dl";;
-    "TX6Q") uboot="$uboot_tx6q";;
+    "TX53") uboot="$uboot_tx53";image="$";dtb="$";kernel="$";;
+    "TXA5") uboot="$uboot_txa5_5010";image="$";dtb="$";kernel="$";;
+    "TXA5emmc") uboot="$"image="$";dtb="$";kernel="$";;
+    "TXUL") uboot="$uboot_txul"image="$";dtb="$";kernel="$";;
+    "TX6S") uboot="$uboot_tx6s"image="$";dtb="$";kernel="$";;
+    "TX6DL") uboot="$uboot_tx6dl"image="$";dtb="$";kernel="$";;
+    "TX6Q") uboot="$uboot_tx6q"image="$";dtb="$";kernel="$";;
     *) #ERROR
 esac
 
+#********************************************************************
+#Combine demo string (so far "poly", "gpe", "term", "qt", and "yocto"
+#with its rootfs
+#********************************************************************
+
 case "$demo" in
     "poly") rootfs="$rootfs_${com}_poly"; echo rootfs;;
-    "gpe");;
-    "term");;
-    "qt");;
-    "yocto");;
+    "gpe") rootfs="$rootfs_${com}_gpe"; echo rootfs;;
+    "term") rootfs="$rootfs_${com}_term"; echo rootfs;;
+    "qt") rootfs="rootfs_${com}_qt"; echo rootfs;;
+    "yocto") rootfs="rootfs_${com}_yocto"; echo rootfs;;
     *) #ERROR
 esac
 
@@ -574,16 +656,20 @@ echo "$rootfs"
 echo "$kernel"
 
 #TODO check if Module is TX48, then uboot has two parts
-update_uboot
-update_environment
+#update_uboot
+#update_environment
 #flash_splash
-update_dtb
-update_kernel
+#update_dtb
+#update_kernel
 update_rootfs
 #full_backlight
 #set_video_mode
 #set_init
 #set_consoleblank
+
+#****************************
+#End of Program
+#****************************
 
 #TODO implement function to flash splashscreen
 #TODO implement linuxrc. Start with init=/linuxrc first to set up pathes. Afterwards change to init=/home/root/touchdemo
