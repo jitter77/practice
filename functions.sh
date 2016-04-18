@@ -13,7 +13,6 @@
 ################################################
 
 
-
 #************************************************
 #*************  Bootloader **********************
 #************************************************
@@ -24,7 +23,7 @@ uboot_tx48_1=MLO-tx48
 uboot_tx48_2=u-boot-tx48.img
 uboot_tx53=
 uboot_txa5=u-boot-txa5-5010.bin
-uboot_tx6ul=
+uboot_tx6ul=u-boot-tx6ul-0010.bin
 uboot_tx6s=u-boot-tx6s-8034.bin
 uboot_tx6dl=u-boot-tx6u-80x0.bin
 uboot_tx6q=u-boot-tx6q-10x0.bin
@@ -72,12 +71,12 @@ env_tx6=setenv_poly_tx6.img
 #*************  Polytouchdemo  ******************
 #************************************************
 
-rootfs_TX28S_poly=
+rootfs_TX28S_poly=touchdemo-m09-flip.ubi
 rootfs_TX28_poly=touchdemo-m09-flip.ubi
 rootfs_TX48_poly=
 rootfs_TX53_poly=
 rootfs_TXA5_poly=
-rootfs_TX6UL_poly=
+rootfs_TX6UL_poly=touchdemo-m09-flip.ubi
 rootfs_TX6S_poly=mucross-2.0-polytouchdemo-tx6.ubi
 rootfs_TX6DL_poly=mucross-2.0-polytouchdemo-tx6.ubi
 rootfs_TX6Q_poly=mucross-2.0-polytouchdemo-tx6.ubi
@@ -91,7 +90,7 @@ rootfs_TX28S_gpe=mucross-2.0-gpe-demo.ubi
 rootfs_TX28_gpe=mucross-2.0-gpe-demo-image-tx28.ubi
 rootfs_TX48_gpe=mucross-2.0-gpe-demo-tx48.ubi
 rootfs_TXA5_gpe=
-rootfs_TX6UL_gpe=
+rootfs_TX6UL_gpe=mucross-2.0-gpe-demo-image-tx28.ubi
 rootfs_TX6S_gpe=mucross-2.0-gpe-demo-tx6.ubi
 rootfs_TX6DL_gpe=mucross-2.0-gpe-demo-tx6.ubi
 rootfs_TX6Q_gpe=mucross-2.0-gpe-demo-tx6.ubi
@@ -119,7 +118,7 @@ rootfs_TX28S_qt=
 rootfs_TX28_qt=mucross-2.0-qt4_8-x11-demo-image-tx28.ubi
 rootfs_TX48_qt=mucross-2.0-qt-embedded-demo-tx48.ubifs
 rootfs_TX53_qt=
-rootfs_TXUL_qt=
+rootfs_TXUL_qt=mucross-2.0-qt4_8-x11-demo-image-tx28.ubi
 rootfs_TX6S_qt=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi
 rootfs_TX6DL_qt=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi
 rootfs_TX6Q_qt=mucross-2.0-qt-embedded-demo-tx6.ubi
@@ -143,7 +142,7 @@ echo ${DIR}
 echo ${version}
 
 
-flasher_env()
+function flasher_env
 {
 #Keep or set IP adresses / serial port?
     echo "IP addresses currently set to:"
@@ -180,7 +179,7 @@ flasher_env()
     fi
 }
 
-choose_module()
+function choose_module
 {
 #choose the KaRo - Board
     echo "Please choose your module from the list"
@@ -220,7 +219,7 @@ choose_module()
     esac
 }
 
-choose_demo()
+function choose_demo
 {
 #choose the Filesystem
     echo "Please choose desired demo from the list"
@@ -246,7 +245,7 @@ choose_demo()
     echo "Your configuration is:" ${com} ${demo}
 }
 
-clear_board()
+function clear_board
 {
 #clear all partitions
     echo "Cleaning Board"
@@ -259,7 +258,7 @@ clear_board()
     echo
 }
 
-set_ip()
+function set_ip
 {
 #set ip-addresses and autostart
     echo "Set IP - addresses"
@@ -285,7 +284,7 @@ set_ip()
     echo
 }
 
-update_uboot()
+function update_uboot
 {
 #update the Bootloader
 #TODO implement case...switch solution for tx48 and its two-stage bootloader
@@ -310,7 +309,7 @@ update_uboot()
     echo
 }
 
-update_environment()
+function update_environment
 {
 #update the environment
     echo "$image" #DEBUG only
@@ -337,7 +336,7 @@ update_environment()
     echo
 }
 
-flash_splash()
+function flash_splash
 {
 #install a custom splashscreen
     echo "Install Splashscreen"
@@ -355,7 +354,7 @@ flash_splash()
     echo > ${port}
 }
 
-update_dtb()
+function update_dtb
 {
 #update the device tree
     echo "Transfer device tree"
@@ -381,7 +380,7 @@ update_dtb()
     echo
 }
 
-update_kernel()
+function update_kernel
 {
 #update the Linux kernel
     echo "Transfer Linux Kernel"
@@ -397,7 +396,7 @@ update_kernel()
     echo
 }
 
-update_rootfs()
+function update_rootfs
 {
 #update the filesystem
     sys=0
@@ -406,7 +405,7 @@ update_rootfs()
     #$rootfs=rootfs
     echo $rootfs
     #rootfs=$(rootfs_${com}_${demo})
-    "$rootfs"=yrootfs
+    rootfs="$rootfs"
     echo "$rootfs"
     echo $rootfs_TX28_poly
 
@@ -433,7 +432,7 @@ update_rootfs()
     echo
 }
 
-full_backlight()
+function full_backlight
 {
 #set backlight to full brightness
 #backlight is only 50% so far, set it to 100%
@@ -452,7 +451,7 @@ full_backlight()
     echo
 }
 
-set_video_mode()
+function set_video_mode
 {
 #set video_mode
 #change displaysettings
@@ -463,7 +462,7 @@ set_video_mode()
     echo "3: ET0500		ET0500G0DH6"
     echo "4: ETQ570		ETQ570G0DH6 or ETQ570G2DH6"
 #add ETV570 if "y" was entered unintentionally
-    echo "5: ETV570     ETMV570"
+    echo "5: ETV570		ETMV570"
     echo "6: ET0700		ET0700G0DH6 or ET0700G0BDH6"
     echo "7: VGA		standard VGA"
     echo "change video mode? (y/n)"
@@ -525,6 +524,7 @@ set_video_mode()
                     if [ ${invert} = y ]
                         then
                         echo 'fdt set display/display-timings/timing4/ pixelclk-active <0>' > ${port}
+                        #TODO: ET0700      M12_ACLAVIS
                         sleep 3
                         echo 'run fdtsave' > ${port}
                         echo > ${port}
@@ -544,7 +544,7 @@ set_video_mode()
     fi
 }
 
-set_init()
+function set_init
 {
 #pass init=/home/root/touchdemo to the module
 #@ bootargs_nand
@@ -553,7 +553,7 @@ set_init()
 #TODO let user decide wether touchdemo, slideshow, touchtest, paintdemo
 }
 
-set_consoleblank()
+function set_consoleblank
 {
 #@default_bootargs
   echo "setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=${video_mode} consoleblank=0 ${append_bootargs}'" > ${port}
@@ -562,7 +562,6 @@ set_consoleblank()
 
 clear
 'clear'
-`clear`
 echo "Program Demo to Karo TX Module"
 echo "------------------------------"
 echo
@@ -639,7 +638,7 @@ esac
 #********************************************************************
 
 case "$demo" in
-    "poly") rootfs="$rootfs_${com}_poly"; echo rootfs;;
+    "poly") rootfs=$rootfs_${com}_poly; echo ${rootfs};;
     "gpe") rootfs="$rootfs_${com}_gpe"; echo rootfs;;
     "term") rootfs="$rootfs_${com}_term"; echo rootfs;;
     "qt") rootfs="rootfs_${com}_qt"; echo rootfs;;
@@ -667,9 +666,9 @@ update_rootfs
 #set_init
 #set_consoleblank
 
-#****************************
+#***************
 #End of Program
-#****************************
+#***************
 
 #TODO implement function to flash splashscreen
 #TODO implement linuxrc. Start with init=/linuxrc first to set up pathes. Afterwards change to init=/home/root/touchdemo

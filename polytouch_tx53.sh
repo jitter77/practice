@@ -21,7 +21,7 @@ echo
 . /$HOME/PycharmProjects/practice/flasher.conf
 #IPH=192.168.15.176                         #Host
 #IPT=192.168.15.205                         #Target
-uboot=u-boot-tx6u-80x0.bin                 #Bootloader
+uboot=                                      #Bootloader
 image=setenv_poly_tx6.img                  #Environment
 dtb=imx6dl-tx6u-80xx.dtb                   #Device Tree
 kernel=uImage_tx6                          #Linux Kernel

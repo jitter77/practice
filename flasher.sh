@@ -140,86 +140,86 @@ echo "Going to program this now."
 sleep 3
 case ${result} in
     #TX28S(4130)
-    "TX28Spoly") exec /bin/sh ${path}polytouch_tx28s.sh; exit 0;;
-    "TX28Sgpe") exec /bin/sh ${path}gpe_tx28s.sh; exit 0;;
-    "TX28Sterm") exec /bin/sh ${path}terminal_tx28s.sh; exit 0;;
-    "TX28Sqt") exec /bin/sh ${path}qt_tx28s.sh; exit 0;;
+    "TX28Spoly") exec /bin/bash ${path}polytouch_tx28s.sh; exit 0;;
+    "TX28Sgpe") exec /bin/bash ${path}gpe_tx28s.sh; exit 0;;
+    "TX28Sterm") exec /bin/bash ${path}terminal_tx28s.sh; exit 0;;
+    "TX28Sqt") exec /bin/bash ${path}qt_tx28s.sh; exit 0;;
     "TX28Syocto") echo "Not available! Exiting now."; exit 0;;
     #TX28(4030)
-    "TX28poly") exec /bin/sh ${path}polytouch_tx28.sh; exit 0;;
-    "TX28gpe") exec /bin/sh ${path}gpe_tx28.sh; exit 0;;
-    "TX28term") exec /bin/sh ${path}terminal_tx28.sh; exit 0;;
-    "TX28qt") exec /bin/sh ${path}qt_tx28.sh; exit 0;;
+    "TX28poly") exec /bin/bash ${path}polytouch_tx28.sh; exit 0;;
+    "TX28gpe") exec /bin/bash ${path}gpe_tx28.sh; exit 0;;
+    "TX28term") exec /bin/bash ${path}terminal_tx28.sh; exit 0;;
+    "TX28qt") exec /bin/bash ${path}qt_tx28.sh; exit 0;;
     "TX28yocto") echo "Not available! Exiting now."; exit 0;;
     #TX48(7020)
-    "TX48poly") exec /bin/sh ${path}gpe_tx48.sh; exit 0;;
-    "TX48gpe") exec /bin/sh ${path}gpe_tx48.sh; exit 0;;
-    "TX48term") exec /bin/sh ${path}terminal_tx48.sh; exit 0;;
-    "TX48qt") exec /bin/sh ${path}qt_tx48.sh; exit 0;;
+    "TX48poly") exec /bin/bash ${path}gpe_tx48.sh; exit 0;;
+    "TX48gpe") exec /bin/bash ${path}gpe_tx48.sh; exit 0;;
+    "TX48term") exec /bin/bash ${path}terminal_tx48.sh; exit 0;;
+    "TX48qt") exec /bin/bash ${path}qt_tx48.sh; exit 0;;
     "TX48yocto") echo "Not available! Exiting now."; exit 0;;
     #TX53(8030)
-    "TX53poly") exec /bin/sh ${path}; exit 0;;
-    "TX53gpe") exec /bin/sh ${path}; exit 0;;
-    "TX53term") exec /bin/sh ${path}; exit 0;;
-    "TX53qt") exec /bin/sh ${path}; exit 0;;
+    "TX53poly") exec /bin/bash ${path}; exit 0;;
+    "TX53gpe") exec /bin/bash ${path}; exit 0;;
+    "TX53term") exec /bin/bash ${path}; exit 0;;
+    "TX53qt") exec /bin/bash ${path}; exit 0;;
     "TX53yocto") echo "Not available! Exiting now."; exit 0;;
     #TX6DLemmc(8033)
-    "TX6DLemmcpoly") exec /bin/sh ${path}polytouch_tx6dl_8033.sh; exit 0;;
-    "TX6DLemmcgpe") exec /bin/sh ${path}gpe_tx6dl_8033.sh; exit 0;;
-    "TX6DLemmcterm") exec /bin/sh ${path}terminal_tx6dl_8033.sh; exit 0;;
-    "TX6DLemmcqt") exec /bin/sh ${path}qt_tx6dl_8033.sh; exit 0;;
+    "TX6DLemmcpoly") exec /bin/bash ${path}polytouch_tx6dl_8033.sh; exit 0;;
+    "TX6DLemmcgpe") exec /bin/bash ${path}gpe_tx6dl_8033.sh; exit 0;;
+    "TX6DLemmcterm") exec /bin/bash ${path}terminal_tx6dl_8033.sh; exit 0;;
+    "TX6DLemmcqt") exec /bin/bash ${path}qt_tx6dl_8033.sh; exit 0;;
     "TX6DLemmcyocto") echo "Not available! Exiting now."; exit 0;;
     #TX6S(8034)
-    "TX6Spoly") exec /bin/sh ${path}polytouch_tx6s_8034.sh; exit 0;;
-    "TX6Sgpe") exec /bin/sh ${path}gpe_tx6s_8034.sh; exit 0;;
-    "TX6Sterm") exec /bin/sh ${path}terminal_tx6s_8034.sh; exit 0;;
-    "TX6Sqt") exec /bin/sh ${path}qt_tx6s_8034.sh; exit 0;;
+    "TX6Spoly") exec /bin/bash ${path}polytouch_tx6s_8034.sh; exit 0;;
+    "TX6Sgpe") exec /bin/bash ${path}gpe_tx6s_8034.sh; exit 0;;
+    "TX6Sterm") exec /bin/bash ${path}terminal_tx6s_8034.sh; exit 0;;
+    "TX6Sqt") exec /bin/bash ${path}qt_tx6s_8034.sh; exit 0;;
     "TX6Syocto") echo "Not available! Exiting now."; exit 0;;
     #TX6Semmc(8035)
-    "TX6Semmcpoly") exec /bin/sh ${path}; exit 0;;
-    "TX6Semmcgpe") exec /bin/sh ${path}; exit 0;;
-    "TX6Semmcterm") exec /bin/sh ${path}; exit 0;;
-    "TX6Semmcqt") exec /bin/sh ${path}; exit 0;;
+    "TX6Semmcpoly") exec /bin/bash ${path}; exit 0;;
+    "TX6Semmcgpe") exec /bin/bash ${path}; exit 0;;
+    "TX6Semmcterm") exec /bin/bash ${path}; exit 0;;
+    "TX6Semmcqt") exec /bin/bash ${path}; exit 0;;
     "TX6Semmcyocto") echo "Not available! Exiting now."; exit 0;;
     #TX6DL(8030)
-    "TX6DLpoly") exec /bin/sh ${path}polytouch_tx6dl_8030.sh; exit 0;;
-    "TX6DLgpe") exec /bin/sh ${path}gpe_tx6dl_8030.sh; exit 0;;
+    "TX6DLpoly") exec /bin/bash ${path}polytouch_tx6dl_8030.sh; exit 0;;
+    "TX6DLgpe") exec /bin/bash ${path}gpe_tx6dl_8030.sh; exit 0;;
     "TX6DLterm") exec /bin/sh ${path}terminal_tx6dl_8030.sh; exit 0;;
-    "TX6DLqt") exec /bin/sh ${path}qt_tx6dl_8030.sh; exit 0;;
+    "TX6DLqt") exec /bin/bash ${path}qt_tx6dl_8030.sh; exit 0;;
     "TX6DLyocto") echo "Not available! Exiting now."; exit 0;;
     #TX6Q(1010/1030)
-    "TX6Qpoly") exec /bin/sh ${path}polytouch_tx6q_1030.sh; exit 0;;
-    "TX6Qgpe") exec /bin/sh ${path}gpe_tx6q_1030.sh; exit 0;;
-    "TX6Qterm") exec /bin/sh ${path}terminal_tx6q_1030.sh; exit 0;;
-    "TX6Qqt") exec /bin/sh ${path}qt_tx6q_1030.sh; exit;;
+    "TX6Qpoly") exec /bin/bash ${path}polytouch_tx6q_1030.sh; exit 0;;
+    "TX6Qgpe") exec /bin/bash ${path}gpe_tx6q_1030.sh; exit 0;;
+    "TX6Qterm") exec /bin/bash ${path}terminal_tx6q_1030.sh; exit 0;;
+    "TX6Qqt") exec /bin/bash ${path}qt_tx6q_1030.sh; exit;;
     "TX6Qyocto") echo "Not available! Exiting now."; exit 0;;
     #TX6Q(1020)
-    "TX6Qemmcpoly") exec /bin/sh ${path}; exit 0;;
-    "TX6Qemmcgpe") exec /bin/sh ${path}; exit 0;;
-    "TX6Qemmcterm") exec /bin/sh ${path}; exit 0;;
-    "TX6Qemmcqt")  exec /bin/sh ${path}; exit 0;;
+    "TX6Qemmcpoly") exec /bin/bash ${path}; exit 0;;
+    "TX6Qemmcgpe") exec /bin/bash ${path}; exit 0;;
+    "TX6Qemmcterm") exec /bin/bash ${path}; exit 0;;
+    "TX6Qemmcqt")  exec /bin/bash ${path}; exit 0;;
     "TX6Qemmcyocto") echo "Not available! Exiting now."; exit 0;;
     #TX5A-5010
-    #"TX5Apoly") exec /bin/sh ${path}; exit 0;;
-    #"TX5Agpe") exec /bin/sh ${path}; exit 0;;
-    #"TX5Aterm") exec /bin/sh ${path}; exit 0;;
-    #"TX5Aqt") exec /bin/sh ${path}; exit 0;;
+    #"TX5Apoly") exec /bin/bash ${path}; exit 0;;
+    #"TX5Agpe") exec /bin/bash ${path}; exit 0;;
+    #"TX5Aterm") exec /bin/bash ${path}; exit 0;;
+    #"TX5Aqt") exec /bin/bash ${path}; exit 0;;
     #"TX5Ayocto") echo "Not available! Exiting now."; exit 0;;
     #TX5A-5011
-    #"TX5Aemmcpoly") exec /bin/sh ${path}; exit 0;;
-    #"TX5Aemmcgpe") exec /bin/sh ${path}; exit 0;;
-    #"TX5Aemmcterm") exec /bin/sh ${path}; exit 0;;
-    #"TX5Aemmcqt") exec /bin/sh ${path}; exit 0;;
+    #"TX5Aemmcpoly") exec /bin/bash ${path}; exit 0;;
+    #"TX5Aemmcgpe") exec /bin/bash ${path}; exit 0;;
+    #"TX5Aemmcterm") exec /bin/bash ${path}; exit 0;;
+    #"TX5Aemmcqt") exec /bin/bash ${path}; exit 0;;
     #"TX5Aemmcyocto") echo "Not available! Exiting now."; exit 0;;
     #"TXUL-5010
-    "TX6ULpoly") exec /bin/sh ${path}polytouch_tx6ul_5010.sh; exit 0;;
-    "TX6ULgpe") exec /bin/sh ${path}gpe_tx6ul_5010.sh; exit 0;;
-    "TX6ULterm") exec /bin/sh ${path}terminal_tx6ul_5010; exit 0;;
-    "TX6ULqt") exec /bin/sh ${path}qt_tx6ul_5010; exit 0;;
+    "TX6ULpoly") exec /bin/bash ${path}polytouch_tx6ul_5010.sh; exit 0;;
+    "TX6ULgpe") exec /bin/bash ${path}gpe_tx6ul_5010.sh; exit 0;;
+    "TX6ULterm") exec /bin/bash ${path}terminal_tx6ul_5010; exit 0;;
+    "TX6ULqt") exec /bin/bash ${path}qt_tx6ul_5010; exit 0;;
     #TX6UL-5011
-    #"TX6ULemmcpoly") exec /bin/sh ${path}; exit 0;;
-    #"TX6ULemmcgpe") exec /bin/sh ${path}; exit 0;;
-    #"TX6ULemmcterm") exec /bin/sh ${path}; exit 0;;
-    #"TX6ULemmcqt") exec /bin/sh ${path}; exit 0;;
-    #"TX6ULemmcyocto") exec /bin/sh ${path}
+    #"TX6ULemmcpoly") exec /bin/bash ${path}; exit 0;;
+    #"TX6ULemmcgpe") exec /bin/bash ${path}; exit 0;;
+    #"TX6ULemmcterm") exec /bin/bash ${path}; exit 0;;
+    #"TX6ULemmcqt") exec /bin/bash ${path}; exit 0;;
+    #"TX6ULemmcyocto") exec /bin/bash ${path}
 esac
