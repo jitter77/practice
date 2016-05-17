@@ -98,11 +98,16 @@ echo 'nand erase.part rootfs' > ${port}
 sleep 3
 echo " 2/18 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
 echo " 3/18 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
+echo > ${port}
 echo 'setenv autostart no' > ${port}
+echo > ${port}
 echo 'saveenv' > ${port}
+echo > ${port}
 echo " 4/18 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}
@@ -120,7 +125,9 @@ echo 'env default -f -a' > ${port}
 echo " 9/18 - Set IP adresses"
 sleep 5
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
 echo "10/18 - Transfer Environment"
 echo > ${port}
 sleep 3
@@ -133,8 +140,11 @@ echo 'source ${fileaddr}' > ${port}
 sleep 5
 #override IP - Settings in predefined Environment
 echo 'setenv serverip '${IPH} > ${port}
+echo > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
+echo > ${port}
 echo 'saveenv' > ${port}
+echo > ${port}
 echo "11/18 - Transfering device tree"
 echo 'tftp ${loadaddr}' ${dtb} > ${port}
 echo > ${port}

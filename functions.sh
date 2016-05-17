@@ -37,7 +37,7 @@ dtb_tx28=imx28-tx28.dtb
 dtb_tx48=am335x-tx48.dtb
 dtb_tx53=
 dtb_txa5=at91-sama5d4-txa5-5010.dtb
-dtb_tu6l=imx6ul_tx6ul-0010.dtb
+dtb_tx6ul=imx6ul_tx6ul-0010.dtb
 dtb_tx6s=imx6dl-tx6s-8034.dtb
 dtb_tx6dl=imx6dl-tx6u-80xx.dtb
 dtb_tx6q=imx6q-tx6q-10x0.dtb
@@ -302,7 +302,7 @@ function update_uboot
     echo 'romupdate ${fileaddr}' > ${port}
     sleep 5
     echo "Reset"
-    echo
+    echo 
     echo 'reset' > ${port}
     sleep 5
     echo "Done!"
@@ -401,9 +401,9 @@ function update_rootfs
 #update the filesystem
     sys=0
     rootfs='rootfs_'${com}'_'${demo}
-    echo $rootfs
+    echo ${rootfs}
     #$rootfs=rootfs
-    echo $rootfs
+    echo ${rootfs}
     #rootfs=$(rootfs_${com}_${demo})
     rootfs="$rootfs"
     echo "$rootfs"
