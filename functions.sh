@@ -141,18 +141,27 @@ echo ${port}
 echo ${DIR}
 echo ${version}
 
+function reset
+{
+    echo 'reset' > ${port}
+    echo > ${port}
+    sleep 3
+    echo > ${port}
+
+}
 
 function flasher_env
 {
 #Keep or set IP adresses / serial port?
     echo "IP addresses currently set to:"
+    echo "------------------------------"
     echo "Host: "${IPH}
     echo "Target: "${IPT}
     echo "Serial port is currently set to "${port}
     echo
-    echo "Keep these settings (y) or enter new adresses (n)?"
+    echo "Keep these settings or enter new adresses (y/N)?"
     read settings
-    if [ "$settings" != y ]
+    if [ "$settings" ==  y ] || [ "$settings" == Y ]
 	    then
 		    #Host
 		    echo "Please enter IP of your host (serverip):"
@@ -242,26 +251,32 @@ function choose_demo
     result=${com}${demo}
     #echo ${result}
     clear
-    echo "Your configuration is:" ${com} ${demo}
+    echo "Your configuration is:" ${com}${demo}
 }
 
 function clear_board
 {
 #clear all partitions
-    echo "Cleaning Board"
+    echo "========================"
+    echo "= Step: Cleaning Board ="
+    echo "========================"
     echo
     echo 'nand erase.part linux' > ${port}
     sleep 3
     echo 'nand erase.part rootfs' > ${port}
     sleep 3
-    echo "Done!"
+    echo 'nand erase.part dtb' > ${port}
+    sleep 3
+    echo "Step finished"
     echo
 }
 
 function set_ip
 {
-#set ip-addresses and autostart
-    echo "Set IP - addresses"
+#set ip-addresses
+    echo "==============================="
+    echo "=   Step: Set IP - addresses  ="
+    echo "==============================="
     echo
     echo 'setenv serverip '${IPH} > ${port}
     echo > ${port}
@@ -269,8 +284,16 @@ function set_ip
     echo 'setenv ipaddr '${IPT} > ${port}
     echo > ${port}
     sleep 1
-    echo "Change autostart / autoload"
+    echo "Step finished"
     echo
+}
+
+function set_auto
+{
+#set autoload & autostart
+    echo "============================"
+    echo "= Set autoload & autostart ="
+    echo "============================"
     echo 'setenv autoload no' > ${port}
     echo > ${port}
     sleep 1
@@ -280,7 +303,7 @@ function set_ip
     echo 'saveenv' > ${port}
     echo > ${port}
     sleep 1
-    echo "Done!"
+    echo "Step finished"
     echo
 }
 
@@ -289,23 +312,24 @@ function update_uboot
 #update the Bootloader
 #TODO implement case...switch solution for tx48 and its two-stage bootloader
     echo "$uboot" #DEBUG only
-    echo "Update Bootloader"
+    echo "==========================="
+    echo "= Step: Update Bootloader ="
+    echo "=   Transfer Bootloader   ="
+    echo "==========================="
     echo
     sleep 5
     echo 'tftp ${loadaddr}' ${uboot} > ${port}
-    echo "Transfer Bootloader"
     echo
     sleep 10
-    echo "Install Bootloader"
+    echo "======================="
+    echo "=  Install Bootloader ="
+    echo "======================="
     echo
     sleep 5
     echo 'romupdate ${fileaddr}' > ${port}
     sleep 5
-    echo "Reset"
-    echo 
-    echo 'reset' > ${port}
-    sleep 5
-    echo "Done!"
+    reset
+    echo "Step finished"
     echo
 }
 
@@ -313,14 +337,23 @@ function update_environment
 {
 #update the environment
     echo "$image" #DEBUG only
-    echo 'env default -f -a' > ${port}
-    echo "Set IP adresses"
-    echo
-    sleep 5
-    #hier set_ip() ???
-    echo 'setenv serverip '${IPH} > ${port}
-    echo 'setenv ipaddr '${IPT} > ${port}
-    echo "Transfer Environment"
+    echo "==============================="
+    echo "= Step: Set Board Environment ="
+    echo "=     Default Environment     ="
+    echo "==============================="
+    echo 'env default -fa' > ${port}
+    #echo "======================"
+    #echo "= 2. Set IP adresses ="
+    #echo "======================"
+    #echo
+    sleep 2
+    set_ip
+    #echo 'setenv serverip '${IPH} > ${port}
+    #echo 'setenv ipaddr '${IPT} > ${port}
+    #echo > ${port}
+    echo "========================"
+    echo "= Transfer Environment ="
+    echo "========================"
     echo
 #copy and source predefinded environment
     echo 'tftp ${loadaddr}' ${image} > ${port}
@@ -328,11 +361,11 @@ function update_environment
     echo 'source ${fileaddr}' > ${port}
     sleep 5
 #override IP - Settings in predefined Environment
-#hier set_ip() ???
-    echo 'setenv serverip '${IPH} > ${port}
-    echo 'setenv ipaddr '${IPT} > ${port}
-    echo 'saveenv' > ${port}
-    echo "Done!"
+    set_ip
+    #echo 'setenv serverip '${IPH} > ${port}
+    #echo 'setenv ipaddr '${IPT} > ${port}
+    #echo 'saveenv' > ${port}
+    #echo "Step finished"
     echo
 }
 
@@ -357,78 +390,73 @@ function flash_splash
 function update_dtb
 {
 #update the device tree
-    echo "Transfer device tree"
+    echo "========================="
+    echo "Step: Install Device Tree"
+    echo "========================="
     echo
     echo 'tftp ${loadaddr}' ${dtb} > ${port}
     echo > ${port}
     sleep 3
     echo > ${port}
-    echo "Save device tree"
+    #echo "Save device tree"
     echo 'nand erase.part dtb' > ${port}
     echo > ${port}
-    sleep 3
+    sleep 5
     echo 'nand write.jffs2 ${fileaddr} dtb ${filesize}' > ${port}
     echo > ${port}
     sleep 3
-    echo "Reset"
-    echo
-    echo 'reset' > ${port}
-    echo > ${port}
-    sleep 5
-    echo > ${port}
-    echo "Done!"
+    reset
+    #echo "Reset"
+    #echo
+    #echo 'reset' > ${port}
+    #echo > ${port}
+    #sleep 5
+    #echo > ${port}
+    echo "Step finished"
     echo
 }
 
 function update_kernel
 {
 #update the Linux kernel
-    echo "Transfer Linux Kernel"
+    echo "========================"
+    echo "= Step: Install Kernel ="
+    echo "========================"
     echo
     echo 'tftp ${loadaddr}' ${kernel} > ${port}
     sleep 15
     echo 'nand erase.part linux' > ${port}
     sleep 5
-    echo "Save Linux Kernel"
+    #echo "Save Linux Kernel"
     echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
     sleep 5
-    echo "Done!"
+    echo "Step finished"
     echo
 }
 
 function update_rootfs
 {
 #update the filesystem
-    sys=0
-    rootfs='rootfs_'${com}'_'${demo}
-    echo ${rootfs}
-    #$rootfs=rootfs
-    echo ${rootfs}
-    #rootfs=$(rootfs_${com}_${demo})
-    rootfs="$rootfs"
-    echo "$rootfs"
-    echo $rootfs_TX28_poly
-
-    #${sys}=rootfs_${com}_${demo}
-    #${rootfs}=${sys}
-
     echo ${rootfs} #Debug
-    echo "Transfer Filesystem"
+    echo "============================"
+    echo "= Step: Install Filesystem ="
+    echo "============================"
     echo
     echo 'tftp ${loadaddr}' ${rootfs} > ${port}
     sleep 25
     echo 'nand erase.part rootfs' > ${port}
     sleep 5
-    echo "Save Filesystem"
+    #echo "Save Filesystem"
     echo
     echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
     sleep 15
-    echo "Reset and Reboot"
-    echo
-    echo 'reset' > ${port}
-    sleep 3
-    echo > ${port}
-    echo "Done!"
+    reset
+    #echo "Reset and Reboot"
+    #echo
+    #echo 'reset' > ${port}
+    #sleep 3
+    #echo > ${port}
+    echo "Step finished"
     echo
 }
 
@@ -436,7 +464,9 @@ function full_backlight
 {
 #set backlight to full brightness
 #backlight is only 50% so far, set it to 100%
-    echo "Set backlight to full brightness"
+    echo "==================================="
+    echo "= Step: Full backlight brightness ="
+    echo "==================================="
     echo
     sleep 2
     echo 'fdt set /backlight default-brightness-level <0x01>'  > ${port}
@@ -447,7 +477,7 @@ function full_backlight
     echo 'run fdtsave' > ${port}
     echo > ${port}
     sleep 3
-    echo "Done!"
+    echo "Step finished"
     echo
 }
 
@@ -548,7 +578,7 @@ function set_init
 {
 #pass init=/home/root/touchdemo to the module
 #@ bootargs_nand
-  echo "setenv bootargs_nand 'run default_bootargs;set bootargs ${\bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/home/root/touchdemo'" > ${port}
+  echo "setenv bootargs_nand 'run default_bootargs;set bootargs ${\bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/sbin/init'" > ${port}
   echo 'saveenv' > ${port}
 #TODO let user decide wether touchdemo, slideshow, touchtest, paintdemo
 }
@@ -565,7 +595,9 @@ clear
 echo "Program Demo to Karo TX Module"
 echo "------------------------------"
 echo
-echo "Please check:"
+echo "! Please check: !"
+echo "-----------------"
+echo ""
 echo "tftp - server running?"
 echo "Serial cable connected?"
 echo "Ethernet connected?"
@@ -589,7 +621,7 @@ fi
 #setup Host
 #**********
 
-#flasher_env
+flasher_env
 
 #******************
 #get Board and demo
@@ -605,13 +637,13 @@ echo "${demo}" #debug only
 #clean-up to get a "fresh" board
 #********************************
 
-#clear_board
+clear_board
 
 #**************************
 #set server- and device IPs
 #**************************
 
-#set_ip
+set_ip
 
 #*********************************************************
 #Combine Module with Bootloader (uboot), Environment Image
@@ -638,12 +670,55 @@ esac
 #********************************************************************
 
 case "$demo" in
-    "poly") rootfs=$rootfs_${com}_poly; echo ${rootfs};;
-    "gpe") rootfs="$rootfs_${com}_gpe"; echo rootfs;;
-    "term") rootfs="$rootfs_${com}_term"; echo rootfs;;
-    "qt") rootfs="rootfs_${com}_qt"; echo rootfs;;
+    "poly") rootfs="rootfs"_"$com"_"poly"; echo ${rootfs};;
+    "gpe") rootfs="rootfs"_"$com"_"gpe"; echo rootfs;;
+    "term") rootfs="rootfs"_"$com"_"term"; echo rootfs;;
+    "qt") rootfs="rootfs"_"$com"_"qt"; echo rootfs;;
     "yocto") rootfs="rootfs_${com}_yocto"; echo rootfs;;
     *) #ERROR
+esac
+
+case "$rootfs" in
+    #Polytouch Demos
+    "rootfs_TX28S_poly") rootfs="$rootfs_TX28S_poly": echo ${rootfs};;
+    "rootfs_TX28_poly") rootfs="$rootfs_TX28_poly"; echo ${rootfs};;
+    "rootfs_TX48_poly") rootfs="$rootfs_TX48_poly"; echo ${rootfs};;
+    "rootfs_TX53_poly") rootfs="$rootfs_TX53_poly"; echo ${rootfs};;
+    "rootfs_TXA5_poly") rootfs="$rootfs_TXA5_poly"; echo ${rootfs};;
+    "rootfs_TX6UL_poly") rootfs="$rootfs_TX6UL_poly"; echo ${rootfs};;
+    "rootfs_TX6S_poly") rootfs="$rootfs_TX6S_poly"; echo ${rootfs};;
+    "rootfs_TX6DL_poly") rootfs="$rootfs_TX6DL_poly"; echo ${rootfs};;
+    "rootfs_TX6Q_poly") rootfs="$rootfs_TX6Q_poly"; echo ${rootfs};;
+    #GPE Demos
+    "rootfs_TX28S_gpe") rootfs="$rootfs_TX28S_gpe"; echo ${rootfs};;
+    "rootfs_TX28_gpe") rootfs="$rootfs_TX28_gpe"; echo ${rootfs};;
+    "rootfs_TX48_gpe") rootfs="$rootfs_TX48_gpe"; echo ${rootfs};;
+    "rootfs_TX53_gpe") rootfs="$rootfs_TXA5_gpe"; echo ${rootfs};;
+    "rootfs_TXA5_gpe") echo "Not available yet!"; exit 0;;
+    "rootfs_TX6UL_gpe") rootfs="$rootfs_TX6UL_gpe"; echo ${rootfs};;
+    "rootfs_TX6S_gpe") rootfs="$rootfs_TX6DL_gpe"; echo ${rootfs};;
+    "rootfs_TX6DL_gpe") rootfs="$rootfs_TX6S_gpe"; echo ${rootfs};;
+    "rootfs_TX6Q_gpe") rootfs= "$rootfs_TX6Q_gpe"; echo ${rootfs};;
+    #Console Demos
+    "rootfs_TX28S_term") rootfs="$rootfs_TX28S_term"; echo ${rootfs};;
+    "rootfs_TX28_term") rootfs="$rootfs_TX28_term"; echo ${rootfs};;
+    "rootfs_TX48_term") rootfs="$rootfs_TX48_term"; echo ${rootfs};;
+    "rootfs_TX53_term") echo "Not avaiable yet!";;
+    "rootfs_TXA5_term") rootfs="$rootfs_TXA5_term"; echo ${rootfs};;
+    "rootfs_TX6UL_term") rootfs="$rootfs_TX6UL_term"; echo ${rootfs};;
+    "rootfs_TX6S_term") rootfs="$rootfs_TX6S_term"; echo ${rootfs};;
+    "rootfs_TX6DL_term") rootfs="$roots_TX6DL_term"; echo ${rootfs};;
+    "rootfs_TX6Q_term") rootfs="$rootfs_TX6Q_term"; echo ${rootfs};;
+    #Qt Demos
+    "rootfs_TX28S_qt") rootfs="$rootfs_TX28S_qt"; echo ${rootfs};;
+    "rootfs_TX28_qt") rootfs="$rootfs_TX28_qt"; echo ${rootfs};;
+    "rootfs_TX48_qt") rootfs="$rootfs_TX48_qt"; echo ${rootfs};;
+    "rootfs_TX53_qt") rootfs="$rootfs_TX53_qt"; echo ${rootfs};;
+    "rootfs_TXA5_qt") echo "Not availble yet!"; exit 0;;
+    "rootfs_TX6UL_qt") rootfs="$rootfs_TXUL_qt"; echo ${rootfs};;
+    "rootfs_TX6S_qt") rootfs="$rootfs_TX6S_qt"; echo ${rootfs};;
+    "rootfs_TX6DL_qt") rootfs="$rootfs_TX6DL_qt"; echo ${rootfs};;
+    "rootfs_TX6q_qt") rootfs="$rootfs_TX6Q_qt"; echo ${rootfs};;
 esac
 
 #DEBUG only
@@ -655,16 +730,17 @@ echo "$rootfs"
 echo "$kernel"
 
 #TODO check if Module is TX48, then uboot has two parts
-#update_uboot
-#update_environment
+#clear_board
+update_uboot
+update_environment
 #flash_splash
-#update_dtb
-#update_kernel
+update_dtb
+update_kernel
 update_rootfs
-#full_backlight
-#set_video_mode
-#set_init
-#set_consoleblank
+full_backlight
+set_video_mode
+set_init
+set_consoleblank
 
 #***************
 #End of Program
@@ -672,5 +748,5 @@ update_rootfs
 
 #TODO implement function to flash splashscreen
 #TODO implement linuxrc. Start with init=/linuxrc first to set up pathes. Afterwards change to init=/home/root/touchdemo
-#TODO implement reset - function
+
 

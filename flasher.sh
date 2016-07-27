@@ -214,7 +214,7 @@ case ${result} in
     #"TXUL-5010
     "TX6ULpoly") exec /bin/bash ${path}polytouch_tx6ul_5010.sh; exit 0;;
     "TX6ULgpe") exec /bin/bash ${path}gpe_tx6ul_5010.sh; exit 0;;
-    "TX6ULterm") exec /bin/bash ${path}terminal_tx6ul_5010; exit 0;;
+    "TX6ULterm") exec /bin/bash ${path}terminal_tx6ul_5010.sh; exit 0;;
     "TX6ULqt") exec /bin/bash ${path}qt_tx6ul_5010; exit 0;;
     #TX6UL-5011
     #"TX6ULemmcpoly") exec /bin/bash ${path}; exit 0;;

@@ -104,10 +104,15 @@ echo > ${port}
 echo " 3/18 - Change autostart / autoload"
 echo 'setenv autoload no' > ${port}
 echo > ${port}
+echo > ${port}
 echo 'setenv autostart no' > ${port}
+#sleep 2
+echo > ${port}
 echo > ${port}
 echo 'saveenv' > ${port}
 echo > ${port}
+echo > ${port}
+#sleep 2
 echo " 4/18 - Update Bootloader"
 sleep 5
 echo 'tftp ${loadaddr}' ${uboot} > ${port}

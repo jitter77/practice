@@ -24,7 +24,7 @@ echo
 uboot=u-boot-tx6ul-0010.bin               #Bootloader
 image=setenv_tx6ul5010.img                #Environment
 dtb=imx6ul-tx6ul-0010.dtb                 #Device Tree
-kernel=uImage_txul                        #Linux kernel
+kernel=uImage_tx6ul_m12.bin               #Linux kernel
 rootfs=rootfs_txul_ubi.image              #Console demo
 echo
 #preparation

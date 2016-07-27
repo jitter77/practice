@@ -21,7 +21,7 @@
 #1.5 - 05.05.2015 - add ETV570                 #
 ################################################
 
-`clear`
+clear
 echo "Program Polytouchdemo to TX28"
 echo "-----------------------------"
 echo
@@ -40,7 +40,7 @@ uboot=u-boot-tx28-40x1.sb       #Bootloader
 image=setenv_poly_tx28.img      #Environment
 dtb=imx28-tx28.dtb              #Device Tree
 kernel=uImage_tx28 #uImage-tx28-m09-raw Linux kernel
-rootfs=touchdemo-m09-flip.ubi #mucross-2.0-polytouchdemo-tx28.ubi Polytouchdemo
+rootfs=mucross-2.0-polytouchdemo-tx28.ubi #touchdemo-m09-flip.ubi  Polytouchdemo
 echo
 #preparation
 echo "Please check:"
@@ -89,7 +89,7 @@ if [ "$settings" != y ]
 		clear
 	else
 		#clear screen
-		`clear`
+		clear
 fi
 #Mainfunction
 #cleanup
@@ -97,10 +97,10 @@ echo " 1/20 - Clean Partitions"
 #delete kernel
 echo 'nand erase.part linux' > ${port}
 echo > ${port}
-`sleep 3`
+sleep 3
 #delete rootfs
 echo 'nand erase.part rootfs' > ${port}
-`sleep 3`
+sleep 3
 echo " 2/20 - Set IP adresses"
 echo 'setenv serverip '${IPH} > ${port}
 echo 'setenv ipaddr '${IPT} > ${port}
