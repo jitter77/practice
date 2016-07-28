@@ -267,7 +267,7 @@ function clear_board
     sleep 3
     echo 'nand erase.part dtb' > ${port}
     sleep 3
-    echo "Step finished"
+    #echo "Step finished"
     echo
 }
 
@@ -284,7 +284,7 @@ function set_ip
     echo 'setenv ipaddr '${IPT} > ${port}
     echo > ${port}
     sleep 1
-    echo "Step finished"
+    #echo "Step finished"
     echo
 }
 
@@ -303,7 +303,7 @@ function set_auto
     echo 'saveenv' > ${port}
     echo > ${port}
     sleep 1
-    echo "Step finished"
+    #echo "Step finished"
     echo
 }
 
@@ -329,7 +329,7 @@ function update_uboot
     echo 'romupdate ${fileaddr}' > ${port}
     sleep 5
     reset
-    echo "Step finished"
+    #echo "Step finished"
     echo
 }
 
@@ -362,10 +362,6 @@ function update_environment
     sleep 5
 #override IP - Settings in predefined Environment
     set_ip
-    #echo 'setenv serverip '${IPH} > ${port}
-    #echo 'setenv ipaddr '${IPT} > ${port}
-    #echo 'saveenv' > ${port}
-    #echo "Step finished"
     echo
 }
 
@@ -406,13 +402,7 @@ function update_dtb
     echo > ${port}
     sleep 3
     reset
-    #echo "Reset"
-    #echo
-    #echo 'reset' > ${port}
-    #echo > ${port}
-    #sleep 5
-    #echo > ${port}
-    echo "Step finished"
+    #echo "Step finished"
     echo
 }
 
@@ -430,7 +420,7 @@ function update_kernel
     #echo "Save Linux Kernel"
     echo 'nand write.jffs2 ${fileaddr} linux ${filesize}' > ${port}
     sleep 5
-    echo "Step finished"
+    #echo "Step finished"
     echo
 }
 
@@ -451,12 +441,7 @@ function update_rootfs
     echo 'nand write.trimffs ${fileaddr} rootfs ${filesize}' > ${port}
     sleep 15
     reset
-    #echo "Reset and Reboot"
-    #echo
-    #echo 'reset' > ${port}
-    #sleep 3
-    #echo > ${port}
-    echo "Step finished"
+    #echo "Step finished"
     echo
 }
 
@@ -500,7 +485,7 @@ function set_video_mode
     if [ "$video_decision" != y ]
         then
             echo "Video resolution set to ETV570, exiting now!"
-            exit 0
+            #exit 0
         else
              echo "Please enter number of desired video mode (1-6)"
             read video_mode
@@ -510,35 +495,35 @@ function set_video_mode
                     echo 'saveenv' > ${port}
                     sleep 3
                     echo "Finished!"
-                    exit 0
+                    #exit 0
             elif [ "$video_mode" = 2 ]
                 then
                     echo 'setenv video_mode ET0430' > ${port}
                     echo 'saveenv' > ${port}
                     sleep 3
                     echo "Finished!"
-                    exit 0
+                    #exit 0
             elif [ "$video_mode" = 3 ]
                 then
                     echo 'setenv video_mode ET0500' > ${port}
                     echo 'saveenv' > ${port}
-                    sleep 3
+                    sleep 5
                     echo "Finished!"
-                    exit 0
+                    #exit 0
             elif [ "$video_mode" = 4 ]
                 then
                     echo 'setenv video_mode ETQ570' > ${port}
                     echo 'saveenv' > ${port}
                     sleep 3
-                    echo "Finished!"
-                    exit 0
+                    #echo "Finished!"
+                    #exit 0
             elif [ "$video_mode" = 5 ]
                 then
                     echo 'setenv video_mode ETV570' > ${port}
                     echo 'saveenv' > ${port}
                     sleep 3
-                    echo "Finished!"
-                    exit 0
+                    #echo "Finished!"
+                    #exit 0
             elif [ "$video_mode" = 6 ]
                 then
                     echo 'setenv video_mode ET0700' > ${port}
@@ -559,17 +544,17 @@ function set_video_mode
                         echo 'run fdtsave' > ${port}
                         echo > ${port}
                         echo "Finished!"
-                        exit 0
+                        #exit 0
                     else
                         echo "Finished!"
-                        exit 0
+                        #exit 0
                     fi
             else [ "$video_mode" = 7 ]
                 echo 'setenv video_mode VGA' > ${port}
                 echo 'saveenv'
                 sleep 3
-                echo "Finished!"
-                exit 0
+                echo "Step finished!"
+                #exit 0
             fi
     fi
 }
@@ -578,16 +563,24 @@ function set_init
 {
 #pass init=/home/root/touchdemo to the module
 #@ bootargs_nand
-  echo "setenv bootargs_nand 'run default_bootargs;set bootargs ${\bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/sbin/init'" > ${port}
+  echo "setenv bootargs_nand 'run default_bootargs;set bootargs \${bootargs} ubi.mtd=3 root=ubi0:rootfs rootfstype=ubifs rw init=/sbin/init'" > ${port}
+  echo > ${port}
   echo 'saveenv' > ${port}
+  echo > ${port}
 #TODO let user decide wether touchdemo, slideshow, touchtest, paintdemo
 }
 
 function set_consoleblank
 {
 #@default_bootargs
-  echo "setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=${video_mode} consoleblank=0 ${append_bootargs}'" > ${port}
+  echo "setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=\${video_mode} consoleblank=0 \${append_bootargs}'" > ${port}
+  sleep 5
+  echo > ${port}
+  #echo > ${port}
+  #sleep 3
+  #echo > ${port}
   echo saveenv > ${port}
+  echo > ${port}
 }
 
 clear
@@ -603,9 +596,9 @@ echo "Serial cable connected?"
 echo "Ethernet connected?"
 echo "TX Module inserted?" #TODO implement number of module e.g. TX28-4031
 echo "Power supply connected?"
-echo "continue (y/n)"
+echo "continue (Y/n)"
 read continue
-if [ "$continue" != y ]
+if [ "$continue" == n ] || [ "$continue" == N ]
  then
     echo "exiting now!"
     exit 0
@@ -628,10 +621,10 @@ flasher_env
 #******************
 
 choose_module
-echo "${com}" #debug only
+#echo "${com}" #debug only
 choose_demo
-echo "${com}" #debug only
-echo "${demo}" #debug only
+#echo "${com}" #debug only
+#echo "${demo}" #debug only
 
 #********************************
 #clean-up to get a "fresh" board
@@ -740,8 +733,10 @@ update_rootfs
 full_backlight
 set_video_mode
 set_init
+sleep 3
 set_consoleblank
-
+sleep 3
+echo "Finished!"
 #***************
 #End of Program
 #***************
