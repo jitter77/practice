@@ -13,115 +13,20 @@
 ################################################
 
 
-#************************************************
-#*************  Bootloader **********************
-#************************************************
 
-uboot_tx28s=u-boot-tx28-41x0.sb
-uboot_tx28=u-boot-tx28-40x1.sb
-uboot_tx48_1=MLO-tx48
-uboot_tx48_2=u-boot-tx48.img
-uboot_tx53=
-uboot_txa5=u-boot-txa5-5010.bin
-uboot_tx6ul=u-boot-tx6ul-0010.bin
-uboot_tx6s=u-boot-tx6s-8034.bin
-uboot_tx6dl=u-boot-tx6u-80x0.bin
-uboot_tx6q=u-boot-tx6q-10x0.bin
 
-#************************************************
-#************  Devicetrees  *********************
-#************************************************
 
-dtb_tx28s=imx28-tx28.dtb
-dtb_tx28=imx28-tx28.dtb
-dtb_tx48=am335x-tx48.dtb
-dtb_tx53=
-dtb_txa5=at91-sama5d4-txa5-5010.dtb
-dtb_tx6ul=imx6ul_tx6ul-0010.dtb
-dtb_tx6s=imx6dl-tx6s-8034.dtb
-dtb_tx6dl=imx6dl-tx6u-80xx.dtb
-dtb_tx6q=imx6q-tx6q-10x0.dtb
 
-#************************************************
-#*************  Kernels  ************************
-#************************************************
 
-kernel_tx28s=uImage_tx28
-kernel_tx28=uImage_tx28
-kernel_tx48=uImage_tx48
-kernel_tx53=
-kernel_txa5=uImage_txa5
-kernel_tx6ul=uImage_tx6ul
-kernel_tx6=uImage_tx6
 
-#************************************************
-#*********  Environment Images  *****************
-#************************************************
 
-env_tx28s=setenv_poly_tx28.img
-env_tx28=setenv_poly_tx28.img
-env_tx48=setenv_poly_tx48.img
-env_tx53=
-env_txa5=
-env_tx6ul=setenv_tx6ul5010.img
-env_tx6=setenv_poly_tx6.img
 
-#************************************************
-#**************  Filesystems  *******************
-#*************  Polytouchdemo  ******************
-#************************************************
 
-rootfs_TX28S_poly=touchdemo-m09-flip.ubi
-rootfs_TX28_poly=touchdemo-m09-flip.ubi
-rootfs_TX48_poly=
-rootfs_TX53_poly=
-rootfs_TXA5_poly=
-rootfs_TX6UL_poly=touchdemo-m09-flip.ubi
-rootfs_TX6S_poly=mucross-2.0-polytouchdemo-tx6.ubi
-rootfs_TX6DL_poly=mucross-2.0-polytouchdemo-tx6.ubi
-rootfs_TX6Q_poly=mucross-2.0-polytouchdemo-tx6.ubi
 
-#************************************************
-#**************  Filesystems  *******************
-#***************  GPE - Demo  *******************
-#************************************************
 
-rootfs_TX28S_gpe=mucross-2.0-gpe-demo.ubi
-rootfs_TX28_gpe=mucross-2.0-gpe-demo-image-tx28.ubi
-rootfs_TX48_gpe=mucross-2.0-gpe-demo-tx48.ubi
-rootfs_TXA5_gpe=
-rootfs_TX6UL_gpe=mucross-2.0-gpe-demo-image-tx28.ubi
-rootfs_TX6S_gpe=mucross-2.0-gpe-demo-tx6.ubi
-rootfs_TX6DL_gpe=mucross-2.0-gpe-demo-tx6.ubi
-rootfs_TX6Q_gpe=mucross-2.0-gpe-demo-tx6.ubi
 
-#************************************************
-#**************  Filesystems  *******************
-#***********  Console - Demo (no GUI) ***********
-#************************************************
 
-rootfs_TX28S_term=mucross-2.0-console-image-tx28.ubi
-rootfs_TX28_term=mucross-2.0-console-image-tx28.ubi
-rootfs_TX48_term=mucross-2.0-console-image-tx48.ubi
-rootfs_TXA5_term=rootfs_txa_ubi.image
-rootfs_TX6UL_term=rootfs_tx6ul_ubi.image
-rootfs_TX6S_term=mucross-2.0-console-image-tx6.ubi
-roots_TX6DL_term=mucross-2.0-console-image-tx6.ubi
-rootfs_TX6Q_term=mucross-2.0-console-image-tx6.ubi
 
-#************************************************
-#*************  Filesystems  ********************
-#*************  Qt - Demos  *********************
-#************************************************
-
-rootfs_TX28S_qt=
-rootfs_TX28_qt=mucross-2.0-qt4_8-x11-demo-image-tx28.ubi
-rootfs_TX48_qt=mucross-2.0-qt-embedded-demo-tx48.ubifs
-rootfs_TX53_qt=
-rootfs_TXUL_qt=mucross-2.0-qt4_8-x11-demo-image-tx28.ubi
-rootfs_TX6S_qt=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi
-rootfs_TX6DL_qt=mucross-2.0-x11-qt4-8-image-tx6-VGA.ubi
-rootfs_TX6Q_qt=mucross-2.0-qt-embedded-demo-tx6.ubi
 
 #************************************************
 #*************  Filesystems  ********************
@@ -133,6 +38,18 @@ rootfs_TX6Q_qt=mucross-2.0-qt-embedded-demo-tx6.ubi
 #source Environment from Conf - File
 
 . /$HOME/PycharmProjects/practice/flasher.conf
+
+#source all the needed files
+
+. /$HOME/PycharmProjects/practice/includes/bootloader.h
+. /$HOME/PycharmProjects/practice/includes/filesystems_polytouch.h
+. /$HOME/PycharmProjects/practice/includes/devicetrees.h
+. /$HOME/PycharmProjects/practice/includes/kernels.h
+. /$HOME/PycharmProjects/practice/includes/environments.h
+. /$HOME/PycharmProjects/practice/includes/filesystems_gpe.h
+. /$HOME/PycharmProjects/practice/includes/filesystems_console.h
+. /$HOME/PycharmProjects/practice/includes/filesystems_qt.h
+
 
 # just for debug
 echo ${IPH}
@@ -249,7 +166,6 @@ function choose_demo
         *) echo "Please choose number between 1 & 5! Exiting now."; exit 0;;
     esac
     result=${com}${demo}
-    #echo ${result}
     clear
     echo "Your configuration is:" ${com}${demo}
 }
@@ -342,15 +258,8 @@ function update_environment
     echo "=     Default Environment     ="
     echo "==============================="
     echo 'env default -fa' > ${port}
-    #echo "======================"
-    #echo "= 2. Set IP adresses ="
-    #echo "======================"
-    #echo
     sleep 2
     set_ip
-    #echo 'setenv serverip '${IPH} > ${port}
-    #echo 'setenv ipaddr '${IPT} > ${port}
-    #echo > ${port}
     echo "========================"
     echo "= Transfer Environment ="
     echo "========================"
@@ -576,9 +485,6 @@ function set_consoleblank
   echo "setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=\${video_mode} consoleblank=0 \${append_bootargs}'" > ${port}
   sleep 5
   echo > ${port}
-  #echo > ${port}
-  #sleep 3
-  #echo > ${port}
   echo saveenv > ${port}
   echo > ${port}
 }
