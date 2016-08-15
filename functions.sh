@@ -12,29 +12,6 @@
 #0.1 - 23.10.2015 - Initial Version            #
 ################################################
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#************************************************
-#*************  Filesystems  ********************
-#****************  Yocto  ***********************
-#************************************************
-
-
-
 #source Environment from Conf - File
 
 . /$HOME/PycharmProjects/practice/flasher.conf
@@ -58,7 +35,7 @@ echo ${port}
 echo ${DIR}
 echo ${version}
 
-function reset
+function reset ()
 {
     echo 'reset' > ${port}
     echo > ${port}
@@ -67,7 +44,7 @@ function reset
 
 }
 
-function flasher_env
+function flasher_env ()
 {
 #Keep or set IP adresses / serial port?
     echo "IP addresses currently set to:"
@@ -105,7 +82,7 @@ function flasher_env
     fi
 }
 
-function choose_module
+function choose_module ()
 {
 #choose the KaRo - Board
     echo "Please choose your module from the list"
@@ -145,7 +122,7 @@ function choose_module
     esac
 }
 
-function choose_demo
+function choose_demo ()
 {
 #choose the Filesystem
     echo "Please choose desired demo from the list"
@@ -170,7 +147,7 @@ function choose_demo
     echo "Your configuration is:" ${com}${demo}
 }
 
-function clear_board
+function clear_board ()
 {
 #clear all partitions
     echo "========================"
@@ -187,7 +164,7 @@ function clear_board
     echo
 }
 
-function set_ip
+function set_ip ()
 {
 #set ip-addresses
     echo "==============================="
@@ -204,7 +181,7 @@ function set_ip
     echo
 }
 
-function set_auto
+function set_auto ()
 {
 #set autoload & autostart
     echo "============================"
@@ -223,7 +200,7 @@ function set_auto
     echo
 }
 
-function update_uboot
+function update_uboot ()
 {
 #update the Bootloader
 #TODO implement case...switch solution for tx48 and its two-stage bootloader
@@ -249,7 +226,7 @@ function update_uboot
     echo
 }
 
-function update_environment
+function update_environment ()
 {
 #update the environment
     echo "$image" #DEBUG only
@@ -269,12 +246,13 @@ function update_environment
     sleep 8
     echo 'source ${fileaddr}' > ${port}
     sleep 5
+    echo saveenv > ${port}
 #override IP - Settings in predefined Environment
     set_ip
     echo
 }
 
-function flash_splash
+function flash_splash ()
 {
 #install a custom splashscreen
     echo "Install Splashscreen"
@@ -292,7 +270,7 @@ function flash_splash
     echo > ${port}
 }
 
-function update_dtb
+function update_dtb ()
 {
 #update the device tree
     echo "========================="
@@ -315,7 +293,7 @@ function update_dtb
     echo
 }
 
-function update_kernel
+function update_kernel ()
 {
 #update the Linux kernel
     echo "========================"
@@ -333,7 +311,7 @@ function update_kernel
     echo
 }
 
-function update_rootfs
+function update_rootfs ()
 {
 #update the filesystem
     echo ${rootfs} #Debug
@@ -354,7 +332,7 @@ function update_rootfs
     echo
 }
 
-function full_backlight
+function full_backlight ()
 {
 #set backlight to full brightness
 #backlight is only 50% so far, set it to 100%
@@ -375,7 +353,7 @@ function full_backlight
     echo
 }
 
-function set_video_mode
+function set_video_mode ()
 {
 #set video_mode
 #change displaysettings
@@ -468,7 +446,7 @@ function set_video_mode
     fi
 }
 
-function set_init
+function set_init ()
 {
 #pass init=/home/root/touchdemo to the module
 #@ bootargs_nand
@@ -479,7 +457,7 @@ function set_init
 #TODO let user decide wether touchdemo, slideshow, touchtest, paintdemo
 }
 
-function set_consoleblank
+function set_consoleblank ()
 {
 #@default_bootargs
   echo "setenv default_bootargs 'set bootargs console=ttyAMA0,115200 ro debug panic=1 mxsfb.mode=\${video_mode} consoleblank=0 \${append_bootargs}'" > ${port}
@@ -621,7 +599,8 @@ case "$rootfs" in
 esac
 
 #DEBUG only
-echo "$uboot_tx28"
+
+echo "The following files will be used / programmed:"
 echo "$image"
 echo "$dtb"
 echo "$test"
@@ -643,6 +622,7 @@ sleep 3
 set_consoleblank
 sleep 3
 echo "Finished!"
+
 #***************
 #End of Program
 #***************
