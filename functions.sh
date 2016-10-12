@@ -19,10 +19,10 @@
 #source all the needed files
 
 . /$HOME/PycharmProjects/practice/includes/bootloader.h
-. /$HOME/PycharmProjects/practice/includes/filesystems_polytouch.h
 . /$HOME/PycharmProjects/practice/includes/devicetrees.h
 . /$HOME/PycharmProjects/practice/includes/kernels.h
 . /$HOME/PycharmProjects/practice/includes/environments.h
+. /$HOME/PycharmProjects/practice/includes/filesystems_polytouch.h
 . /$HOME/PycharmProjects/practice/includes/filesystems_gpe.h
 . /$HOME/PycharmProjects/practice/includes/filesystems_console.h
 . /$HOME/PycharmProjects/practice/includes/filesystems_qt.h
@@ -301,6 +301,7 @@ function update_kernel ()
     echo "========================"
     echo
     echo 'tftp ${loadaddr}' ${kernel} > ${port}
+    echo 
     sleep 15
     echo 'nand erase.part linux' > ${port}
     sleep 5
@@ -336,6 +337,7 @@ function full_backlight ()
 {
 #set backlight to full brightness
 #backlight is only 50% so far, set it to 100%
+#TODO Not working for all configurations, e.g. ACLAVIS
     echo "==================================="
     echo "= Step: Full backlight brightness ="
     echo "==================================="
@@ -374,7 +376,7 @@ function set_video_mode ()
             echo "Video resolution set to ETV570, exiting now!"
             #exit 0
         else
-             echo "Please enter number of desired video mode (1-6)"
+            echo "Please enter number of desired video mode (1-6)"
             read video_mode
             if [ "$video_mode" = 1 ]
                 then
@@ -505,10 +507,7 @@ flasher_env
 #******************
 
 choose_module
-#echo "${com}" #debug only
 choose_demo
-#echo "${com}" #debug only
-#echo "${demo}" #debug only
 
 #********************************
 #clean-up to get a "fresh" board
@@ -571,7 +570,7 @@ case "$rootfs" in
     "rootfs_TX28_gpe") rootfs="$rootfs_TX28_gpe"; echo ${rootfs};;
     "rootfs_TX48_gpe") rootfs="$rootfs_TX48_gpe"; echo ${rootfs};;
     "rootfs_TX53_gpe") rootfs="$rootfs_TXA5_gpe"; echo ${rootfs};;
-    "rootfs_TXA5_gpe") echo "Not available yet!"; exit 0;;
+    "rootfs_TXA5_gpe") echo "Not available yet! Exiting."; exit 0;;
     "rootfs_TX6UL_gpe") rootfs="$rootfs_TX6UL_gpe"; echo ${rootfs};;
     "rootfs_TX6S_gpe") rootfs="$rootfs_TX6DL_gpe"; echo ${rootfs};;
     "rootfs_TX6DL_gpe") rootfs="$rootfs_TX6S_gpe"; echo ${rootfs};;
@@ -580,7 +579,7 @@ case "$rootfs" in
     "rootfs_TX28S_term") rootfs="$rootfs_TX28S_term"; echo ${rootfs};;
     "rootfs_TX28_term") rootfs="$rootfs_TX28_term"; echo ${rootfs};;
     "rootfs_TX48_term") rootfs="$rootfs_TX48_term"; echo ${rootfs};;
-    "rootfs_TX53_term") echo "Not avaiable yet!";;
+    "rootfs_TX53_term") echo "Not available yet! Exiting."; exit 0;;
     "rootfs_TXA5_term") rootfs="$rootfs_TXA5_term"; echo ${rootfs};;
     "rootfs_TX6UL_term") rootfs="$rootfs_TX6UL_term"; echo ${rootfs};;
     "rootfs_TX6S_term") rootfs="$rootfs_TX6S_term"; echo ${rootfs};;
@@ -591,11 +590,21 @@ case "$rootfs" in
     "rootfs_TX28_qt") rootfs="$rootfs_TX28_qt"; echo ${rootfs};;
     "rootfs_TX48_qt") rootfs="$rootfs_TX48_qt"; echo ${rootfs};;
     "rootfs_TX53_qt") rootfs="$rootfs_TX53_qt"; echo ${rootfs};;
-    "rootfs_TXA5_qt") echo "Not availble yet!"; exit 0;;
+    "rootfs_TXA5_qt") echo "Not available yet! Exiting."; exit 0;;
     "rootfs_TX6UL_qt") rootfs="$rootfs_TXUL_qt"; echo ${rootfs};;
     "rootfs_TX6S_qt") rootfs="$rootfs_TX6S_qt"; echo ${rootfs};;
     "rootfs_TX6DL_qt") rootfs="$rootfs_TX6DL_qt"; echo ${rootfs};;
-    "rootfs_TX6q_qt") rootfs="$rootfs_TX6Q_qt"; echo ${rootfs};;
+    "rootfs_TX6Q_qt") rootfs="$rootfs_TX6Q_qt"; echo ${rootfs};;
+    #Yocto Demos
+    "rootfs_TX28S_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TX28_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TX48_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TX53_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TXA5_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TX6UL_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TX6S_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TX6DL_yocto") echo "Not available yet! Exiting."; exit 0;;
+    "rootfs_TX6Q_yocto") echo "Not available yet! Exiting."; exit 0;;
 esac
 
 #DEBUG only
